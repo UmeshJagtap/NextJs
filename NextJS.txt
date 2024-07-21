@@ -14,3 +14,19 @@ https://regexr.com/
 $ touch verifySchema.ts signInSchema.tsx acceptMessageSchema.tsx messageSchema.tsx
 
 $ npm i zod
+
+
+
+
+Inspiration :-
+Build an AI Expense Tracker & Financial Advisor App with Next.js, Tailwind CSS, and TypeScript
+https://www.youtube.com/watch?v=gvUsUpDlav4
+⭐ Shadcn: https://ui.shadcn.com/
+⭐ Drizzle: https://orm.drizzle.team/docs/get-sta...
+⭐ Neon: https://console.neon.tech/
+⭐ TailwindCSS: https://tailwindcss.com/
+⭐ Aceternity UI: https://shorturl.at/3p5Dp
+
+📚 Materials/References:
+GitHub Repo (give it a star ⭐): https://github.com/mendsalbert/ai-finance-tracking
+README (assets & code): https://github.com/mendsalbert/ai-finance-tracking/blob/main/README.md
