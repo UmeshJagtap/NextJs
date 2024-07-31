@@ -30,3 +30,6 @@ https://www.youtube.com/watch?v=gvUsUpDlav4
 📚 Materials/References:
 GitHub Repo (give it a star ⭐): https://github.com/mendsalbert/ai-finance-tracking
 README (assets & code): https://github.com/mendsalbert/ai-finance-tracking/blob/main/README.md
+
+Next.js 14 Playlist ( Codevolution )
+https://www.youtube.com/watch?v=ZjAqacIC_3c&list=PLC3y8-rFHvwjOKd6gdf4QtV1uYNiQnruI&index=1
