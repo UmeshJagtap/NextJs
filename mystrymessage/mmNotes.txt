@@ -1,0 +1,21 @@
+Build a full stack project with NextJS and AI integration -Chai aur Code
+https://www.youtube.com/watch?v=zLJoVRleOuc
+
+https://nextjs.org/
+
+npx create-next-app@latest
+mystrymessage
+
+$ npm run dev
+
+$ npm i mongoose
+https://regexr.com/
+
+$ touch signUpSchema.ts verifySchema.ts signInSchema.ts acceptMessageSchema.ts messageSchema.ts
+
+$ npm i zod
+
+https://www.npmjs.com/package/zod
+https://github.com/colinhacks/zod
+
+verifySchema 48:00 / 8:29:17
