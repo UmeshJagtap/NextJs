@@ -1,3 +1,22 @@
+Build a full stack project with NextJS and AI integration -Chai aur Code
+https://www.youtube.com/watch?v=zLJoVRleOuc
+
+https://nextjs.org/
+
+npx create-next-app@latest
+mystrymessage
+
+$ npm run dev
+
+$ npm i mongoose
+https://regexr.com/
+
+$ touch verifySchema.ts signInSchema.tsx acceptMessageSchema.tsx messageSchema.tsx
+
+$ npm i zod
+
+
+
 
 Inspiration :-
 Build an AI Expense Tracker & Financial Advisor App with Next.js, Tailwind CSS, and TypeScript
