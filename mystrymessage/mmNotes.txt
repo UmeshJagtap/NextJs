@@ -19,3 +19,8 @@ https://www.npmjs.com/package/zod
 https://github.com/colinhacks/zod
 
 verifySchema 48:00 / 8:29:17
+
+-- IMP --
+databaseConnection
+> With Express/Mongoose  ...once app is started and connected to backend, ...it runs continuously
+> NextJs is Edge time Framework  >> As per the user's requests , things n functions are executed.
