@@ -22,7 +22,59 @@ verifySchema 48:00 / 8:29:17
 
 -- IMP --
 databaseConnection
-> With Express/Mongoose  ...once app is started and connected to backend, ...it runs continuously
+> With Express/Mongoose  ...once app is started and connected to backend, ...backend server runs continuously
 > NextJs is Edge time Framework  >> As per the user's requests , things n functions are executed.
 
-dbConnect 1:06:57 / 8:29:17
+dbConnect 
+
+nextAuth
+
+code should effectively handle bot the scenarios
+of registering a new user
+updating an existing but unverified user account 
+with a new password and verification code.
+
+IF existingUserByEmail EXISTS THEN
+    IF existingUserByEmail.isVerified THEN
+        success: false
+    ELSE
+        // Save the updated user
+    END IF
+ELSE
+    // Create a new user with the provided details
+    // Save the new user
+END IF
+
+resend Email 
+-https://resend.com/ 
+-We will need API Key from Resend
+
+$ npm install resend
+
+verificationEmail.tsx
+
+$ npm i react-email
+
+https://react.email/
+
+1:06:57 / 8:29:17
+
+
+--------------------------------------------------------------- Timestamps
+01 Building a production app in NextJS 00:00:00
+02 Mastering ZOD for validation in Nextjs 00:12:17
+03 How to connected Database in NextJS 00:53:28
+04 Setup Resend email with NextJS 01:07:00
+05 Signup user and custom OTP in NextJS 01:39:20
+06 Crash course on Next Auth or Authjs 01:59:07
+07 OTP verification and unique username check in Nextjs 03:10:56
+08 Message API with aggregation pipeline 03:48:47
+09 Integrating AI features in NextJS project 04:31:02
+10 React hook form, shadcn and debouncing 04:45:42
+11 OTP verification in NextJS 06:02:13
+12 Handling signin with AuthJS 06:19:19
+13 Navbar and message card with bug fixes in Nextjs 06:39:50
+14 We forgot delete Route backend 07:10:09
+15 Building User Dashboard 07:20:52
+16 struggle with Carousel shadcn in NextJS 08:01:46
+17 A big assignment for real learners 08:21:16
