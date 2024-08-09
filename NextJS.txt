@@ -19,6 +19,10 @@ $ npm i zod
 
 
 Inspiration :-
+
+Learn NextJS with Aceternity UI library by building a project
+https://www.youtube.com/watch?v=cVKB5NQPiFA
+
 Build an AI Expense Tracker & Financial Advisor App with Next.js, Tailwind CSS, and TypeScript
 https://www.youtube.com/watch?v=gvUsUpDlav4
 ⭐ Shadcn: https://ui.shadcn.com/
