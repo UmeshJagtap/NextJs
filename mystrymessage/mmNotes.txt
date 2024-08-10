@@ -25,6 +25,9 @@ databaseConnection
 > With Express/Mongoose  ...once app is started and connected to backend, ...backend server runs continuously
 > NextJs is Edge time Framework  >> As per the user's requests , things n functions are executed.
 
+Next JS is kind off Edge time framework, ... does not run all time continuously,
+i.e. As per User request >> Next app is executed !! 
+
 dbConnect 
 
 nextAuth
