@@ -65,7 +65,10 @@ https://react.email/
 https://resend.com/docs/send-with-nextjs
 https://react.email/docs/integrations/resend
 
-1:22:57 / 8:29:17
+npm install bcryptjs
+npm i --save-dev @types/bcryptjs   
+
+1:49:25 / 8:29:17
 
 
 --------------------------------------------------------------- Timestamps

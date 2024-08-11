@@ -11,8 +11,6 @@ import {
   Button,
 } 
 from '@react-email/components';
-// from './react-email/components';
-// from '@'
 
 interface VerificationEmailProps {
   username: string;

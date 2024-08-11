@@ -34,3 +34,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+Commands used :-
+npx create-next-app@latest 
+mystrymessage
+$ npm run dev
+$ touch signUpSchema.ts verifySchema.ts signInSchema.ts acceptMessageSchema.ts messageSchema.ts
+$ npm i zod
+$ npm i react-email
+$ npm install resend @react-email/components
+$ npm i mongoose
+
