@@ -1,4 +1,4 @@
-import * as React from 'react';
+// import * as React from 'react';
 import {
   Html,
   Head,
@@ -9,10 +9,10 @@ import {
   Section,
   Text,
   Button,
-} from '';
-
+} 
+from '@react-email/components';
 // from './react-email/components';
-// from '@react-email/components';
+// from '@'
 
 interface VerificationEmailProps {
   username: string;

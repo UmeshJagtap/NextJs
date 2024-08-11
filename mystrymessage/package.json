@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-email/components": "^0.0.22",
+    "mongoose": "^8.5.2",
     "next": "14.2.4",
     "node": "^22.4.0",
     "react": "^18",

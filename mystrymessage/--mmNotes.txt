@@ -57,6 +57,8 @@ $ npm install resend
 verificationEmail.tsx
 
 $ npm i react-email
+$ npm install resend @react-email/components
+
 
 https://react.email/
 
@@ -84,3 +86,8 @@ https://react.email/docs/integrations/resend
 15 Building User Dashboard 07:20:52
 16 struggle with Carousel shadcn in NextJS 08:01:46
 17 A big assignment for real learners 08:21:16
+
+vsCode Extensions :-
+
+vsCode Wrapper :-
+Command Pattelte >bal i.e. ( Balance Outwards )  ...should automatically select code ...span
