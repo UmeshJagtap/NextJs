@@ -35,9 +35,8 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-
 Commands used :-
-npx create-next-app@latest 
+npx create-next-app@latest
 mystrymessage
 $ npm run dev
 $ touch signUpSchema.ts verifySchema.ts signInSchema.ts acceptMessageSchema.ts messageSchema.ts
@@ -45,4 +44,6 @@ $ npm i zod
 $ npm i react-email
 $ npm install resend @react-email/components
 $ npm i mongoose
-
+$ npm install bcryptjs
+$ npm i --save-dev @types/bcryptjs
+$ npm install next-auth

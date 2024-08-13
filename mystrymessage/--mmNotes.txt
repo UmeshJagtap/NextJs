@@ -72,11 +72,16 @@ route.ts 1:50:25 / 8:29:17
 
 NEXT AUTH 2:00:10 / 8:29:17
 
-NextAuth.js --https://next-auth.js.org/
+NextAuth.js --https://next-auth.js.org/ , https://github.com/nextauthjs/next-auth
 Authentication for Next.js
 
+Providers 
+> GitHUb >> https://next-auth.js.org/providers/github
+> Google >> https://next-auth.js.org/providers/google
+> Credentials >> https://next-auth.js.org/providers/credentials
 
-
+$ npm install next-auth
+NEXT AUTH 2:15:10 / 8:29:17
 
 
 
