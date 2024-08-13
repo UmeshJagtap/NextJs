@@ -68,7 +68,27 @@ https://react.email/docs/integrations/resend
 npm install bcryptjs
 npm i --save-dev @types/bcryptjs   
 
-1:50:25 / 8:29:17
+route.ts 1:50:25 / 8:29:17 
+
+NEXT AUTH 2:00:10 / 8:29:17
+
+NextAuth.js --https://next-auth.js.org/
+Authentication for Next.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 --------------------------------------------------------------- Timestamps
