@@ -15,7 +15,19 @@ export const authOptions: NextAuthOptions = {
         username: { label: 'Email', type: 'text ' },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials: any): Promise<any> {},
+      async authorize(credentials: any): Promise<any> {
+        await dbConnect()
+        try {
+          const user = await UserModel.findOne({
+            $or: [
+              {email: credentials.identifier},
+              {username: credentials.identifier}
+            ]
+          })
+        } catch (err: any) {
+          throw new Error(err)
+        }
+      },
     }),
   ],
 };
