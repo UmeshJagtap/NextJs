@@ -84,3 +84,5 @@ Ok to proceed? (y)
 
 
 ProNext.js -https://www.pronextjs.dev/tutorials/state-management
+
+LearnNextJs -https://stackblitz.com/edit/base-react-tailwind-dmpjia?file=src%2Fcomponents%2FLearningNextJs.txt
