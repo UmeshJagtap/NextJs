@@ -1,6 +1,4 @@
 
-https://stackblitz.com/edit/base-react-tailwind-dmpjia?file=src%2Fcomponents%2FLearningNextJs.txt
-
 NEXT JS InShort
 
 Ref :- https://nextjs.org/learn/dashboard-app/getting-started
@@ -1459,16 +1457,16 @@ Once you're ready, click the button below to see how we would split the dashboar
 |0 Acme        |   |   $1,106.36  |  |   $1,339.11  |  |   $1,339.11  |
 |--------------|   |--------------|  |--------------|  |--------------|
 | # Home       |  
-| $ Invoices   |  Recent Revenue
-| + Categories |   |--Dynamic--------------|  |-----------------------|
-|--------------|   |                          |
-|              |   |        
-|              |   |
-|              |   |
-|              |
-|              |
-|--Dynamic-----|
-|(i) Sign Out  |
+| $ Invoices   |  Recent Revenue           Latest Invoices
+| + Categories |   |--Dynamic------------|  |--Dynamic----------------|
+|--------------|   |53K                  |  | /---\ ======            |
+|              |   |              ____   |  | |   | ======         == | 
+|              |   |52K ____      |  |   |  | \---/                   |
+|              |   |    |  | ____ |  |   |  | /---\ ======            |
+|              |   |51K |  | |  | |  |   |  | |   | ======         == | 
+|              |   |    |  | |  | |  |   |  | \---/                   |
+|--Dynamic-----|   |50K |  | |  | |  |   |  |                         |
+|(i) Sign Out  |   |---------------------|  |-------------------------|
 |______________|
 
 
@@ -1481,15 +1479,20 @@ What is Partial Prerendering? ----->
 
 Next.js 14 introduced an experimental version of Partial Prerendering – a new rendering model that allows you to combine the benefits of static and dynamic rendering in the same route. For example:
 
-                    |------------------------------------------------------|
-  Navbar -------    | ()   ==========                        [   ]         |  ------ Cart
+                    |----(S)------------------------------------------------|
+  Navbar -------    | ()   ==========                        [ (D)  ]      |  ---- Cart
                     |                                                      |
                     | |------------|   ==============        |------|      |
-                    | |            |   ==============                      |
-                    | |            |   = = = = = = =                       |
+                    | |            |   ==============        |      |  ----|-------Product Information
+                    | |            |   = = = = = = =         |------|      |
                     | |------------|   ======                              |
-                    |                                      |
-                    |                                      |
+                    |                                                      |
+                    ||---(D)----------------------------------------------|| 
+                    || |------|  |------|  |------|  |------|  |------|   || 
+Recommended ----    || |      |  |      |  |      |  |      |  |      |   ||  (S) Static or Revalidated
+                    || |------|  |------|  |------|  |------|  |------|   ||  (D) Dynamic
+                    ||----------------------------------------------------|| 
+                    --------------------------------------------------------
 When a user visits a route:
 
 * A static route shell that includes the navbar and product information is served, ensuring a fast initial load.
