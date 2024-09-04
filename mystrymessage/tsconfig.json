@@ -6,7 +6,7 @@
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "NodeNext",
+    "module": "esnext",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
@@ -24,7 +24,7 @@
   },
   "ts-node": {
     "compilerOptions": {
-      "module": "ESNext",
+      "module": "NodeNext",
       "moduleResolution": "Node"
     }
   },
