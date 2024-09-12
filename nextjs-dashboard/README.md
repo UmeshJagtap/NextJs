@@ -15,6 +15,7 @@ pnp run dev
 
 # Next JS Chapters
 
+```
 Chapter 1 -Getting Started
 Chapter 2 -CSS Styling
 Chapter 3 -Optimizing Fonts and Images
@@ -22,3 +23,4 @@ Chapter 4 -Creating Layouts and Pages
 Chapter 5 -Navigating Between Pages
 Chapter 6 -Setting Up Your Database
 Chapter 7 -Fetching Data ----- Trying out ----
+```
