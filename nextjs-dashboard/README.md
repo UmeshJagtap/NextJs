@@ -23,6 +23,7 @@ Chapter 4 -Creating Layouts and Pages
 Chapter 5 -Navigating Between Pages
 Chapter 6 -Setting Up Your Database
 Chapter 7 -Fetching Data
-Chapter 8 -Static and Dynamic Rendering  ----- Trying out ----
-
+Chapter 8 -Static and Dynamic Rendering
+Chapter 9 -Streaming ----- Trying out ----
+    Streaming a component
 ```
