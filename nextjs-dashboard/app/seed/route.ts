@@ -2,6 +2,16 @@ import bcrypt from 'bcrypt';
 import { db } from '@vercel/postgres';
 import { invoices, customers, revenue, users } from '../lib/placeholder-data';
 
+// async function main() {
+//   try {
+//     const client = await db.connect();
+//     console.log('Successfully Connected to Database');
+//   } catch (error) {
+//     console.error('Error in main function response:', error);
+//   }
+// }
+// main();
+
 const client = await db.connect();
 
 async function seedUsers() {

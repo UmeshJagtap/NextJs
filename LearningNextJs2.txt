@@ -1866,3 +1866,13 @@ export async function updateInvoice(
 
 You've Completed Chapter 14
 Great, you've learned how to improve accessibility in your forms with React Form Status and Server-side Validation.
+
+
+
+Chapter 15
+Adding Authentication
+
+In the previous chapter, you finished building the invoices routes by adding form validation and improving accessibility. In this chapter, you'll be adding authentication to your dashboard.
+
+
+What is authentication?  ------>
