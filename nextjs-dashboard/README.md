@@ -27,3 +27,14 @@ Chapter 8 -Static and Dynamic Rendering
 Chapter 9 -Streaming
 
 ```
+
+# Deployment Hickupps
+
+```
+1. Next Module
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+
+2. This is a Comman Js File, Top level await issue
+    Added const client = await db.connect(); to each function.
+```
