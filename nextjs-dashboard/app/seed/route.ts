@@ -12,9 +12,10 @@ import { invoices, customers, revenue, users } from '../lib/placeholder-data';
 // }
 // main();
 
-const client = await db.connect();
+// const client = await db.connect();
 
 async function seedUsers() {
+  const client = await db.connect();
   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
   await client.sql`
     CREATE TABLE IF NOT EXISTS users (
@@ -40,6 +41,7 @@ async function seedUsers() {
 }
 
 async function seedInvoices() {
+  const client = await db.connect();
   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
   await client.sql`
@@ -66,6 +68,7 @@ async function seedInvoices() {
 }
 
 async function seedCustomers() {
+  const client = await db.connect();
   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
   await client.sql`
@@ -91,6 +94,7 @@ async function seedCustomers() {
 }
 
 async function seedRevenue() {
+  const client = await db.connect();
   await client.sql`
     CREATE TABLE IF NOT EXISTS revenue (
       month VARCHAR(4) NOT NULL UNIQUE,
@@ -116,6 +120,7 @@ export async function GET() {
   //   message:
   //     'Uncomment this file and remove this line. You can delete this file when you are finished.',
   // });
+  const client = await db.connect();
   try {
     await client.sql`BEGIN`;
     await seedUsers();
