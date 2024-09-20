@@ -25,7 +25,9 @@ Chapter 6 -Setting Up Your Database
 Chapter 7 -Fetching Data
 Chapter 8 -Static and Dynamic Rendering
 Chapter 9 -Streaming
-
+Chapter 10 -Partial Prerendering
+Chapter 11 -Adding Search and Pagination
+    1. Capture the user's input
 ```
 
 # Deployment Hickupps
