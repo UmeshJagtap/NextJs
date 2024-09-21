@@ -1,0 +1,88 @@
+Build a full stack project with NextJS and AI integration -Chai aur Code
+https://www.youtube.com/watch?v=zLJoVRleOuc
+
+https://nextjs.org/
+
+npx create-next-app@latest
+mystrymessage
+
+$ npm run dev
+
+$ npm i mongoose
+https://regexr.com/
+
+$ touch verifySchema.ts signInSchema.tsx acceptMessageSchema.tsx messageSchema.tsx
+
+$ npm i zod
+
+
+
+
+Inspiration :-
+
+Learn NextJS with Aceternity UI library by building a project
+https://www.youtube.com/watch?v=cVKB5NQPiFA
+
+Build an AI Expense Tracker & Financial Advisor App with Next.js, Tailwind CSS, and TypeScript
+https://www.youtube.com/watch?v=gvUsUpDlav4
+⭐ Shadcn: https://ui.shadcn.com/
+⭐ Drizzle: https://orm.drizzle.team/docs/get-sta...
+⭐ Neon: https://console.neon.tech/
+⭐ TailwindCSS: https://tailwindcss.com/
+⭐ Aceternity UI: https://shorturl.at/3p5Dp
+
+📚 Materials/References:
+GitHub Repo (give it a star ⭐): https://github.com/mendsalbert/ai-finance-tracking
+README (assets & code): https://github.com/mendsalbert/ai-finance-tracking/blob/main/README.md
+
+Next.js 14 Playlist ( Codevolution )
+https://www.youtube.com/watch?v=ZjAqacIC_3c&list=PLC3y8-rFHvwjOKd6gdf4QtV1uYNiQnruI&index=1
+
+
+---------------------------- ** Next.js** --------------------------------
+
+Next.js is a popular React Framework that streamlines development and enhances the user experience.
+It is a breath of fresh air for developers and businesses.
+
+Some of the features of Next.Js are:
+* Server-side rendering (SSR)
+* Static Site Generation (SSG)
+* Effortless Routing 
+* Optimized for SEO
+* Developer-Friendly
+
+1. Server-Side Rendering (SSR)
+    Next.js can render Recat components on the server, sending fully rendered pages to the client.
+    This imporves initial load times and SEO.
+
+2. 
+
+
+NextJS Tutorial - All 12 Concepts You Need to Know 
+-(https://www.youtube.com/watch?v=vwSlYG7hFk0)
+
+Main concepts in Next.js (App Router):
+1) Routing and navigation
+    <Link />
+2) Metadata
+3) Styling (Tailwind CSS)
+4) <Image />
+5) Client vs Server components
+    - Data fetching (GET-requests)
+6) Server Actions (POST/PUT/DELETE)
+7) Suspense and streaming
+8) Caching
+9) Static & dynamic rendering
+10) Middleware
+11) Folder structure 
+12) Production build and deploying
+
+example % npx create-next-app@latest .
+Need to install the following packages:
+create-next-app@14.0.2
+Ok to proceed? (y) 
+
+
+ProNext.js -https://www.pronextjs.dev/tutorials/state-management
+
+LearnNextJs -https://stackblitz.com/edit/base-react-tailwind-dmpjia?file=src%2Fcomponents%2FLearningNextJs.txt

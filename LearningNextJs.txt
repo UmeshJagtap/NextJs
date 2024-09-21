@@ -1,0 +1,1559 @@
+
+NEXT JS InShort
+
+Ref :- https://nextjs.org/learn/dashboard-app/getting-started
+
+Chapter 1 -Getting Started
+Chapter 2 -CSS Styling 
+Chapter 3 -Optimizing Fonts and Images
+Chapter 4 -Creating Layouts and Pages
+Chapter 5 -Navigating Between Pages
+Chapter 6 -Setting Up Your Database
+Chapter 7 -Fetching Data
+Chapter 8 -Static and Dynamic Rendering
+Chapter 9 -Streaming
+Chapter 10 -Partial Prerendering
+
+
+
+Chapter 1
+Getting Started 
+
+Creating a new project ----->
+npm install -g pnpm
+npx create-next-app@latest nextjs-dashboard --example "https://github.com/vercel/next-learn/tree/main/dashboard/starter-example" --use-pnpm
+
+Exploring the project ----->
+cd nextjs-dashboard
+pnpm run dev
+
+Folder structure ----->
+/app: Contains all the routes, components, and logic for your application, this is where you'll be mostly working from.
+/app/lib: Contains functions used in your application, such as reusable utility functions and data fetching functions.
+/app/ui: Contains all the UI components for your application, such as cards, tables, and forms. To save time, we've pre-styled these components for you.
+/public: Contains all the static assets for your application, such as images.
+Config Files: You'll also notice config files such as next.config.js at the root of your application. Most of these files are created and pre-configured when you start a new project using create-next-app. You will not need to modify them in this course.
+
+Placeholder data ----->
+For this project, we've provided some placeholder data in app/lib/placeholder-data.ts
+const invoices = [
+  {
+    customer_id: customers[0].id,
+    amount: 15795,
+    status: 'pending',
+    date: '2022-12-06',
+  },
+  {
+    customer_id: customers[1].id,
+    amount: 20348,
+    status: 'pending',
+    date: '2022-11-14',
+  },
+  // ...
+];
+
+TypeScript ----->
+You may also notice most files have a .ts or .tsx suffix. This is because the project is written in TypeScript. We wanted to create a course that reflects the modern web landscape.
+export type Invoice = {
+  id: string;
+  customer_id: string;
+  amount: number;
+  date: string;
+  // In TypeScript, this is called a string union type.
+  // It means that the "status" property can only be one of the two strings: 'pending' or 'paid'.
+  status: 'pending' | 'paid';
+};
+By using TypeScript, you can ensure you don't accidentally pass the wrong data format to your components or database, like passing a string instead of a number to invoice amount.
+
+Running the development server ----->
+pnpm i
+pnpm dev
+ http://localhost:3000
+
+
+
+Chapter 2
+CSS Styling 
+
+Global styles ----->
+
+If you look inside the /app/ui folder, you'll see a file called global.css
+You can import global.css in any component in your application, but it's usually good practice to add it to your top-level component. In Next.js, this is the root layout 
+Add global styles to your application by navigating to /app/layout.tsx and importing the global.css
+
+import '@/app/ui/global.css';
+
+If you take a look inside global.css, you'll notice some @tailwind directives:
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+Tailwind ----->
+Tailwind is a CSS framework that speeds up the development process by allowing you to quickly write utility classes directly in your TSX markup.
+In Tailwind, you style elements by adding class names. For example, adding the class "text-blue-500" will turn the <h1> text blue:
+<h1 className="text-blue-500">I'm blue!</h1>
+
+If you look at /app/page.tsx, you'll see that we're using Tailwind classes in the example.
+import AcmeLogo from '@/app/ui/acme-logo';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
+ 
+export default function Page() {
+  return (
+    // These are Tailwind classes:
+    <main className="flex min-h-screen flex-col p-6">
+      <div className="flex h-20 shrink-0 items-end rounded-lg bg-blue-500 p-4 md:h-52">
+    // ...
+  )
+}
+
+Vercel Icon -
+<div
+  className="relative w-0 h-0 border-l-[15px] border-r-[15px] border-b-[26px] border-l-transparent border-r-transparent border-b-black"
+/>
+
+Q. What shape do you see when using the code snippet above?
+> A black triangle
+
+CSS Modules ----->
+CSS Modules allow you to scope CSS to a component by automatically creating unique class names, so you don't have to worry about style collisions as well.
+/app/ui/home.module.css
+
+Inside /app/ui, create a new file called home.module.css and add the following CSS rules:
+.shape {
+  height: 0;
+  width: 0;
+  border-bottom: 30px solid black;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
+
+Then, inside your /app/page.tsx file import the styles and replace the Tailwind class names from the <div> you've added with styles.shape:
+
+import AcmeLogo from '@/app/ui/acme-logo';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
+import styles from '@/app/ui/home.module.css';
+ 
+export default function Page() {
+  return (
+    <main className="flex min-h-screen flex-col p-6">
+      <div className={styles.shape} />
+    // ...
+  )
+}
+
+Tailwind and CSS modules are the two most common ways of styling Next.js applications. Whether you use one or the other is a matter of preference - you can even use both in the same application!
+
+Q. What is one benefit of using CSS modules?
+> Provide a way to make CSS classes locally scoped to components by default, reducing the risk of styling conflicts.
+
+Using the clsx library to toggle class names ----->
+
+There may be cases where you may need to conditionally style an element based on state or some other condition.
+
+clsx is a library that lets you toggle class names easily. We recommend taking a look at documentation for more details, but here's the basic usage:
+
+Suppose that you want to create an InvoiceStatus component which accepts status. The status can be 'pending' or 'paid'.
+If it's 'paid', you want the color to be green. If it's 'pending', you want the color to be gray.
+You can use clsx to conditionally apply the classes, like this:
+
+import clsx from 'clsx';
+ 
+export default function InvoiceStatus({ status }: { status: string }) {
+  return (
+    <span
+      className={clsx(
+        'inline-flex items-center rounded-full px-2 py-1 text-sm',
+        {
+          'bg-gray-100 text-gray-500': status === 'pending',
+          'bg-green-500 text-white': status === 'paid',
+        },
+      )}
+    >
+    // ...
+)}
+
+Q. Search for "clsx" in your code editor, what components use it to conditionally apply class names?
+> `status.tsx` and `pagination.tsx`
+
+
+
+Chapter 3
+Optimizing Fonts and Images
+
+
+Why optimize fonts?    ----->
+Fonts play a significant role in the design of a website, but using custom fonts in your project can affect performance if the font files need to be fetched and loaded.
+Cumulative Layout Shift is a metric used by Google to evaluate the performance and user experience of a website. With fonts, layout shift happens when the browser initially renders text in a fallback or system font and then swaps it out for a custom font once it has loaded. This swap can cause the text size, spacing, or layout to change, shifting elements around it.
+Next.js automatically optimizes fonts in the application when you use the next/font module. It downloads font files at build time and hosts them with your other static assets. This means when a user visits your application, there are no additional network requests for fonts which would impact performance.
+
+How does Next.js optimize fonts?
+It hosts font files with other static assets so that there are no additional network requests.
+
+
+Adding a primary font ----->
+
+Let's add a custom Google font to your application to see how this works!
+
+In your /app/ui folder, create a new file called fonts.ts. You'll use this file to keep the fonts that will be used throughout your application.
+
+Import the Inter font from the next/font/google module - this will be your primary font. Then, specify what subset you'd like to load. In this case, 'latin':
+
+/app/ui/fonts.ts
+import { Inter } from 'next/font/google';
+export const inter = Inter({ subsets: ['latin'] });
+
+/app/layout.tsx
+import '@/app/ui/global.css';
+import { inter } from '@/app/ui/fonts';
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className={`${inter.className} antialiased`}>{children}</body>
+    </html>
+  );
+}
+
+By adding Inter to the <body> element, the font will be applied throughout your application. Here, you're also adding the Tailwind antialiased class which smooths out the font. It's not necessary to use this class, but it adds a nice touch.
+
+Navigate to your browser, open dev tools and select the body element. You should see Inter and Inter_Fallback are now applied under styles.
+
+
+Practice: Adding a secondary font ----->
+
+Now it's your turn! In your fonts.ts file, import a secondary font called Lusitana and pass it to the <p> element in your /app/page.tsx file. In addition to specifying a subset like you did before, you'll also need to specify the font weight.
+
+/app/ui/fonts.ts
+import { Inter, Lusitana } from 'next/font/google';
+ 
+export const inter = Inter({ subsets: ['latin'] });
+ 
+export const lusitana = Lusitana({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+});
+
+/app/page.tsx
+import AcmeLogo from '@/app/ui/acme-logo';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
+import { lusitana } from '@/app/ui/fonts';
+ 
+export default function Page() {
+  return (
+    // ...
+    <p
+      className={`${lusitana.className} text-xl text-gray-800 md:text-3xl md:leading-normal`}
+    >
+      <strong>Welcome to Acme.</strong> This is the example for the{' '}
+      <a href="https://nextjs.org/learn/" className="text-blue-500">
+        Next.js Learn Course
+      </a>
+      , brought to you by Vercel.
+    </p>
+    // ...
+  );
+}
+
+
+Why optimize images? -----> 
+
+Next.js can serve static assets, like images, under the top-level /public folder. Files inside /public can be referenced in your application.
+
+With regular HTML, you would add an image as follows:
+<img
+  src="/hero.png"
+  alt="Screenshots of the dashboard project showing desktop version"
+/> 
+
+However, this means you have to manually:
+
+Ensure your image is responsive on different screen sizes.
+Specify image sizes for different devices.
+Prevent layout shift as the images load.
+Lazy load images that are outside the user's viewport.
+
+Image Optimization is a large topic in web development that could be considered a specialization in itself. Instead of manually implementing these optimizations, you can use the next/image component to automatically optimize your images.
+
+The <Image> component ----->
+
+The <Image> Component is an extension of the HTML <img> tag, and comes with automatic image optimization, such as:
+
+Preventing layout shift automatically when images are loading.
+Resizing images to avoid shipping large images to devices with a smaller viewport.
+Lazy loading images by default (images load as they enter the viewport).
+Serving images in modern formats, like WebP and AVIF, when the browser supports it.
+
+Adding the desktop hero image ----->
+
+Let's use the <Image> component. If you look inside the /public folder, you'll see there are two images: hero-desktop.png and hero-mobile.png. These two images are completely different, and they'll be shown depending if the user's device is a desktop or mobile.
+
+In your /app/page.tsx file, import the component from next/image. Then, add the image under the comment:
+
+import AcmeLogo from '@/app/ui/acme-logo';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
+import { lusitana } from '@/app/ui/fonts';
+import Image from 'next/image';
+ 
+export default function Page() {
+  return (
+    // ...
+    <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
+      {/* Add Hero Images Here */}
+      <Image
+        src="/hero-desktop.png"
+        width={1000}
+        height={760}
+        className="hidden md:block"
+        alt="Screenshots of the dashboard project showing desktop version"
+      />
+    </div>
+    //...
+  );
+}
+
+Here, you're setting the width to 1000 and height to 760 pixels. It's good practice to set the width and height of your images to avoid layout shift, these should be an aspect ratio identical to the source image.
+
+You'll also notice the class hidden to remove the image from the DOM on mobile screens, and md:block to show the image on desktop screens.
+
+This is what your home page should look like now:-
+
+Practice: Adding the mobile hero image ----->
+
+Now it's your turn! Under the image you've just added, add another <Image> component for hero-mobile.png.
+
+The image should have a width of 560 and height of 620 pixels.
+It should be shown on mobile screens, and hidden on desktop - you can use dev tools to check if the desktop and mobile images are swapped correctly.
+Once you're ready, expand the code snippet below to see the solution.
+
+/app/page.tsx
+import AcmeLogo from '@/app/ui/acme-logo';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
+import { lusitana } from '@/app/ui/fonts';
+import Image from 'next/image';
+ 
+export default function Page() {
+  return (
+    // ...
+    <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
+      {/* Add Hero Images Here */}
+      <Image
+        src="/hero-desktop.png"
+        width={1000}
+        height={760}
+        className="hidden md:block"
+        alt="Screenshots of the dashboard project showing desktop version"
+      />
+      <Image
+        src="/hero-mobile.png"
+        width={560}
+        height={620}
+        className="block md:hidden"
+        alt="Screenshot of the dashboard project showing mobile version"
+      />
+    </div>
+    //...
+  );
+}
+
+Q. True or False: Images without dimensions and web fonts are common causes of layout shift.
+> True
+
+Recommended reading ----->
+There's a lot more to learn about these topics, including optimizing remote images and using local font files. If you'd like to dive deeper into fonts and images, see:
+
+Image Optimization Docs -https://nextjs.org/docs/app/building-your-application/optimizing/images
+Font Optimization Docs -https://nextjs.org/docs/app/building-your-application/optimizing/fonts
+Improving Web Performance with Images (MDN) -https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Web_fonts
+Web Fonts (MDN)
+How Core Web Vitals Affect SEO -https://vercel.com/blog/how-core-web-vitals-affect-seo
+
+You've Completed Chapter 3
+You've learned how to optimize fonts and images using Next.js.
+
+
+
+Chapter 4
+Creating Layouts and Pages
+
+
+Nested routing ----->
+Next.js uses file-system routing where folders are used to create nested routes. Each folder represents a route segment that maps to a URL segment.
+
+You can create separate UIs for each route using layout.tsx and page.tsx files.
+
+page.tsx is a special Next.js file that exports a React component, and it's required for the route to be accessible. In your application, you already have a page file: /app/page.tsx - this is the home page associated with the route /.
+
+To create a nested route, you can nest folders inside each other and add page.tsx files inside them. For example:
+[] app
+  > page.tsx        (*) /
+  [] dashboard
+    > page.tsx      (*) /dashboard
+
+/app/dashboard/page.tsx is associated with the /dashboard path. Let's create the page to see how it works!
+
+Creating the dashboard page ----->
+Create a new folder called dashboard inside /app. Then, create a new page.tsx file inside the dashboard folder with the following content:
+
+/app/dashboard/page.tsx
+export default function Page() {
+  return <p>Dashboard Page</p>;
+}
+
+Now, make sure that the development server is running and visit http://localhost:3000/dashboard. You should see the "Dashboard Page" text.
+
+This is how you can create different pages in Next.js: create a new route segment using a folder, and add a page file inside it.
+
+By having a special name for page files, Next.js allows you to colocate UI components, test files, and other related code with your routes. Only the content inside the page file will be publicly accessible. For example, the /ui and /lib folders are colocated inside the /app folder along with your routes.
+
+Practice: Creating the dashboard pages ----->
+Let's practice creating more routes. In your dashboard, create two more pages:
+
+Customers Page: The page should be accessible on http://localhost:3000/dashboard/customers. For now, it should return a <p>Customers Page</p> element.
+Invoices Page: The invoices page should be accessible on http://localhost:3000/dashboard/invoices. For now, also return a <p>Invoices Page</p> element.
+
+You should have the following folder structure:
+
+[] app
+  > layout.tsx
+  > page.tsx       --> (*) /
+  [] dashboard
+    > page.tsx     --> (*) /dashboard
+    [] customers
+      > page.tsx   --> (*) /dashboard/customers
+    [] invoices
+      > page.tsx   --> (*) /dashboard/invoices
+
+Customers Page:
+/app/dashboard/customers/page.tsx
+export default function Page() {
+  return <p>Customers Page</p>;
+}
+
+Invoices Page:
+/app/dashboard/invoices/page.tsx
+export default function Page() {
+  return <p>Invoices Page</p>;
+}
+
+Creating the dashboard layout ----->
+
+Dashboards have some sort of navigation that is shared across multiple pages. In Next.js, you can use a special layout.tsx file to create UI that is shared between multiple pages. Let's create a layout for the dashboard pages!
+
+Inside the /dashboard folder, add a new file called layout.tsx and paste the following code:
+
+/app/dashboard/layout.tsx
+import SideNav from '@/app/ui/dashboard/sidenav';
+ 
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
+      <div className="w-full flex-none md:w-64">
+        <SideNav />
+      </div>
+      <div className="flex-grow p-6 md:overflow-y-auto md:p-12">{children}</div>
+    </div>
+  );
+}
+
+A few things are going on in this code, so let's break it down:
+
+First, you're importing the <SideNav /> component into your layout. Any components you import into this file will be part of the layout.
+
+The <Layout /> component receives a children prop. This child can either be a page or another layout. In your case, the pages inside /dashboard will automatically be nested inside a <Layout /> like so:
+
+[] dashboard
+  > layout.tsx   **
+  > page.tsx
+  [] customers
+    > page.tsx
+  [] invoices
+    > page.tsx
+
+Check that everything is working correctly by saving your changes and checking your localhost. You should see the following:
+
+One benefit of using layouts in Next.js is that on navigation, only the page components update while the layout won't re-render. This is called partial rendering:
+
+
+Root layout ----->
+In Chapter 3, you imported the Inter font into another layout: /app/layout.tsx. As a reminder:
+
+/app/layout.tsx
+import '@/app/ui/global.css';
+import { inter } from '@/app/ui/fonts';
+ 
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className={`${inter.className} antialiased`}>{children}</body>
+    </html>
+  );
+}
+
+This is called a root layout and is required. Any UI you add to the root layout will be shared across all pages in your application. You can use the root layout to modify your <html> and <body> tags, and add metadata (you'll learn more about metadata in a later chapter).
+
+Since the new layout you've just created (/app/dashboard/layout.tsx) is unique to the dashboard pages, you don't need to add any UI to the root layout above.
+
+Q. What is the purpose of the layout file in Next.js?
+> To share UI across multiple pages
+
+You've Completed Chapter 4
+Nice, the dashboard app is slowly starting to come together.
+
+
+
+Chapter 5
+Navigating Between Pages
+
+In the previous chapter, you created the dashboard layout and pages. Now, let's add some links to allow users to navigate between the dashboard routes.
+
+Why optimize navigation? ----->
+
+To link between pages, you'd traditionally use the <a> HTML element. At the moment, the sidebar links use <a> elements, but notice what happens when you navigate between the home, invoices, and customers pages on your browser.
+
+Did you see it?
+
+There's a full page refresh on each page navigation!
+
+The <Link> component ----->
+
+In Next.js, you can use the <Link /> Component to link between pages in your application. <Link> allows you to do client-side navigation with JavaScript.
+
+To use the <Link /> component, open /app/ui/dashboard/nav-links.tsx, and import the Link component from next/link. Then, replace the <a> tag with <Link>:
+
+<Link> -Component to link between pages in your application. <Link> allows you to do client-side navigation with JavaScript. Avoids full page refresh.
+
+/app/ui/dashboard/nav-links.tsx
+import {
+  UserGroupIcon,
+  HomeIcon,
+  DocumentDuplicateIcon,
+} from '@heroicons/react/24/outline';
+import Link from 'next/link';
+ 
+// ...
+ 
+export default function NavLinks() {
+  return (
+    <>
+      {links.map((link) => {
+        const LinkIcon = link.icon;
+        return (
+          <Link
+            key={link.name}
+            href={link.href}
+            className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
+          >
+            <LinkIcon className="w-6" />
+            <p className="hidden md:block">{link.name}</p>
+          </Link>
+        );
+      })}
+    </>
+  );
+}
+
+As you can see, the Link component is similar to using <a> tags, but instead of <a href="…">, you use <Link href="…">.
+
+
+Automatic code-splitting and prefetching ----->
+
+To improve the navigation experience, Next.js automatically code splits your application by route segments. This is different from a traditional React SPA, where the browser loads all your application code on initial load.
+
+Splitting code by routes means that pages become isolated. If a certain page throws an error, the rest of the application will still work.
+
+Furthermore, in production, whenever <Link> components appear in the browser's viewport, Next.js automatically prefetches the code for the linked route in the background. By the time the user clicks the link, the code for the destination page will already be loaded in the background, and this is what makes the page transition near-instant!
+
+Q. What does Next.js do when a <Link> component appears in the browser’s viewport in a production environment?
+> Prefetches the code for the linked route
+
+
+Pattern: Showing active links ----->
+
+A common UI pattern is to show an active link to indicate to the user what page they are currently on. To do this, you need to get the user's current path from the URL. Next.js provides a hook called usePathname() that you can use to check the path and implement this pattern.
+
+Since usePathname() is a hook, you'll need to turn nav-links.tsx into a Client Component. Add React's "use client" directive to the top of the file, then import usePathname() from next/navigation:
+
+usePathname() -to show an active link to indicate to the user what page they are currently on.
+
+/app/ui/dashboard/nav-links.tsx
+'use client';
+ 
+import {
+  UserGroupIcon,
+  HomeIcon,
+  InboxIcon,
+} from '@heroicons/react/24/outline';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+Next, assign the path to a variable called pathname inside your <NavLinks /> component:
+
+/app/ui/dashboard/nav-links.tsx
+export default function NavLinks() {
+  const pathname = usePathname();
+  // ...
+}
+// ...
+
+You can use the clsx library introduced in the chapter on CSS styling to conditionally apply class names when the link is active. 
+
+import clsx from 'clsx';
+
+<Link
+  key={link.name}
+  href={link.href}
+  className={clsx(
+              'flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3',
+              {
+                'bg-sky-100 text-blue-600': pathname === link.href,
+              },
+            )}
+
+Save and check your localhost. You should now see the active link highlighted in blue.
+
+You've Completed Chapter 5
+You've learned how to link between pages and leverage client-side navigation in Next.js.
+
+
+Chapter 6
+Setting Up Your Database
+
+
+
+Create a GitHub repository ----->
+
+To start, let's push your repository to Github if you haven't done so already. This will make it easier to set up your database and deploy.
+- https://help.github.com/en/github/getting-started-with-github/create-a-repo
+
+Good to know:
+* You can also use other Git provider like GitLab or Bitbucket.
+* If you're new to GitHub, we recommend the GitHub Desktop App for a simplified development workflow.
+
+Create a Vercel account ----->
+Visit vercel.com/signup to create an account. Choose the free "hobby" plan. Select Continue with GitHub to connect your GitHub and Vercel accounts.
+
+Connect and deploy your project ----->
+Next, you'll be taken to this screen where you can select and import the GitHub repository you've just created:
+Name your project and click Deploy.
+Hooray! 🎉 Your project is now deployed.
+
+Create a Postgres database ----->
+Next, to set up a database, click Continue to Dashboard and select the Storage tab from your project dashboard. Select Connect Store → Create New → Postgres → Continue.
+
+Once connected, navigate to the .env.local tab, click Show secret and Copy Snippet. Make sure you reveal the secrets before copying them.
+
+Navigate to your code editor and rename the .env.example file to .env. Paste in the copied contents from Vercel.
+
+Important: Go to your .gitignore file and make sure .env is in the ignored files to prevent your database secrets from being exposed when you push to GitHub.
+
+Finally, run pnpm i @vercel/postgres in your terminal to install the Vercel Postgres SDK.
+
+Seed your database ----->
+Inside of /app, there's a folder called seed, 
+This folder contains a Next.js Route Handler, called route.ts
+that will be used to seed your database. This creates a server-side endpoint that you can access in the browser to start populating your database.
+the script uses SQL to create the tables, and the data from placeholder-data.ts file
+ pnpm run dev and navigate to localhost:3000/seed
+you will see a message "Database seeded successfully" in the browser
+
+What is 'seeding' in the context of databases?
+> Populating the database with an initial set of data
+
+Exploring your database ----->
+Let's see what your database looks like. Go back to Vercel, and click Data on the sidenav.
+In this section, you'll find the four new tables: users, customers, invoices, and revenue.
+By selecting each table, you can view its records and ensure the entries align with the data from placeholder-data.ts file.
+
+Executing queries ----->
+You can switch to the "query" tab to interact with your database. This section supports standard SQL commands. For instance, inputting DROP TABLE customers will delete "customers" table along with all its data - so be careful!
+
+SELECT invoices.amount, customers.name
+FROM invoices
+JOIN customers ON invoices.customer_id = customers.id
+WHERE invoices.amount = 666;
+
+Q. Which customer does this invoice belong to?
+> Evil Rabbit
+
+You've Completed Chapter 6
+With your database now set up and integrated, you can continue building your application.
+
+
+Chapter 7
+Fetching Data
+
+
+Choosing how to fetch data 
+
+API layer ----->
+APIs are an intermediary layer between your application code and database. There are a few cases where you might use an API:
+
+If you're using 3rd party services that provide an API.
+If you're fetching data from the client, you want to have an API layer that runs on the server to avoid exposing your database secrets to the client.
+In Next.js, you can create API endpoints using Route Handlers.
+
+Database queries ----->
+When you're creating a full-stack application, you'll also need to write logic to interact with your database. For relational databases like Postgres, you can do this with SQL or with an ORM.
+
+There are a few cases where you have to write database queries:
+> When creating your API endpoints, you need to write logic to interact with your database.
+> If you are using React Server Components (fetching data on the server), you can skip the API layer, and query your database directly without risking exposing your database secrets to the client.
+
+Q. In which of these scenarios should you not query your database directly?
+> When you're fetching data on the client
+That's right, you should not query your database directly when fetching data on the client as this would expose your database secrets.
+
+Using Server Components to fetch data ----->
+
+By default, Next.js applications use React Server Components. Fetching data with Server Components is a relatively new approach and there are a few benefits of using them:
+
+* Server Components support promises, providing a simpler solution for asynchronous tasks like data fetching. You can use async/await syntax without reaching out for useEffect, useState or data fetching libraries.
+* Server Components execute on the server, so you can keep expensive data fetches and logic on the server and only send the result to the client.
+* As mentioned before, since Server Components execute on the server, you can query the database directly without an additional API layer.
+
+Q. What's one advantage of using React Server Components to fetch data?
+> They allow you to query the database directly from the server without an additional API layer.
+
+Using SQL ----->
+For your dashboard project, you'll write database queries using the Vercel Postgres SDK and SQL. There are a few reasons why we'll be using SQL:
+
+* SQL is the industry standard for querying relational databases (e.g. ORMs generate SQL under the hood).
+* Having a basic understanding of SQL can help you understand the fundamentals of relational databases, allowing you to apply your knowledge to other tools.
+* SQL is versatile, allowing you to fetch and manipulate specific data.
+* The Vercel Postgres SDK provides protection against SQL injections.
+
+Don't worry if you haven't used SQL before - we have provided the queries for you.
+Go to /app/lib/data.ts, here you'll see that we're importing the sql function from @vercel/postgres. This function allows you to query your database:
+
+/app/lib/data.ts
+import { sql } from '@vercel/postgres';
+ 
+// ...
+
+You can call sql inside any Server Component. But to allow you to navigate the components more easily, we've kept all the data queries in the data.ts file, and you can import them into the components.
+
+Q. What does SQL allow you to do in terms of fetching data?
+> Fetch and manipulate specific data
+
+Note: If you used your own database provider in Chapter 6, you'll need to update the database queries to work with your provider. You can find the queries in /app/lib/data.ts.
+
+Fetching data for the dashboard overview page ----->
+Now that you understand different ways of fetching data, let's fetch data for the dashboard overview page. Navigate to /app/dashboard/page.tsx, paste the following code, and spend some time exploring it:
+
+/app/dashboard/page.tsx
+import { Card } from '@/app/ui/dashboard/cards';
+import RevenueChart from '@/app/ui/dashboard/revenue-chart';
+import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
+import { lusitana } from '@/app/ui/fonts';
+ 
+export default async function Page() {
+  return (
+    <main>
+      <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+        Dashboard
+      </h1>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* <Card title="Collected" value={totalPaidInvoices} type="collected" /> */}
+        {/* <Card title="Pending" value={totalPendingInvoices} type="pending" /> */}
+        {/* <Card title="Total Invoices" value={numberOfInvoices} type="invoices" /> */}
+        {/* <Card
+          title="Total Customers"
+          value={numberOfCustomers}
+          type="customers"
+        /> */}
+      </div>
+      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
+        {/* <RevenueChart revenue={revenue}  /> */}
+        {/* <LatestInvoices latestInvoices={latestInvoices} /> */}
+      </div>
+    </main>
+  );
+}
+
+In the code above:
+Page is an async component. This allows you to use await to fetch data.
+There are also 3 components which receive data: <Card>, <RevenueChart>, and <LatestInvoices>. They are currently commented out to prevent the application from erroring.
+
+Fetching data for <RevenueChart/> ----->
+To fetch data for the <RevenueChart/> component, import the fetchRevenue function from data.ts and call it inside your component:
+
+/app/dashboard/page.tsx
+import { Card } from '@/app/ui/dashboard/cards';
+import RevenueChart from '@/app/ui/dashboard/revenue-chart';
+import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
+import { lusitana } from '@/app/ui/fonts';
+import { fetchRevenue } from '@/app/lib/data';
+ 
+export default async function Page() {
+  const revenue = await fetchRevenue();
+  // ...
+}
+
+Then, uncomment the <RevenueChart/> component, navigate to the component file (/app/ui/dashboard/revenue-chart.tsx) and uncomment the code inside it. Check your localhost, you should be able to see a chart that uses revenue data.
+
+Let's continue importing some more data queries!
+
+Fetching data for <LatestInvoices/> ----->
+For the <LatestInvoices /> component, we need to get the latest 5 invoices, sorted by date.
+
+You could fetch all the invoices and sort through them using JavaScript. This isn't a problem as our data is small, but as your application grows, it can significantly increase the amount of data transferred on each request and the JavaScript required to sort through it.
+
+Instead of sorting through the latest invoices in-memory, you can use an SQL query to fetch only the last 5 invoices. For example, this is the SQL query from your data.ts file:
+
+/app/lib/data.ts
+// Fetch the last 5 invoices, sorted by date
+const data = await sql<LatestInvoiceRaw>`
+  SELECT invoices.amount, customers.name, customers.image_url, customers.email
+  FROM invoices
+  JOIN customers ON invoices.customer_id = customers.id
+  ORDER BY invoices.date DESC
+  LIMIT 5`;
+
+In your page, import the fetchLatestInvoices function:
+/app/dashboard/page.tsx
+
+import { Card } from '@/app/ui/dashboard/cards';
+import RevenueChart from '@/app/ui/dashboard/revenue-chart';
+import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
+import { lusitana } from '@/app/ui/fonts';
+import { fetchRevenue, fetchLatestInvoices } from '@/app/lib/data';
+ 
+export default async function Page() {
+  const revenue = await fetchRevenue();
+  const latestInvoices = await fetchLatestInvoices();
+  // ...
+}
+
+Then, uncomment the <LatestInvoices /> component. You will also need to uncomment the relevant code in the <LatestInvoices /> component itself, located at /app/ui/dashboard/latest-invoices.
+
+If you visit your localhost, you should see that only the last 5 are returned from the database. Hopefully, you're beginning to see the advantages of querying your database directly!
+
+Practice: Fetch data for the <Card> components ------>
+
+Now it's your turn to fetch data for the <Card> components. The cards will display the following data:
+
+* Total amount of invoices collected.
+* Total amount of invoices pending.
+* Total number of invoices.
+* Total number of customers.
+
+Again, you might be tempted to fetch all the invoices and customers, and use JavaScript to manipulate the data. For example, you could use Array.length to get the total number of invoices and customers:
+
+const totalInvoices = allInvoices.length;
+const totalCustomers = allCustomers.length;
+
+But with SQL, you can fetch only the data you need. It's a little longer than using Array.length, but it means less data needs to be transferred during the request. This is the SQL alternative:
+
+/app/lib/data.ts
+const invoiceCountPromise = sql`SELECT COUNT(*) FROM invoices`;
+const customerCountPromise = sql`SELECT COUNT(*) FROM customers`;
+
+The function you will need to import is called fetchCardData. You will need to destructure the values returned from the function.
+
+Hint:
+Check the card components to see what data they need.
+Check the data.ts file to see what the function returns.
+
+Once you're ready, expand the toggle below for the final code:
+/app/dashboard/page.tsx
+import { Card } from '@/app/ui/dashboard/cards';
+import RevenueChart from '@/app/ui/dashboard/revenue-chart';
+import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
+import { lusitana } from '@/app/ui/fonts';
+import {
+  fetchRevenue,
+  fetchLatestInvoices,
+  fetchCardData,
+} from '@/app/lib/data';
+ 
+export default async function Page() {
+  const revenue = await fetchRevenue();
+  const latestInvoices = await fetchLatestInvoices();
+  const {
+    numberOfInvoices,
+    numberOfCustomers,
+    totalPaidInvoices,
+    totalPendingInvoices,
+  } = await fetchCardData();
+ 
+  return (
+    <main>
+      <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+        Dashboard
+      </h1>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <Card title="Collected" value={totalPaidInvoices} type="collected" />
+        <Card title="Pending" value={totalPendingInvoices} type="pending" />
+        <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
+        <Card
+          title="Total Customers"
+          value={numberOfCustomers}
+          type="customers"
+        />
+      </div>
+      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
+        <RevenueChart revenue={revenue} />
+        <LatestInvoices latestInvoices={latestInvoices} />
+      </div>
+    </main>
+  );
+}
+
+Great! You've now fetched all the data for the dashboard overview page. Your page should look like this:
+
+However... there are two things you need to be aware of:
+
+The data requests are unintentionally blocking each other, creating a request waterfall.
+By default, Next.js prerenders routes to improve performance, this is called Static Rendering. So if your data changes, it won't be reflected in your dashboard.
+
+What are request waterfalls? ----->
+A "waterfall" refers to a sequence of network requests that depend on the completion of previous requests. In the case of data fetching, each request can only begin once the previous request has returned data.
+                  Sequential              Parallel
+fetchRevenue      [====]                  [====]
+  fetchLatestInvoices   [==]              [==]
+    fetchCardData           [=====]       [=====]
+
+For example, we need to wait for fetchRevenue() to execute before fetchLatestInvoices() can start running, and so on.
+
+/app/dashboard/page.tsx
+const revenue = await fetchRevenue();
+const latestInvoices = await fetchLatestInvoices(); // wait for fetchRevenue() to finish
+const {
+  numberOfInvoices,
+  numberOfCustomers,
+  totalPaidInvoices,
+  totalPendingInvoices,
+} = await fetchCardData(); // wait for fetchLatestInvoices() to finish
+
+This pattern is not necessarily bad. There may be cases where you want waterfalls because you want a condition to be satisfied before you make the next request. For example, you might want to fetch a user's ID and profile information first. Once you have the ID, you might then proceed to fetch their list of friends. In this case, each request is contingent on the data returned from the previous request.
+
+However, this behavior can also be unintentional and impact performance.
+
+Q. When might you want to use a waterfall pattern?
+> To satisfy a condition before making the next request
+E. For example, you might want to fetch a user's ID and profile information first. Once you have the ID, you might then proceed to fetch their list of friends.
+
+Parallel data fetching ----->
+A common way to avoid waterfalls is to initiate all data requests at the same time - in parallel.
+
+In JavaScript, you can use the Promise.all() or Promise.allSettled() functions to initiate all promises at the same time. For example, in data.ts, we're using Promise.all() in the fetchCardData() function:
+
+/app/lib/data.ts
+export async function fetchCardData() {
+  try {
+    const invoiceCountPromise = sql`SELECT COUNT(*) FROM invoices`;
+    const customerCountPromise = sql`SELECT COUNT(*) FROM customers`;
+    const invoiceStatusPromise = sql`SELECT
+         SUM(CASE WHEN status = 'paid' THEN amount ELSE 0 END) AS "paid",
+         SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS "pending"
+         FROM invoices`;
+ 
+    const data = await Promise.all([
+      invoiceCountPromise,
+      customerCountPromise,
+      invoiceStatusPromise,
+    ]);
+    // ...
+  }
+}
+
+By using this pattern, you can:
+* Start executing all data fetches at the same time, which can lead to performance gains.
+* Use a native JavaScript pattern that can be applied to any library or framework.
+However, there is one disadvantage of relying only on this JavaScript pattern: what happens if one data request is slower than all the others?
+
+You've Completed Chapter 7
+You've learned about some of the different ways to fetch data in Next.js.
+
+
+Chapter 8
+Static and Dynamic Rendering
+
+
+
+In the previous chapter, you fetched data for the Dashboard Overview page. However, we briefly discussed two limitations of the current setup:
+
+1. The data requests are creating an unintentional waterfall.
+2. The dashboard is static, so any data updates will not be reflected on your application.
+
+What is Static Rendering?
+
+With static rendering, data fetching and rendering happens on the server at build time (when you deploy) or when revalidating data. -https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#revalidating-data
+
+Whenever a user visits your application, the cached result is served. There are a couple of benefits of static rendering:
+
+* Faster Websites - Prerendered content can be cached and globally distributed. This ensures that users around the world can access your website's content more quickly and reliably.
+* Reduced Server Load - Because the content is cached, your server does not have to dynamically generate content for each user request.
+* SEO - Prerendered content is easier for search engine crawlers to index, as the content is already available when the page loads. This can lead to improved search engine rankings.
+
+Static rendering is useful for UI with no data or data that is shared across users, such as a static blog post or a product page. It might not be a good fit for a dashboard that has personalized data which is regularly updated.
+
+The opposite of static rendering is dynamic rendering.
+
+Q. Why might static rendering not be a good fit for a dashboard app?
+> Because the application will not reflect the latest data changes
+E. When your data updates, you want to show the latest changes in your dashboard. Static Rendering is not a good fit for this use case.
+
+What is Dynamic Rendering? -----> 
+With dynamic rendering, content is rendered on the server for each user at request time (when the user visits the page). There are a couple of benefits of dynamic rendering:
+
+* Real-Time Data - Dynamic rendering allows your application to display real-time or frequently updated data. This is ideal for applications where data changes often.
+* User-Specific Content - It's easier to serve personalized content, such as dashboards or user profiles, and update the data based on user interaction.
+* Request Time Information - Dynamic rendering allows you to access information that can only be known at request time, such as cookies or the URL search parameters.
+
+Q. What kind of information can only be known at request time?
+> Cookies and URL search params
+
+Simulating a Slow Data Fetch -----> 
+
+The dashboard application we're building is dynamic.
+
+However, there is still one problem mentioned in the previous chapter. What happens if one data request is slower than all the others?
+
+Let's simulate a slow data fetch. In your data.ts file, uncomment the console.log and setTimeout inside fetchRevenue():
+
+/app/lib/data.ts
+export async function fetchRevenue() {
+  try {
+    // We artificially delay a response for demo purposes.
+    // Don't do this in production :)
+    console.log('Fetching revenue data...');
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+ 
+    const data = await sql<Revenue>`SELECT * FROM revenue`;
+ 
+    console.log('Data fetch completed after 3 seconds.');
+ 
+    return data.rows;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch revenue data.');
+  }
+}
+
+Now open http://localhost:3000/dashboard/ in a new tab and notice how the page takes longer to load. In your terminal, you should also see the following messages:
+
+1. Fetching revenue data...
+2. Data fetch completed after 3 seconds.
+
+Here, you've added an artificial 3-second delay to simulate a slow data fetch. The result is that now your whole page is blocked from showing UI to the visitor while the data is being fetched. Which brings us to a common challenge developers have to solve:
+
+With dynamic rendering, your application is only as fast as your slowest data fetch.
+
+You've Completed Chapter 8
+Nice! You've just learned about static and dynamic rendering in Next.js.
+
+
+
+Chapter 9
+Streaming
+
+Let's look at how you can improve the user experience when there are slow data requests.
+
+What is streaming? -----> 
+Streaming is a data transfer technique that allows you to break down a route into smaller "chunks" and progressively stream them from the server to the client as they become ready.
+
+***  [aceme.com/dashboard]
+         ___________________        /---------------\
+ ======  |_________________|   <---| []  =====       |     
+ ===     ___________________        \____/---------------\
+ ====    |_________________|         <---| []  =====      |
+ ==      ___________________             \____/---------------\
+         |_________________|              <---| []  =====      |
+                                              \---------------/
+  Partial content with loading state      Suspended content streaming in
+
+By streaming, you can prevent slow data requests from blocking your whole page. This allows the user to see and interact with parts of the page without waiting for all the data to load before any UI can be shown to the user.
+
+                  Time ------------------------------->   [A] Fetching data on server
+Cards             [A ][B   ][C  ][D ]                     [B] Rendering HTML on server
+LatestInvoice     [A     ][B ][C  ][D ]                   [C] Loading code on the client
+Revenue           [A        ][B ][C  ][D ]                [D] Hydrating
+
+Streaming works well with React's component model, as each component can be considered a chunk.
+
+There are two ways you implement streaming in Next.js:
+
+1. At the page level, with the loading.tsx file.
+2. For specific components, with <Suspense>.
+Let's see how this works.
+
+Q. What is one advantage of streaming?
+> Chunks are rendered in parallel, reducing the overall load time
+E. One advantage of this approach is that you can significantly reduce your page's overall loading time.
+
+Streaming a whole page with loading.tsx ----->
+
+In the /app/dashboard folder, create a new file called loading.tsx:
+
+/app/dashboard/loading.tsx
+export default function Loading() {
+  return <div>Loading...</div>;
+}
+
+Refresh http://localhost:3000/dashboard, and you should now see:
+
+A few things are happening here:
+
+1. loading.tsx is a special Next.js file built on top of Suspense, it allows you to create fallback UI to show as a replacement while page content loads.
+2. Since <SideNav> is static, it's shown immediately. The user can interact with <SideNav> while the dynamic content is loading.
+3. The user doesn't have to wait for the page to finish loading before navigating away (this is called interruptable navigation).
+
+Congratulations! You've just implemented streaming. But we can do more to improve the user experience. Let's show a loading skeleton instead of the Loading… text.
+
+Adding loading skeletons ----->
+
+A loading skeleton is a simplified version of the UI. Many websites use them as a placeholder (or fallback) to indicate to users that the content is loading. Any UI you add in loading.tsx will be embedded as part of the static file, and sent first. Then, the rest of the dynamic content will be streamed from the server to the client.
+
+Inside your loading.tsx file, import a new component called <DashboardSkeleton>:
+
+/app/dashboard/loading.tsx
+import DashboardSkeleton from '@/app/ui/skeletons';
+ 
+export default function Loading() {
+  return <DashboardSkeleton />;
+}
+
+Fixing the loading skeleton bug with route groups ----->
+
+Right now, your loading skeleton will apply to the invoices and customers pages as well.
+
+Since loading.tsx is a level higher than /invoices/page.tsx and /customers/page.tsx in the file system, it's also applied to those pages.
+
+We can change this with Route Groups. Create a new folder called /(overview) inside the dashboard folder. Then, move your loading.tsx and page.tsx files inside the folder:
+
+[] dashboard
+  [] (overview)
+    * loading.tsx
+    > page.tsx
+
+Now, the loading.tsx file will only apply to your dashboard overview page.
+
+Route groups allow you to organize files into logical groups without affecting the URL path structure. When you create a new folder using parentheses (), the name won't be included in the URL path. So /dashboard/(overview)/page.tsx becomes /dashboard.
+
+Here, you're using a route group to ensure loading.tsx only applies to your dashboard overview page. However, you can also use route groups to separate your application into sections (e.g. (marketing) routes and (shop) routes) or by teams for larger applications.
+
+Streaming a component -----> 
+
+So far, you're streaming a whole page. But you can also be more granular and stream specific components using React Suspense.
+
+Suspense allows you to defer rendering parts of your application until some condition is met (e.g. data is loaded). You can wrap your dynamic components in Suspense. Then, pass it a fallback component to show while the dynamic component loads.
+
+If you remember the slow data request, fetchRevenue(), this is the request that is slowing down the whole page. Instead of blocking your whole page, you can use Suspense to stream only this component and immediately show the rest of the page's UI.
+
+To do so, you'll need to move the data fetch to the component, let's update the code to see what that'll look like:
+
+Delete all instances of fetchRevenue() and its data from /dashboard/(overview)/page.tsx:
+
+/app/dashboard/(overview)/page.tsx
+import { Card } from '@/app/ui/dashboard/cards';
+import RevenueChart from '@/app/ui/dashboard/revenue-chart';
+import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
+import { lusitana } from '@/app/ui/fonts';
+** import { fetchLatestInvoices, fetchCardData } from '@/app/lib/data'; // remove fetchRevenue
+ 
+export default async function Page() {
+  ** const revenue = await fetchRevenue() // delete this line
+  const latestInvoices = await fetchLatestInvoices();
+  const {
+    numberOfInvoices,
+    numberOfCustomers,
+    totalPaidInvoices,
+    totalPendingInvoices,
+  } = await fetchCardData();
+ 
+  return (
+    // ...
+  );
+}
+
+Then, import <Suspense> from React, and wrap it around <RevenueChart />. You can pass it a fallback component called <RevenueChartSkeleton>.
+
+/app/dashboard/(overview)/page.tsx
+
+import { Card } from '@/app/ui/dashboard/cards';
+import RevenueChart from '@/app/ui/dashboard/revenue-chart';
+import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
+import { lusitana } from '@/app/ui/fonts';
+import { fetchLatestInvoices, fetchCardData } from '@/app/lib/data';
+** import { Suspense } from 'react';
+** import { RevenueChartSkeleton } from '@/app/ui/skeletons';
+ 
+export default async function Page() {
+  const latestInvoices = await fetchLatestInvoices();
+  const {
+    numberOfInvoices,
+    numberOfCustomers,
+    totalPaidInvoices,
+    totalPendingInvoices,
+  } = await fetchCardData();
+ 
+  return (
+    <main>
+      <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+        Dashboard
+      </h1>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <Card title="Collected" value={totalPaidInvoices} type="collected" />
+        <Card title="Pending" value={totalPendingInvoices} type="pending" />
+        <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
+        <Card
+          title="Total Customers"
+          value={numberOfCustomers}
+          type="customers"
+        />
+      </div>
+      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
+**        <Suspense fallback={<RevenueChartSkeleton />}>
+**          <RevenueChart />
+**        </Suspense>
+        <LatestInvoices latestInvoices={latestInvoices} />
+      </div>
+    </main>
+  );
+}
+
+Finally, update the <RevenueChart> component to fetch its own data and remove the prop passed to it:
+
+/app/ui/dashboard/revenue-chart.tsx
+import { generateYAxis } from '@/app/lib/utils';
+import { CalendarIcon } from '@heroicons/react/24/outline';
+import { lusitana } from '@/app/ui/fonts';
+** import { fetchRevenue } from '@/app/lib/data';
+ 
+// ...
+ 
+** export default async function RevenueChart() { // Make component async, remove the props
+**  const revenue = await fetchRevenue(); // Fetch data inside the component
+ 
+  const chartHeight = 350;
+  const { yAxisLabels, topLabel } = generateYAxis(revenue);
+ 
+  if (!revenue || revenue.length === 0) {
+    return <p className="mt-4 text-gray-400">No data available.</p>;
+  }
+ 
+  return (
+    // ...
+  );
+}
+ 
+Now refresh the page, you should see the dashboard information almost immediately, while a fallback skeleton is shown for <RevenueChart>:
+
+
+Practice: Streaming <LatestInvoices> ----->
+
+Now it's your turn! Practice what you've just learned by streaming the <LatestInvoices> component.
+
+Move fetchLatestInvoices() down from the page to the <LatestInvoices> component. Wrap the component in a <Suspense> boundary with a fallback called <LatestInvoicesSkeleton>.
+
+Once you're ready, expand the toggle to see the solution code:
+
+Dashboard Page:
+/app/dashboard/(overview)/page.tsx
+import { Card } from '@/app/ui/dashboard/cards';
+import RevenueChart from '@/app/ui/dashboard/revenue-chart';
+import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
+import { lusitana } from '@/app/ui/fonts';
+** import { fetchCardData } from '@/app/lib/data'; // Remove fetchLatestInvoices
+import { Suspense } from 'react';
+import {
+  RevenueChartSkeleton,
+**  LatestInvoicesSkeleton,
+} from '@/app/ui/skeletons';
+ 
+export default async function Page() {
+  // Remove `const latestInvoices = await fetchLatestInvoices()`
+  const {
+    numberOfInvoices,
+    numberOfCustomers,
+    totalPaidInvoices,
+    totalPendingInvoices,
+  } = await fetchCardData();
+ 
+  return (
+    <main>
+      <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+        Dashboard
+      </h1>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <Card title="Collected" value={totalPaidInvoices} type="collected" />
+        <Card title="Pending" value={totalPendingInvoices} type="pending" />
+        <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
+        <Card
+          title="Total Customers"
+          value={numberOfCustomers}
+          type="customers"
+        />
+      </div>
+      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
+        <Suspense fallback={<RevenueChartSkeleton />}>
+          <RevenueChart />
+        </Suspense>
+**        <Suspense fallback={<LatestInvoicesSkeleton />}>
+**          <LatestInvoices />
+**        </Suspense>
+      </div>
+    </main>
+  );
+}
+
+<LatestInvoices> component. Remember to remove the props!:
+/app/ui/dashboard/latest-invoices.tsx
+import { ArrowPathIcon } from '@heroicons/react/24/outline';
+import clsx from 'clsx';
+import Image from 'next/image';
+import { lusitana } from '@/app/ui/fonts';
+** import { fetchLatestInvoices } from '@/app/lib/data';
+ 
+** export default async function LatestInvoices() { // Remove props
+**  const latestInvoices = await fetchLatestInvoices();
+ 
+  return (
+    // ...
+  );
+}
+
+
+Grouping components ----->
+
+Great! You're almost there, now you need to wrap the <Card> components in Suspense. You can fetch data for each individual card, but this could lead to a popping effect as the cards load in, this can be visually jarring for the user.
+
+So, how would you tackle this problem?
+
+To create more of a staggered effect, you can group the cards using a wrapper component. This means the static <SideNav/> will be shown first, followed by the cards, etc.
+
+In your page.tsx file:
+
+1. Delete your <Card> components.
+2. Delete the fetchCardData() function.
+3. Import a new wrapper component called <CardWrapper />.
+4. Import a new skeleton component called <CardsSkeleton />.
+5. Wrap <CardWrapper /> in Suspense.
+
+/app/dashboard/page.tsx
+** import CardWrapper from '@/app/ui/dashboard/cards';
+// ...
+import {
+  RevenueChartSkeleton,
+  LatestInvoicesSkeleton,
+**  CardsSkeleton,
+} from '@/app/ui/skeletons';
+ 
+export default async function Page() {
+  return (
+    <main>
+      <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+        Dashboard
+      </h1>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+**        <Suspense fallback={<CardsSkeleton />}>
+**          <CardWrapper />
+**        </Suspense>
+      </div>
+      // ...
+    </main>
+  );
+}
+
+Then, move into the file /app/ui/dashboard/cards.tsx, import the fetchCardData() function, and invoke it inside the <CardWrapper/> component. Make sure to uncomment any necessary code in this component.
+
+/app/ui/dashboard/cards.tsx
+// ...
+** import { fetchCardData } from '@/app/lib/data';
+ 
+// ...
+ 
+export default async function CardWrapper() {
+**  const {
+**    numberOfInvoices,
+**    numberOfCustomers,
+**    totalPaidInvoices,
+**    totalPendingInvoices,
+**  } = await fetchCardData();
+ 
+  return (
+    <>
+      <Card title="Collected" value={totalPaidInvoices} type="collected" />
+      <Card title="Pending" value={totalPendingInvoices} type="pending" />
+      <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
+      <Card
+        title="Total Customers"
+        value={numberOfCustomers}
+        type="customers"
+      />
+    </>
+  );
+}
+
+Refresh the page, and you should see all the cards load in at the same time. You can use this pattern when you want multiple components to load in at the same time.
+
+
+Deciding where to place your Suspense boundaries ----->
+
+Where you place your Suspense boundaries will depend on a few things:
+1. How you want the user to experience the page as it streams.
+2. What content you want to prioritize.
+3. If the components rely on data fetching.
+Take a look at your dashboard page, is there anything you would've done differently?
+
+Don't worry. There isn't a right answer.
+
+* You could stream the whole page like we did with loading.tsx... but that may lead to a longer loading time if one of the components has a slow data fetch.
+* You could stream every component individually... but that may lead to UI popping into the screen as it becomes ready.
+* You could also create a staggered effect by streaming page sections. But you'll need to create wrapper components.
+
+Where you place your suspense boundaries will vary depending on your application. In general, it's good practice to move your data fetches down to the components that need it, and then wrap those components in Suspense. But there is nothing wrong with streaming the sections or the whole page if that's what your application needs.
+
+Don't be afraid to experiment with Suspense and see what works best, it's a powerful API that can help you create more delightful user experiences.
+
+Q. In general, what is considered good practice when working with Suspense and data fetching?
+> Move data fetches down to the components that need it
+E. By moving data fetching down to the components that need it, you can create more granular Suspense boundaries. This allows you to stream specific components and prevent the UI from blocking.
+
+Looking ahead
+Streaming and Server Components give us new ways to handle data fetching and loading states, ultimately with the goal of improving the end user experience.
+
+In the next chapter, you'll learn about Partial Prerendering, a new Next.js rendering model built with streaming in mind.
+
+You've Completed Chapter 9
+You've learned how to stream components with Suspense and loading skeletons.
+
+
+
+Chapter 10
+Partial Prerendering
+
+So far, you've learned about static and dynamic rendering, and how to stream dynamic content that depends on data. In this chapter, let's learn how to combine static rendering, dynamic rendering, and streaming in the same route with Partial Prerendering (PPR).
+
+Partial Prerendering is an experimental feature introduced in Next.js 14. The content of this page may be updated as the feature progresses in stability.
+
+Static vs. Dynamic Routes ----->
+
+For most web apps built today, you either choose between static and dynamic rendering for your entire application, or for a specific route. And in Next.js, if you call a dynamic function in a route (like querying your database), the entire route becomes dynamic.
+
+However, most routes are not fully static or dynamic. For example, consider an ecommerce site. -https://partialprerendering.com/  
+You might want to statically render the majority of the product information page, but you may want to fetch the user's cart and recommended products dynamically, this allows you show personalized content to your users.
+
+Going back to your dashboard page, what components would you consider static vs. dynamic?
+
+Once you're ready, click the button below to see how we would split the dashboard route:
+
+|--Static------|  Dashboard
+|              |   |--Dynamic-----|  |--Dynamic-----|  |--Dynamic-----|
+|              |   | Collected    |  | Pending      |  | Pending      |
+|0 Acme        |   |   $1,106.36  |  |   $1,339.11  |  |   $1,339.11  |
+|--------------|   |--------------|  |--------------|  |--------------|
+| # Home       |  
+| $ Invoices   |  Recent Revenue           Latest Invoices
+| + Categories |   |--Dynamic------------|  |--Dynamic----------------|
+|--------------|   |53K                  |  | /---\ ======            |
+|              |   |              ____   |  | |   | ======         == | 
+|              |   |52K ____      |  |   |  | \---/                   |
+|              |   |    |  | ____ |  |   |  | /---\ ======            |
+|              |   |51K |  | |  | |  |   |  | |   | ======         == | 
+|              |   |    |  | |  | |  |   |  | \---/                   |
+|--Dynamic-----|   |50K |  | |  | |  |   |  |                         |
+|(i) Sign Out  |   |---------------------|  |-------------------------|
+|______________|
+
+
+
+* The <SideNav> Component doesn't rely on data and is not personalized to the user, so it can be static.
+* The components in <Page> rely on data that changes often and will be personalized to the user, so they can be dynamic.
+
+
+What is Partial Prerendering? -----> 
+
+Next.js 14 introduced an experimental version of Partial Prerendering – a new rendering model that allows you to combine the benefits of static and dynamic rendering in the same route. For example:
+
+                    |----(S)------------------------------------------------|
+  Navbar -------    | ()   ==========                        [ (D)  ]      |  ---- Cart
+                    |                                                      |
+                    | |------------|   ==============        |------|      |
+                    | |            |   ==============        |      |  ----|-------Product Information
+                    | |            |   = = = = = = =         |------|      |
+                    | |------------|   ======                              |
+                    |                                                      |
+                    ||---(D)----------------------------------------------|| 
+                    || |------|  |------|  |------|  |------|  |------|   || 
+Recommended ----    || |      |  |      |  |      |  |      |  |      |   ||  (S) Static or Revalidated
+                    || |------|  |------|  |------|  |------|  |------|   ||  (D) Dynamic
+                    ||----------------------------------------------------|| 
+                    --------------------------------------------------------
+When a user visits a route:
+
+* A static route shell that includes the navbar and product information is served, ensuring a fast initial load.
+* The shell leaves holes where dynamic content like the cart and recommended products will load in asynchronously.
+* The async holes are streamed in parallel, reducing the overall load time of the page.
+
+Q. What are the holes in the context of Partial Prerendering?
+> Locations where dynamic content will load asynchronously
+E. That's right! Holes are locations where dynamic content will load asynchronously at request time.
+
+How does Partial Prerendering work? -----> 
+Partial Prerendering uses React's Suspense -https://react.dev/reference/react/Suspense  (which you learned about in the previous chapter) to defer rendering parts of your application until some condition is met (e.g. data is loaded).
+
+The Suspense fallback is embedded into the initial HTML file along with the static content. At build time (or during revalidation), the static content is prerendered to create a static shell. The rendering of dynamic content is postponed until the user requests the route.
+
+Wrapping a component in Suspense doesn't make the component itself dynamic, but rather Suspense is used as a boundary between your static and dynamic code.
+
+Let's see how you can implement PPR in your dashboard route.
+
+Implementing Partial Prerendering ----->
+Enable PPR for your Next.js app by adding the ppr -https://rc.nextjs.org/docs/app/api-reference/next-config-js/ppr option to your next.config.mjs file:
+
+next.config.mjs
+/** @type {import('next').NextConfig} */
+ 
+const nextConfig = {
+  experimental: {
+    ppr: 'incremental',
+  },
+};
+ 
+export default nextConfig;
+
+The 'incremental' value allows you to adopt PPR for specific routes.
+Next, add the experimental_ppr segment config option to your dashboard layout:
+
+/app/dashboard/layout.tsx
+import SideNav from '@/app/ui/dashboard/sidenav';
+ 
+export const experimental_ppr = true;
+ 
+// ...
+
+That's it. You may not see a difference in your application in development, but you should notice a performance improvement in production. Next.js will prerender the static parts of your route and defer the dynamic parts until the user requests them.
+
+The great thing about Partial Prerendering is that you don't need to change your code to use it. As long as you're using Suspense to wrap the dynamic parts of your route, Next.js will know which parts of your route are static and which are dynamic.
+
+We believe PPR has the potential to become the default rendering model for web applications, bringing together the best of static site and dynamic rendering. However, it is still experimental. We hope to stabilize it in the future and make it the default way of building with Next.js.
+
+Summary ----->
+
+To recap, you've done a few things to optimize data fetching in your application:
+
+1. Created a database in the same region as your application code to reduce latency between your server and database.
+2. Fetched data on the server with React Server Components. This allows you to keep expensive data fetches and logic on the server, reduces the client-side JavaScript bundle, and prevents your database secrets from being exposed to the client.
+3. Used SQL to only fetch the data you needed, reducing the amount of data transferred for each request and the amount of JavaScript needed to transform the data in-memory.
+4. Parallelize data fetching with JavaScript - where it made sense to do so.
+5. Implemented Streaming to prevent slow data requests from blocking your whole page, and to allow the user to start interacting with the UI without waiting for everything to load.
+5. Move data fetching down to the components that need it, thus isolating which parts of your routes should be dynamic.
+
+In the next chapter, we'll look at two common patterns you might need to implement when fetching data: search and pagination.
+
+You've Completed Chapter 10
+You've learned about Partial Prerendering, a new rendering model introduced in Next.js 14.
