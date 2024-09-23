@@ -27,7 +27,9 @@ Chapter 8 -Static and Dynamic Rendering
 Chapter 9 -Streaming
 Chapter 10 -Partial Prerendering
 Chapter 11 -Adding Search and Pagination
-    1. Capture the user's input
+Chapter 12 -Mutating Data
+    -Updating an invoice
+
 ```
 
 # Deployment Hickupps
