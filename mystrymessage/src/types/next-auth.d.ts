@@ -26,3 +26,5 @@ declare module 'next-auth/jwt' {
     username?: string;
   }
 }
+
+// Ref :- https://next-auth.js.org/getting-started/typescript
