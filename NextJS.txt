@@ -38,6 +38,14 @@ README (assets & code): https://github.com/mendsalbert/ai-finance-tracking/blob/
 Next.js 14 Playlist ( Codevolution )
 https://www.youtube.com/watch?v=ZjAqacIC_3c&list=PLC3y8-rFHvwjOKd6gdf4QtV1uYNiQnruI&index=1
 
+Build a File Storage App with Role Based Authorization (Next.js, Shadcn, Typescript)
+https://www.youtube.com/watch?v=27hMNWcsa-Y
+
+Build and Deploy a Banking App with Finance Management Dashboard Using Next.js 14
+https://www.youtube.com/watch?v=PuOVqP_cjkE
+
+Learn Next.js 15 in 1 hour - Beginner Tutorial
+https://www.youtube.com/watch?v=_EgI9WH8q1A
 
 ---------------------------- ** Next.js** --------------------------------
 
