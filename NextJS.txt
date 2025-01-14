@@ -47,6 +47,9 @@ https://www.youtube.com/watch?v=PuOVqP_cjkE
 Learn Next.js 15 in 1 hour - Beginner Tutorial
 https://www.youtube.com/watch?v=_EgI9WH8q1A
 
+Build & Deploy Multivendor Ecommerce Website Next.js 2025 #8: Prisma setup & user model
+https://www.youtube.com/watch?v=iXGTOGOphu0
+
 ---------------------------- ** Next.js** --------------------------------
 
 Next.js is a popular React Framework that streamlines development and enhances the user experience.
