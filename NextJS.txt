@@ -50,6 +50,10 @@ https://www.youtube.com/watch?v=_EgI9WH8q1A
 Build & Deploy Multivendor Ecommerce Website Next.js 2025 #8: Prisma setup & user model
 https://www.youtube.com/watch?v=iXGTOGOphu0
 
++++
+Wes Bos  How is this Website so fast!?
+https://www.youtube.com/watch?v=-Ln-8QM8KhQ
+
 ---------------------------- ** Next.js** --------------------------------
 
 Next.js is a popular React Framework that streamlines development and enhances the user experience.
