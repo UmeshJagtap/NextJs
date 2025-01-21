@@ -47,10 +47,16 @@ https://www.youtube.com/watch?v=PuOVqP_cjkE
 Learn Next.js 15 in 1 hour - Beginner Tutorial
 https://www.youtube.com/watch?v=_EgI9WH8q1A
 
+Next.js 15 Breakdown (Everything You Need To Know)
+https://www.youtube.com/watch?v=fqabW3WRUbw
+
+
+
 Build & Deploy Multivendor Ecommerce Website Next.js 2025 #8: Prisma setup & user model
 https://www.youtube.com/watch?v=iXGTOGOphu0
 
 +++
+
 Wes Bos  How is this Website so fast!?
 https://www.youtube.com/watch?v=-Ln-8QM8KhQ
 

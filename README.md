@@ -2,6 +2,9 @@
 
 Projects based on NextJs
 
+chai-shadcn :-
+------ shadcn -chai and code .
+
 mystrymessage :-
 ------ allows clients to provide feedback.
 
