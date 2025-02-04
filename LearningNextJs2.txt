@@ -1882,7 +1882,9 @@ What is authentication?  ------>
 
 Authentication is a key part of many web applications today. It's how a system checks if the user is who they say they are.
 
-A secure website often uses multiple ways to check a user's identity. For instance, after entering your username and password, the site may send a verification code to your device or use an external app like Google Authenticator. This 2-factor authentication (2FA) helps increase security. Even if someone learns your password, they can't access your account without your unique token.
+A secure website often uses multiple ways to check a user's identity. For instance, after entering your username and password, 
+the site may send a verification code to your device or use an external app like Google Authenticator. 
+This 2-factor authentication (2FA) helps increase security. Even if someone learns your password, they can't access your account without your unique token.
 
 Authentication vs. Authorization --
 In web development, authentication and authorization serve different roles:
