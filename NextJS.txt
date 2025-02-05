@@ -108,6 +108,7 @@ ProNext.js -https://www.pronextjs.dev/tutorials/state-management
 
 LearnNextJs -https://stackblitz.com/edit/base-react-tailwind-dmpjia?file=src%2Fcomponents%2FLearningNextJs.txt
 
+[Backend Project 🚀] Realtime Device track | Map with node.js express and socket.io | Maps | Leaflet  >>  https://www.youtube.com/watch?v=fFHyqhmnVfs
 
 Chai aur Code >>
 
@@ -117,3 +118,4 @@ Designing Models in NextJS | Full stack Project Playlist 03  >> https://www.yout
 Register a User and testing it with postman | Full stack Project Playlist 04   >>  https://www.youtube.com/watch?v=RG4Log2_4M4
 A complete guide on NextAuth in NextJS | Full stack Project Playlist 05  >>  https://www.youtube.com/watch?v=KsVMJZhCQCk 
 Ultimate file handling guide in Nextjs with Imagekit | Full stack Project Playlist 06  >>  https://www.youtube.com/watch?v=l-KjjfRX5Uw
+A complete frontend guide for full stack projects | Full stack Project Playlist 07  >>  https://www.youtube.com/watch?v=3DvxjJPKdzI
