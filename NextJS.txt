@@ -50,10 +50,15 @@ https://www.youtube.com/watch?v=_EgI9WH8q1A
 Next.js 15 Breakdown (Everything You Need To Know)
 https://www.youtube.com/watch?v=fqabW3WRUbw
 
+Next.js Authentication with Supabase Tutorial
+https://github.com/Kirsanow/nextjs15-auth-tutorial
 
 
 Build & Deploy Multivendor Ecommerce Website Next.js 2025 #8: Prisma setup & user model
 https://www.youtube.com/watch?v=iXGTOGOphu0
+
+Ultimate Next 15 Course: Build a YouTube Clone (2025)
+https://www.youtube.com/watch?v=ArmPzvHTcfQ
 
 +++
 
