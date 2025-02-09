@@ -115,6 +115,11 @@ LearnNextJs -https://stackblitz.com/edit/base-react-tailwind-dmpjia?file=src%2Fc
 
 [Backend Project 🚀] Realtime Device track | Map with node.js express and socket.io | Maps | Leaflet  >>  https://www.youtube.com/watch?v=fFHyqhmnVfs
 
+
+⭐UI 
+Mantine
+https://mantine.dev/core/checkbox/
+
 Chai aur Code >>
 
 Build a Full stack ReelsPro project with NextJS and Imagekit | Series Launch  >>  https://www.youtube.com/watch?v=G9VbtcsPKT0

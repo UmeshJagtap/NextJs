@@ -1,0 +1,11 @@
+
+NextJS App Installation :-
+
+$ npx create-next-app .
+
+$ npm i mongoose
+
+$ npm i bcryptjs
+$ npm i --save-dev @types/bcryptjs
+
+
