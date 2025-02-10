@@ -354,8 +354,8 @@
             "parentId": "page",
             "childIndex": 14,
             "point": [
-              762.7949991607666,
-              151.84
+              670.42813683626,
+              187.81
             ],
             "rotation": 0,
             "text": "Social Media  (REELSPRO)",
@@ -364,7 +364,7 @@
               "size": "small",
               "isFilled": false,
               "dash": "draw",
-              "scale": 1,
+              "scale": 1.0740706973910668,
               "font": "script",
               "textAlign": "middle"
             }
@@ -376,8 +376,8 @@
             "parentId": "page",
             "childIndex": 15,
             "point": [
-              790.52,
-              212.42
+              700.2013765679404,
+              259.6725874634628
             ],
             "rotation": 0,
             "text": "TS",
@@ -386,7 +386,7 @@
               "size": "small",
               "isFilled": false,
               "dash": "draw",
-              "scale": 1,
+              "scale": 1.0740706973910668,
               "font": "script",
               "textAlign": "middle"
             }
@@ -398,8 +398,8 @@
             "parentId": "page",
             "childIndex": 16,
             "point": [
-              790.57,
-              259.56
+              700.2550801028101,
+              315.5920719967681
             ],
             "rotation": 0,
             "text": "Next-auth",
@@ -408,7 +408,7 @@
               "size": "small",
               "isFilled": false,
               "dash": "draw",
-              "scale": 1,
+              "scale": 1.0740706973910668,
               "font": "script",
               "textAlign": "middle"
             }
@@ -420,8 +420,8 @@
             "parentId": "page",
             "childIndex": 17,
             "point": [
-              792.24,
-              304.58
+              702.0487781674531,
+              368.9967218416855
             ],
             "rotation": 0,
             "text": "Mongodb",
@@ -430,7 +430,7 @@
               "size": "small",
               "isFilled": false,
               "dash": "draw",
-              "scale": 1,
+              "scale": 1.0740706973910668,
               "font": "script",
               "textAlign": "middle"
             }
@@ -442,8 +442,8 @@
             "parentId": "page",
             "childIndex": 18,
             "point": [
-              794.24,
-              350.66
+              704.1969195622352,
+              423.6587890307968
             ],
             "rotation": 0,
             "text": "imagekit",
@@ -452,7 +452,7 @@
               "size": "small",
               "isFilled": false,
               "dash": "draw",
-              "scale": 1,
+              "scale": 1.0740706973910668,
               "font": "script",
               "textAlign": "middle"
             }
@@ -464,8 +464,8 @@
             "parentId": "page",
             "childIndex": 19,
             "point": [
-              759.45,
-              231.32
+              666.83,
+              282.0925759589968
             ],
             "rotation": 0,
             "style": {
@@ -487,318 +487,318 @@
                 0.5
               ],
               [
-                0.07,
-                1.06,
+                0.0751849488173747,
+                1.257417344193968,
                 0.5
               ],
               [
-                0.07,
-                2.02,
+                0.0751849488173747,
+                2.396210410633788,
                 0.5
               ],
               [
-                0.07,
-                3.94,
+                0.0751849488173747,
+                4.673796543513427,
                 0.5
               ],
               [
-                0.07,
-                8.74,
+                0.0751849488173747,
+                10.367761875712528,
                 0.5
               ],
               [
-                0.07,
-                10.66,
+                0.0751849488173747,
+                12.645348008592167,
                 0.5
               ],
               [
-                0.07,
-                13.54,
+                0.0751849488173747,
+                16.061727207911627,
                 0.5
               ],
               [
-                0.07,
-                17.38,
+                0.0751849488173747,
+                20.616899473670905,
                 0.5
               ],
               [
-                0.07,
-                20.26,
+                0.0751849488173747,
+                24.033278672990367,
                 0.5
               ],
               [
-                0.07,
-                23.14,
+                0.0751849488173747,
+                27.449657872309828,
                 0.5
               ],
               [
-                0.07,
-                26.02,
+                0.0751849488173747,
+                30.866037071629282,
                 0.5
               ],
               [
-                0.07,
-                30.82,
+                0.0751849488173747,
+                36.560002403828385,
                 0.5
               ],
               [
-                0.07,
-                33.7,
+                0.0751849488173747,
+                39.97638160314785,
                 0.5
               ],
               [
-                0.07,
-                36.58,
+                0.0751849488173747,
+                43.3927608024673,
                 0.5
               ],
               [
-                0.07,
-                39.46,
+                0.0751849488173747,
+                46.80914000178677,
                 0.5
               ],
               [
-                0.07,
-                41.38,
+                0.0751849488173747,
+                49.08672613466641,
                 0.5
               ],
               [
-                0.07,
-                43.3,
+                0.0751849488173747,
+                51.36431226754604,
                 0.5
               ],
               [
-                0.07,
-                48.1,
+                0.0751849488173747,
+                57.058277599745146,
                 0.5
               ],
               [
-                0.07,
-                51.94,
+                0.0751849488173747,
+                61.61344986550442,
                 0.5
               ],
               [
-                0.07,
-                54.82,
+                0.0751849488173747,
+                65.02982906482389,
                 0.5
               ],
               [
-                0.07,
-                57.7,
+                0.0751849488173747,
+                68.44620826414334,
                 0.5
               ],
               [
-                0.07,
-                60.58,
+                0.0751849488173747,
+                71.8625874634628,
                 0.5
               ],
               [
-                0.07,
-                62.5,
+                0.0751849488173747,
+                74.14017359634244,
                 0.5
               ],
               [
-                0.07,
-                66.34,
+                0.0751849488173747,
+                78.69534586210173,
                 0.5
               ],
               [
-                0.07,
-                68.26,
+                0.0751849488173747,
+                80.97293199498137,
                 0.5
               ],
               [
-                0.07,
-                71.14,
+                0.0751849488173747,
+                84.38931119430082,
                 0.5
               ],
               [
-                0.07,
-                73.06,
+                0.0751849488173747,
+                86.66689732718046,
                 0.5
               ],
               [
-                0.07,
-                74.02,
+                0.0751849488173747,
+                87.80569039362028,
                 0.5
               ],
               [
-                0.07,
-                75.94,
+                0.0751849488173747,
+                90.08327652649993,
                 0.5
               ],
               [
-                0.07,
-                77.86,
+                0.0751849488173747,
+                92.36086265937955,
                 0.5
               ],
               [
-                0.07,
-                79.78,
+                0.0751849488173747,
+                94.6384487922592,
                 0.5
               ],
               [
-                0.07,
-                82.66,
+                0.0751849488173747,
+                98.05482799157866,
                 0.5
               ],
               [
-                0.07,
-                85.54,
+                0.0751849488173747,
+                101.47120719089813,
                 0.5
               ],
               [
-                0.07,
-                88.42,
+                0.0751849488173747,
+                104.88758639021758,
                 0.5
               ],
               [
-                0.07,
-                92.26,
+                0.0751849488173747,
+                109.44275865597687,
                 0.5
               ],
               [
-                0.07,
-                95.14,
+                0.0751849488173747,
+                112.85913785529631,
                 0.5
               ],
               [
-                0.07,
-                98.02,
+                0.0751849488173747,
+                116.27551705461578,
                 0.5
               ],
               [
-                0.07,
-                99.94,
+                0.0751849488173747,
+                118.55310318749542,
                 0.5
               ],
               [
-                0.07,
-                100.9,
+                0.0751849488173747,
+                119.69189625393525,
                 0.5
               ],
               [
-                0.07,
-                102.82,
+                0.0751849488173747,
+                121.96948238681486,
                 0.5
               ],
               [
-                0.07,
-                103.78,
+                0.0751849488173747,
+                123.10827545325469,
                 0.5
               ],
               [
-                0.07,
-                104.74,
+                0.0751849488173747,
+                124.24706851969451,
                 0.5
               ],
               [
-                0.07,
-                105.7,
+                0.0751849488173747,
+                125.38586158613434,
                 0.5
               ],
               [
-                0.07,
-                106.66,
+                0.0751849488173747,
+                126.52465465257416,
                 0.5
               ],
               [
-                0.07,
-                107.62,
+                0.0751849488173747,
+                127.66344771901399,
                 0.5
               ],
               [
-                0.07,
-                108.58,
+                0.0751849488173747,
+                128.8022407854538,
                 0.5
               ],
               [
-                0.07,
-                110.5,
+                0.0751849488173747,
+                131.07982691833345,
                 0.5
               ],
               [
-                0.07,
-                111.46,
+                0.0751849488173747,
+                132.21861998477326,
                 0.5
               ],
               [
-                0.07,
-                112.42,
+                0.0751849488173747,
+                133.3574130512131,
                 0.5
               ],
               [
-                0.07,
-                114.34,
+                0.0751849488173747,
+                135.63499918409272,
                 0.5
               ],
               [
-                0.07,
-                116.26,
+                0.0751849488173747,
+                137.91258531697235,
                 0.5
               ],
               [
-                0.07,
-                118.18,
+                0.0751849488173747,
+                140.19017144985202,
                 0.5
               ],
               [
-                0.07,
-                119.14,
+                0.0751849488173747,
+                141.32896451629182,
                 0.5
               ],
               [
-                0.07,
-                120.1,
+                0.0751849488173747,
+                142.46775758273162,
                 0.5
               ],
               [
-                0.07,
-                121.06,
+                0.0751849488173747,
+                143.60655064917145,
                 0.5
               ],
               [
-                0.07,
-                122.02,
+                0.0751849488173747,
+                144.74534371561126,
                 0.5
               ],
               [
-                0.07,
-                122.98,
+                0.0751849488173747,
+                145.88413678205112,
                 0.5
               ],
               [
-                0.07,
-                123.94,
+                0.0751849488173747,
+                147.02292984849092,
                 0.5
               ],
               [
-                0.07,
-                124.9,
+                0.0751849488173747,
+                148.16172291493075,
                 0.5
               ],
               [
-                0.07,
-                125.86,
+                0.0751849488173747,
+                149.30051598137055,
                 0.5
               ],
               [
-                0.07,
-                127.78,
+                0.0751849488173747,
+                151.5781021142502,
                 0.5
               ],
               [
-                0.07,
-                128.74,
+                0.0751849488173747,
+                152.71689518069002,
                 0.5
               ],
               [
-                1.03,
-                131.62,
+                1.106292818312799,
+                156.13327438000948,
                 0.5
               ],
               [
-                1.03,
-                132.58,
+                1.106292818312799,
+                157.2720674464493,
                 0.5
               ]
             ],
@@ -811,8 +811,8 @@
             "parentId": "page",
             "childIndex": 20,
             "point": [
-              976.7949991607666,
-              254.56
+              900.2792660779484,
+              309.66085810906065
             ],
             "rotation": 0,
             "text": "auth",
@@ -821,7 +821,7 @@
               "size": "small",
               "isFilled": false,
               "dash": "draw",
-              "scale": 1,
+              "scale": 1.0740706973910668,
               "font": "script",
               "textAlign": "middle"
             }
@@ -833,8 +833,8 @@
             "parentId": "page",
             "childIndex": 21,
             "point": [
-              980.56,
-              301.7
+              904.3177719001388,
+              365.5803426423661
             ],
             "rotation": 0,
             "text": "business logic",
@@ -843,7 +843,7 @@
               "size": "small",
               "isFilled": false,
               "dash": "draw",
-              "scale": 1,
+              "scale": 1.0740706973910668,
               "font": "script",
               "textAlign": "middle"
             }
@@ -855,8 +855,8 @@
             "parentId": "page",
             "childIndex": 22,
             "point": [
-              982.61,
-              345
+              906.5196168297905,
+              416.9446549099121
             ],
             "rotation": 0,
             "text": "video",
@@ -865,7 +865,7 @@
               "size": "small",
               "isFilled": false,
               "dash": "draw",
-              "scale": 1,
+              "scale": 1.0740706973910668,
               "font": "script",
               "textAlign": "middle"
             }
@@ -877,8 +877,8 @@
             "parentId": "page",
             "childIndex": 23,
             "point": [
-              150.76,
-              635.4
+              141.44,
+              636.76
             ],
             "rotation": 0,
             "text": "Next Auth",
@@ -899,8 +899,8 @@
             "parentId": "page",
             "childIndex": 24,
             "point": [
-              249.09499916076658,
-              716.22
+              280.02,
+              713.64
             ],
             "rotation": 0,
             "text": "with TS",
@@ -921,8 +921,8 @@
             "parentId": "page",
             "childIndex": 25,
             "point": [
-              254.9949991607666,
-              769.97
+              301.21,
+              772.09
             ],
             "rotation": 0,
             "text": "next-auth.d.ts",
@@ -943,8 +943,8 @@
             "parentId": "page",
             "childIndex": 26,
             "point": [
-              253.08,
-              813.28
+              302.41,
+              861.13
             ],
             "rotation": 0,
             "text": "[...nextauth]",
@@ -965,8 +965,8 @@
             "parentId": "page",
             "childIndex": 27,
             "point": [
-              256.8,
-              856.48
+              306.13,
+              904.33
             ],
             "rotation": 0,
             "text": "register",
@@ -987,8 +987,8 @@
             "parentId": "page",
             "childIndex": 28,
             "point": [
-              254.69,
-              895.84
+              304.02,
+              943.69
             ],
             "rotation": 0,
             "text": "middleware",
@@ -1009,8 +1009,8 @@
             "parentId": "page",
             "childIndex": 29,
             "point": [
-              313.08,
-              924.74
+              362.41,
+              972.59
             ],
             "rotation": 0,
             "text": "with Auth",
@@ -1175,8 +1175,8 @@
             "parentId": "page",
             "childIndex": 36,
             "point": [
-              543.9949991607666,
-              880.92
+              584.38,
+              881.02
             ],
             "rotation": 0,
             "text": "callbacks",
@@ -1197,8 +1197,8 @@
             "parentId": "page",
             "childIndex": 37,
             "point": [
-              577.7149991607666,
-              913.56
+              683.52,
+              925.38
             ],
             "rotation": 0,
             "text": "jwt",
@@ -1219,11 +1219,537 @@
             "parentId": "page",
             "childIndex": 38,
             "point": [
-              575.18,
-              940.54
+              682.02,
+              979.34
             ],
             "rotation": 0,
             "text": "session",
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1,
+              "font": "script",
+              "textAlign": "middle"
+            }
+          },
+          "87119652-b51a-47f9-24b1-2da735da158f": {
+            "id": "87119652-b51a-47f9-24b1-2da735da158f",
+            "type": "arrow",
+            "name": "Arrow",
+            "parentId": "page",
+            "childIndex": 39,
+            "point": [
+              184.35,
+              692.59
+            ],
+            "rotation": 0,
+            "bend": 0,
+            "handles": {
+              "start": {
+                "id": "start",
+                "index": 0,
+                "point": [
+                  0.34,
+                  0
+                ],
+                "canBind": true
+              },
+              "end": {
+                "id": "end",
+                "index": 1,
+                "point": [
+                  0,
+                  39.78
+                ],
+                "canBind": true
+              },
+              "bend": {
+                "id": "bend",
+                "index": 2,
+                "point": [
+                  0.17,
+                  19.89
+                ]
+              }
+            },
+            "decorations": {},
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "6741ff12-1bdf-4781-244d-a9b9896005b8": {
+            "id": "6741ff12-1bdf-4781-244d-a9b9896005b8",
+            "type": "arrow",
+            "name": "Arrow",
+            "parentId": "page",
+            "childIndex": 40,
+            "point": [
+              275.82,
+              779.85
+            ],
+            "rotation": 0,
+            "bend": 0.00006611869782915853,
+            "handles": {
+              "start": {
+                "id": "start",
+                "index": 0,
+                "point": [
+                  0,
+                  0
+                ],
+                "canBind": true
+              },
+              "end": {
+                "id": "end",
+                "index": 1,
+                "point": [
+                  0.69,
+                  151.24
+                ],
+                "canBind": true
+              },
+              "bend": {
+                "id": "bend",
+                "index": 2,
+                "point": [
+                  0.35,
+                  75.62
+                ]
+              }
+            },
+            "decorations": {},
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "32fdb8fa-f8ff-48e5-217a-a48b2e3fbffa": {
+            "id": "32fdb8fa-f8ff-48e5-217a-a48b2e3fbffa",
+            "type": "arrow",
+            "name": "Arrow",
+            "parentId": "page",
+            "childIndex": 41,
+            "point": [
+              184.35,
+              733.01
+            ],
+            "rotation": 0,
+            "bend": -0.000002799190552847275,
+            "handles": {
+              "start": {
+                "id": "start",
+                "index": 0,
+                "point": [
+                  0,
+                  1.28
+                ],
+                "canBind": true
+              },
+              "end": {
+                "id": "end",
+                "index": 1,
+                "point": [
+                  67.61,
+                  0
+                ],
+                "canBind": true
+              },
+              "bend": {
+                "id": "bend",
+                "index": 2,
+                "point": [
+                  33.81,
+                  0.64
+                ]
+              }
+            },
+            "decorations": {
+              "end": "arrow"
+            },
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "ec6be133-1d57-4578-0679-3a5f34b1c7f6": {
+            "id": "ec6be133-1d57-4578-0679-3a5f34b1c7f6",
+            "type": "rectangle",
+            "name": "Rectangle",
+            "parentId": "page",
+            "childIndex": 42,
+            "point": [
+              579.67,
+              870.31
+            ],
+            "size": [
+              271.56,
+              161.42
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "f95ceacc-5820-405a-3212-7abb3766d4d8": {
+            "id": "f95ceacc-5820-405a-3212-7abb3766d4d8",
+            "type": "rectangle",
+            "name": "Rectangle",
+            "parentId": "page",
+            "childIndex": 43,
+            "point": [
+              663.11,
+              921.49
+            ],
+            "size": [
+              160.43,
+              44.3
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "4801533e-57b4-4db2-0799-582ea27c8107": {
+            "id": "4801533e-57b4-4db2-0799-582ea27c8107",
+            "type": "rectangle",
+            "name": "Rectangle",
+            "parentId": "page",
+            "childIndex": 44,
+            "point": [
+              666.95,
+              980.05
+            ],
+            "size": [
+              159.47,
+              40.46
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "29875c81-4051-4c6a-17e0-6eaf01458a7d": {
+            "id": "29875c81-4051-4c6a-17e0-6eaf01458a7d",
+            "type": "arrow",
+            "name": "Arrow",
+            "parentId": "page",
+            "childIndex": 45,
+            "point": [
+              485.97,
+              815.44
+            ],
+            "rotation": 0,
+            "bend": -0.000038309409172153864,
+            "handles": {
+              "start": {
+                "id": "start",
+                "index": 0,
+                "point": [
+                  0,
+                  15.78
+                ],
+                "canBind": true
+              },
+              "end": {
+                "id": "end",
+                "index": 1,
+                "point": [
+                  62.21,
+                  0
+                ],
+                "canBind": true
+              },
+              "bend": {
+                "id": "bend",
+                "index": 2,
+                "point": [
+                  31.11,
+                  7.89
+                ]
+              }
+            },
+            "decorations": {
+              "end": "arrow"
+            },
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "03563162-23e9-4a03-328e-1a46cb40ff36": {
+            "id": "03563162-23e9-4a03-328e-1a46cb40ff36",
+            "type": "rectangle",
+            "name": "Rectangle",
+            "parentId": "page",
+            "childIndex": 46,
+            "point": [
+              256.02,
+              711.55
+            ],
+            "size": [
+              132.59,
+              45.26
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "7e5e0b68-d645-494a-2882-2c48da03d409": {
+            "id": "7e5e0b68-d645-494a-2882-2c48da03d409",
+            "type": "text",
+            "name": "Text",
+            "parentId": "page",
+            "childIndex": 47,
+            "point": [
+              594.41,
+              1058.75
+            ],
+            "rotation": 0,
+            "text": "pages",
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1,
+              "font": "script",
+              "textAlign": "middle"
+            }
+          },
+          "e2f8e99c-4cb1-4ad6-380d-a61c3b178c01": {
+            "id": "e2f8e99c-4cb1-4ad6-380d-a61c3b178c01",
+            "type": "text",
+            "name": "Text",
+            "parentId": "page",
+            "childIndex": 48,
+            "point": [
+              595.66,
+              1133.51
+            ],
+            "rotation": 0,
+            "text": "session",
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1,
+              "font": "script",
+              "textAlign": "middle"
+            }
+          },
+          "2d1f87ab-f21c-4c71-393b-090e2a2e0aa4": {
+            "id": "2d1f87ab-f21c-4c71-393b-090e2a2e0aa4",
+            "type": "text",
+            "name": "Text",
+            "parentId": "page",
+            "childIndex": 49,
+            "point": [
+              647.76,
+              1173.84
+            ],
+            "rotation": 0,
+            "text": "strategy",
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1,
+              "font": "script",
+              "textAlign": "middle"
+            }
+          },
+          "e9d177fc-3f95-4359-2b9b-ac5ff16d266d": {
+            "id": "e9d177fc-3f95-4359-2b9b-ac5ff16d266d",
+            "type": "text",
+            "name": "Text",
+            "parentId": "page",
+            "childIndex": 50,
+            "point": [
+              647.12,
+              1201.83
+            ],
+            "rotation": 0,
+            "text": "maxAge",
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1,
+              "font": "script",
+              "textAlign": "middle"
+            }
+          },
+          "ff1f10e1-312f-4e1e-1aa6-983bae1e2e63": {
+            "id": "ff1f10e1-312f-4e1e-1aa6-983bae1e2e63",
+            "type": "rectangle",
+            "name": "Rectangle",
+            "parentId": "page",
+            "childIndex": 51,
+            "point": [
+              586.55,
+              1052.87
+            ],
+            "size": [
+              273.68,
+              52.95
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "641c0bda-131e-48d5-30a7-9f007d2f9fc8": {
+            "id": "641c0bda-131e-48d5-30a7-9f007d2f9fc8",
+            "type": "rectangle",
+            "name": "Rectangle",
+            "parentId": "page",
+            "childIndex": 52,
+            "point": [
+              587.58,
+              1128.45
+            ],
+            "size": [
+              272.65,
+              129.67
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "87f22efe-c979-4937-3391-dfbe0180a6d8": {
+            "id": "87f22efe-c979-4937-3391-dfbe0180a6d8",
+            "type": "rectangle",
+            "name": "Rectangle",
+            "parentId": "page",
+            "childIndex": 53,
+            "point": [
+              636.31,
+              1172.11
+            ],
+            "size": [
+              173.11,
+              68.39
+            ],
+            "rotation": 0,
+            "style": {
+              "color": "black",
+              "size": "small",
+              "isFilled": false,
+              "dash": "draw",
+              "scale": 1
+            },
+            "label": "",
+            "labelPoint": [
+              0.5,
+              0.5
+            ]
+          },
+          "38890fa6-81bf-4ba9-1bd0-f82d58695c18": {
+            "id": "38890fa6-81bf-4ba9-1bd0-f82d58695c18",
+            "type": "text",
+            "name": "Text",
+            "parentId": "page",
+            "childIndex": 54,
+            "point": [
+              301.37,
+              813.03
+            ],
+            "rotation": 0,
+            "text": "NextAuthOptions",
             "style": {
               "color": "black",
               "size": "small",

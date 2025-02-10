@@ -45,3 +45,4 @@ res.json()
 
 
 >>> A complete guide on NextAuth in NextJS | Full stack Project Playlist 05  >>  https://www.youtube.com/watch?v=KsVMJZhCQCk 
+-- 33:18/42:21

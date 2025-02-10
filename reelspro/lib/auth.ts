@@ -1,33 +1,77 @@
-// import { bcrypt } from 'bcryptjs';
-// import { NextAuthOptions } from 'next-auth';
-// import { CredentialsProvider } from 'next-auth/providers/credentials';
-// import { connectToDatabase } from
+// INFO :- Here we are using NextAuth,
+// Auth.js is the upcoming Auth for Next.js
 
-// export const authOptions: NextAuthOptions = {
-//   providers: {
-//     CredentialsProvider({
-//         name: "Credentials",
-//         credentials: {
-//             email: {label: "Email", type: "text"},
-//             password: {label: "Password", type: "password"}
-//         },
+// Comment : Thanks for the effort !!
 
-//         async authorize(credentials) {
-//             if(!credentials?.email || !credentials?.password) {
-//                 throw new Error("Missing email or password");
-//             }
+import { NextAuthOptions } from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import { connectToDatabase } from '@/lib/db';
+// import { authOptions } from './auth';
+import User from '@/models/User';
+import bcrypt from 'bcryptjs';
 
-//             try {
-//                 await connectToDatabase()
-//                 const user = await User.findOne({email: CredentialsProvider.email})
+export const authOptions: NextAuthOptions = {
+  providers: [
+    CredentialsProvider({
+      name: 'Credentials',
+      credentials: {
+        email: { label: 'Email', type: 'text' },
+        password: { label: 'Password', type: 'password' },
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error('Missing email or password');
+        }
 
-//                 if(!user){
-//                     throw new Error("No user found");
-//                 }
+        try {
+          await connectToDatabase();
+          const user = await User.findOne({ email: credentials.email });
 
-//                 await
-//             }
-//         }
-//     })
-//   },
-// };
+          if (!user) {
+            throw new Error('NO user found');
+          }
+
+          const isValid = await bcrypt.compare(
+            credentials.password,
+            user.password
+          );
+
+          if (!isValid) {
+            throw new Error('Invalid Password');
+          }
+
+          return {
+            id: user._id.toString(),
+            email: user.email,
+          };
+        } catch (error) {
+          throw error;
+        }
+      },
+    }),
+  ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
+    // Custom strategy !!!
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.id as string;
+      }
+      return session;
+    },
+  },
+  pages: {
+    signIn: '/login',
+    error: '/login',
+  },
+  session: {
+    strategy: 'jwt',
+    maxAge: 30 * 24 * 60 * 60,
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+};
