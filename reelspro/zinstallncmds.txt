@@ -9,3 +9,8 @@ $ npm i bcryptjs
 $ npm i --save-dev @types/bcryptjs
 
 $ npm i next-auth
+
+$ npm i imagekit
+$ npm install imagekitio-next
+
+$ npm i lucide-react

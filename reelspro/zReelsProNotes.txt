@@ -43,6 +43,18 @@ fetch("/api/auth/register", {
 
 res.json()
 
+Imagekit :-
+https://imagekit.io/
+https://imagekit.io/dashboard/
+qpdkh8
+The chosen ImageKit ID will be used in asset URLs:
+https://ik.imagekit.io/qpdkh8/path/to/myimage.jpg
 
->>> A complete guide on NextAuth in NextJS | Full stack Project Playlist 05  >>  https://www.youtube.com/watch?v=KsVMJZhCQCk 
--- 33:18/42:21
+Setup password for private PRIVATE_KEY  !!!!!!
+
+https://imagekit.io/docs/integration/nextjs#uploading-files-in-next.js
+
+
+Lucide.dev :-
+https://lucide.dev/icons/loader
+
