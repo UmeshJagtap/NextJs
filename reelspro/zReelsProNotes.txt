@@ -58,3 +58,7 @@ https://imagekit.io/docs/integration/nextjs#uploading-files-in-next.js
 Lucide.dev :-
 https://lucide.dev/icons/loader
 
+// ---------------------------------------------------------
+A complete frontend guide for full stack projects | Full stack Project Playlist 07
+https://www.youtube.com/watch?v=3DvxjJPKdzI&t=12s  
+25:09 / 49:29
