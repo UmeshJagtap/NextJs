@@ -16,3 +16,29 @@ $ npm install imagekitio-next
 $ npm i lucide-react
 
 $ npm i -D daisyui
+
+
+
+Issues :-
+ZUK@DESKTOP-0M6F0IP MINGW64 ~/Documents/GitHub/NextJs/reelspro (main)
+$ npm run dev
+
+> reelspro@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.1.6 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.108:3000
+   - Environments: .env
+
+ ✓ Starting...
+Slow filesystem detected. If C:\Users\ZUK\Documents\GitHub\NextJs\reelspro\.next is a network drive, consider moving it to a local folder. If you have an antivirus enabled, consider excluding your project directory.
+
+Error parsing `/:nextData(_next/data/[^/]{1,})?/((?!_next/static|_next/image|favicon.ico|public/).*{(\\.json)}?` https://nextjs.org/docs/messages/invalid-route-source
+Reason: Capturing groups are not allowed at 85
+
+  /:nextData(_next/data/[^/]{1,})?/((?!_next/static|_next/image|favicon.ico|public/).*{(\\.json)}?
+                                                                                       ^
+
+Error: Invalid source: /:nextData(_next/data/[^/]{1,})?/((?!_next/static|_next/image|favicon.ico|public/).*{(\\.json)}?
+    at Array.forEach (<anonymous>)
