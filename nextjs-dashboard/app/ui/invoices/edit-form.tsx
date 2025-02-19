@@ -31,6 +31,7 @@ export default function EditInvoiceForm({
           <label htmlFor="customer" className="mb-2 block text-sm font-medium">
             Choose customer
           </label>
+          <p className="hidden">{JSON.stringify(state)}</p>
           <div className="relative">
             <select
               id="customer"
