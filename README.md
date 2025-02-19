@@ -11,6 +11,9 @@ mystrymessage :-
 nextjs-dashboard :-
 ------ This is next.js based dashborad project.
 
+reelspro :-
+------ next.js reels and image app
+
 NEXT INSPIRATION :-
 Scalable Chat App ,Socket.io ,Kafka ,Redis ,Postgres, Nextjs, Typescript -https://www.youtube.com/watch?v=gCwHi-UFSdg
 
