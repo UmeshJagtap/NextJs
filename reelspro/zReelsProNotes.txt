@@ -60,5 +60,5 @@ https://lucide.dev/icons/loader
 
 // ---------------------------------------------------------
 Final :-
-
+https://github.com/UmeshJagtap/NextJs/tree/main/reelspro
 https://github.com/hiteshchoudhary/reelspro-imagekit-nextjs/blob/main/app/components/VideoComponent.tsx
