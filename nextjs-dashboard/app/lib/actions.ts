@@ -8,7 +8,8 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 import { signIn } from '@/auth';
-import { AuthError } from 'next-auth';
+// import { AuthError } from 'next-auth';
+const { AuthError } = require('next-auth');
 
 const FormSchema = z.object({
   id: z.string(),
