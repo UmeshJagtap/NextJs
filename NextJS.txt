@@ -20,6 +20,9 @@ $ npm i zod
 
 Inspiration :-
 
+Build and Deploy Full Stack AI GitHub SaaS | Next JS 15, Google Gemini AI, Assembly AI, Stripe
+https://www.youtube.com/watch?v=OqlI2766LCk
+
 Learn NextJS with Aceternity UI library by building a project
 https://www.youtube.com/watch?v=cVKB5NQPiFA
 
