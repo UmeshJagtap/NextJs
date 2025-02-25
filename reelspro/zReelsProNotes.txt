@@ -59,7 +59,31 @@ https://imagekit.io/docs/integration/nextjs#uploading-files-in-next.js
 Lucide.dev :-
 https://lucide.dev/icons/loader
 
+//
+
+// ---------------------------------------------------------
+
+Issues Faced :
+
+1. Error parsing `/:nextData(_next/data/[^/]{1,})?/((?!_next/static|_next/image|favicon.ico|public/).*{(\\.json)}?` https://nextjs.org/docs/messages/invalid-route-source
+Reason: Capturing groups are not allowed at 85
+
+  /:nextData(_next/data/[^/]{1,})?/((?!_next/static|_next/image|favicon.ico|public/).*{(\\.json)}?
+                                                                                       ^
+
+Error: Invalid source: /:nextData(_next/data/[^/]{1,})?/((?!_next/static|_next/image|favicon.ico|public/).*{(\\.json)}?
+    at Array.forEach (<anonymous>)
+
+>>>>>>>  Issue was in matcher expression in middleware.ts file.
+
+2. No videos found
+
+>>>>>>> Debugging it .....
+
+
+
 // ---------------------------------------------------------
 Final :-
 https://github.com/UmeshJagtap/NextJs/tree/main/reelspro
 https://github.com/hiteshchoudhary/reelspro-imagekit-nextjs/blob/main/app/components/VideoComponent.tsx
+
