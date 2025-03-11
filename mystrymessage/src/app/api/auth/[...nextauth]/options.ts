@@ -12,7 +12,7 @@ export const authOptions: NextAuthOptions = {
       id: 'Credentials',
       name: 'credentials',
       credentials: {
-        username: { label: 'Email', type: 'text ' },
+        email: { label: 'Email', type: 'text ' },
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials: any): Promise<any> {
@@ -49,12 +49,12 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token._id = user._id?.toString();
+        token._id = user._id?.toString(); // look in next-auth.d.ts  for  user
         token.isVerified = user.isVerified;
         token.isAcceptingMessages = user.isAcceptingMessages;
         token.username = user.username;
       }
-      return token;
+      return token; // here we are returning our custom token
     },
     async session({ session, token }) {
       if (token) {
