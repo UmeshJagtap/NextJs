@@ -85,10 +85,8 @@ NEXT AUTH 2:15:10 / 8:29:17
 NEXT AUTH 2:19:10 / 8:29:17
 NEXT AUTH 2:27:10 / 8:29:17
 NEXT AUTH 2:42:44 / 8:29:17  options.ts / next-auth.d.ts / route.ts
-NEXT AUTH 2:47:44 / 8:29:17  middleware.ts
-
-Middlewares -https://nextjs.org/docs/app/building-your-application/routing/middleware
-
+NEXT AUTH 2:47:44 / 8:29:17  middleware.ts     Middlewares -https://nextjs.org/docs/app/building-your-application/routing/middleware
+NEXT AUTH 3:00:00 / 8:29:17  AuthProvider.tsx  Ref :- https://next-auth.js.org/getting-started/example >> Configure Shared session state
 
 
 
