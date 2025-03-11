@@ -19,6 +19,8 @@ export default function VideoFeed({ videos }: VideoFeedProps) {
           <p className="text-base-content/70">No videos found</p>
         </div>
       )}
+
+      {JSON.stringify(videos)}
     </div>
   );
 }
