@@ -88,11 +88,20 @@ NEXT AUTH 2:42:44 / 8:29:17  options.ts / next-auth.d.ts / route.ts
 NEXT AUTH 2:47:44 / 8:29:17  middleware.ts     Middlewares -https://nextjs.org/docs/app/building-your-application/routing/middleware
 NEXT AUTH 3:00:00 / 8:29:17  AuthProvider.tsx  Ref :- https://next-auth.js.org/getting-started/example >> Configure Shared session state
 
+Accidentally pushed .env file to git, do this
 
+rm -f .env
+git add .
+git commit -m "remove .env file from git"
+git push
 
+updating the .gitignore:
+*.env
+*.env.example
+*.env.local
+*.env.staging
 
-
-
+NEXT AUTH 3:00:00 / 8:29:17
 
 
 
