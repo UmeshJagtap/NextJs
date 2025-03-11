@@ -1,7 +1,9 @@
 import 'next-auth';
 import { DefaultSession } from 'next-auth';
+// import { JWT } from 'next-auth/jwt';
 
 declare module 'next-auth' {
+  // here we can redefine or modify the existing dataType
   interface User {
     _id?: string;
     isVerified?: boolean;
@@ -28,3 +30,4 @@ declare module 'next-auth/jwt' {
 }
 
 // Ref :- https://next-auth.js.org/getting-started/typescript
+//        >> Extend default interface properties
