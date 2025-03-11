@@ -24,6 +24,9 @@ pnpm run dev
 
 # Next JS Chapters
 
+Ref :-
+https://nextjs.org/learn/dashboard-app/adding-authentication
+
 ```
 Chapter 1 -Getting Started
 Chapter 2 -CSS Styling
