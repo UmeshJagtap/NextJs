@@ -1,0 +1,9 @@
+-- Next-Dashboard --
+
+Auth roll back !!    Build Issue
+
+// In package.json deleted as below
+// "next-auth": "5.0.0-beta.25",
+// "postgres": "^3.4.5",
+
+
