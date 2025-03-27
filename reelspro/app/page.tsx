@@ -1,7 +1,13 @@
+// Image On  https://ik.imagekit.io/qpyardkh8/default-image.jpg
+// Video On
+// https://ik.imagekit.io/qpyardkh8/sample-video.mp4?updatedAt=1739370228141
+// https://ik.imagekit.io/qpyardkh8/__shinde__pavan__0303__1430_20211226_0.mp4?updatedAt=1740470563615
+
 'use client';
 
 import React, { useEffect, useState } from 'react';
 import VideoFeed from './components/VideoFeed';
+import SampleImagekitFiles from './components/SampleImagekitFiles';
 import { IVideo } from '@/models/Video';
 import { apiClient } from '@/lib/api-client';
 
@@ -15,6 +21,7 @@ export default function Home() {
     const fetchVideos = async () => {
       try {
         const data = await apiClient.getVideos();
+        console.log(data);
         setVideos(data);
       } catch (error) {
         console.error('Error fetching videos', error);
@@ -28,6 +35,7 @@ export default function Home() {
     <main className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">ImageKit ReelsPro</h1>
       <VideoFeed videos={videos} />
+      <SampleImagekitFiles />
     </main>
 
     // --------------------------------------------
