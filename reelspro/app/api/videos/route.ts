@@ -10,7 +10,8 @@ import { getServerSession } from 'next-auth';
 export async function GET() {
   try {
     await connectToDatabase();
-    const videos = await Video.find({}).sort({ createdAt: -1 }).lean();
+    const videos = await Video.find({}).sort({ createdAt: 1 }).lean();
+    console.log('Vid Chek : ' + JSON.stringify(videos));
     if (!videos || videos.length === 0) {
       return NextResponse.json([], { status: 200 });
     }

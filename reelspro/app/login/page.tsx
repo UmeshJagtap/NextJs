@@ -1,4 +1,5 @@
 'use client';
+import './input-styles.css'; // Import your CSS file
 
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
