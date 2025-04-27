@@ -1,8 +1,8 @@
 'use client';
 import * as React from 'react';
-import Link from '../../../node_modules/next/link';
-import clsx from '../../../node_modules/clsx/clsx';
-import { usePathname } from '../../../node_modules/next/navigation';
+import Link from 'next/link';
+import clsx from 'clsx';
+import { usePathname } from 'next/navigation';
 
 // import clsx from '@/node_modules/clsx/clsx';
 // import { usePathname } from '@/node_modules/next/navigation';
