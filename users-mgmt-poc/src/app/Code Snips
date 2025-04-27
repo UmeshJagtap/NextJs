@@ -1,0 +1,166 @@
+
+// npm install axios
+
+// Axios ----------------------------++
+// Axios is a promise-based HTTP client for JavaScript that can be used in both the browser and Node.js.
+
+// Creating an Axios Instance:
+import axios from "axios";
+
+// Axios Interceptor Instance -------++
+const AxiosInstance = axios.create({
+    baseURL: process.env.BASE_URL
+});
+
+// Request Interceptor: --------------++
+AxiosInstance.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem('token');
+        const accessToken = JSON.parse(token);
+
+        // If token is present, add it to request's Authorization Header
+        if (accessToken) {
+            if (config.headers) config.headers.token = accessToken;
+        }
+        return config;
+    },
+    (error) => {
+        // Handle request errors here
+        return Promise.reject(error);
+    }
+);
+
+// Before a request is sent, the interceptor checks for a token in the local storage.
+// If a token is found, it is added to the request headers.
+// This is useful for authenticated endpoints where the server expects a token.
+
+// Response Interceptor: -------------++
+
+// Axios Interceptor: Response Method
+AxiosInstance.interceptors.response.use(
+    (response) => {
+        // Can be modified response
+        return response;
+    },
+    (error) => {
+        // Handle response errors here
+        return Promise.reject(error);
+    }
+);
+
+// After a response is received, the interceptor can modify it if needed.
+// Any errors during the response can be handled globally.
+
+// Custom Axios Instance in Next.js -----++
+
+// Let’s make a GET request using our custom Axios instance in a Next.js component. 
+// Create a new file pages/index.js:
+
+import { useEffect, useState } from 'react';
+import AxiosInstance from '../utils/axiosInstance';
+
+const Home = () => {
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        AxiosInstance.get('/data')
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(error => {
+                setError(error.message);
+            });
+    }, []);
+
+    if (error) return <div>Error: {error}</div>;
+    if (!data) return <div>Loading...</div>;
+
+    return (
+        <div>
+            <h1>Data from API</h1>
+            <pre>{JSON.stringify(data, null, 2)}</pre>
+        </div>
+    );
+};
+
+export default Home;
+
+
+// Using getStaticProps  -------------++
+// getStaticProps is used for static generation. This means the data is fetched at build time.
+
+import AxiosInstance from '../utils/axiosInstance';
+
+export const getStaticProps = async () => {
+    try {
+        const response = await AxiosInstance.get('/data');
+        return {
+            props: {
+                data: response.data,
+            },
+        };
+    } catch (error) {
+        return {
+            props: {
+                error: error.message,
+            },
+        };
+    }
+};
+
+const Home = ({ data, error }) => {
+    if (error) return <div>Error: {error}</div>;
+
+    return (
+        <div>
+            <h1>Data from API</h1>
+            <pre>{JSON.stringify(data, null, 2)}</pre>
+        </div>
+    );
+};
+
+export default Home;
+
+
+// Using getServerSideProps -------------++
+// getServerSideProps is used for server-side rendering. This means the data is fetched on each request.
+
+import AxiosInstance from '../utils/axiosInstance';
+
+export const getServerSideProps = async () => {
+    try {
+        const response = await AxiosInstance.get('/data');
+        return {
+            props: {
+                data: response.data,
+            },
+        };
+    } catch (error) {
+        return {
+            props: {
+                error: error.message,
+            },
+        };
+    }
+};
+
+const Home = ({ data, error }) => {
+    if (error) return <div>Error: {error}</div>;
+
+    return (
+        <div>
+            <h1>Data from API</h1>
+            <pre>{JSON.stringify(data, null, 2)}</pre>
+        </div>
+    );
+};
+
+export default Home;
+
+
+// Display/Check data from API ----------++
+<div>
+    <h1>Data from API</h1>
+    <pre>{JSON.stringify(data, null, 2)}</pre>
+</div>
