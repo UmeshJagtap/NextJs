@@ -8,9 +8,9 @@ import PostData from '../components/PostData';
 
 export default function Home() {
     return (
-        <div className='bg-gray-100 flex flex-col items-center justify-center'>
-            <PostData />
+        <div className='bg-gray-100 grid grid-cols-2'>
             <GetData />
+            <PostData />
         </div>
     );
 }

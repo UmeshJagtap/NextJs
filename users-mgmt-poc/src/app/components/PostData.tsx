@@ -38,7 +38,7 @@ export default function PostForm() {
     };
 
     return (
-        <div className='p-10 flex flex-col items-center justify-center bg-gray-100'>
+        <div className='p-10 bg-white flex flex-col items-center justify-center bg-gray-100'>
             <h1 className='text-2xl font-bold'>Users Management POC</h1>
             <h2>Create Post</h2>
             <form onSubmit={handleSubmit}>
@@ -65,7 +65,7 @@ export default function PostForm() {
                     />
                 </label>
                 <br />
-                <button type="submit">Submit</button>
+                <button type="submit" className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Submit</button>
             </form>
         </div>
     );
