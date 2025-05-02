@@ -23,9 +23,16 @@ export default function Users() {
   const selectedUser = allUsers.filter((user) => user.id === selectedUserId)[0];
 
 
-  const selectedUserTechs =   dummyUsersNTechs.users.filter((userNtech) => userNtech.id === selectedUser.id );
+  const selectedUserTechs =   dummyUsersNTechs.users.filter((userNtech) => userNtech.id === selectedUser.id);
+  // const selectedUserTechsCourses = selectedUserTechs[0].courses.map((courseId) => {
+  //   return dummyTechnologies.courses.filter((course) => course.id === courseId)[0]; 
+  // }
+  // );
+
   // console.log('selectedUserTechs := ' + JSON.stringify(selectedUserTechs));
   // selectedUserTechs := [{"id":5,"courses":[10,20]}]
+  console.log('selectedUserTechs[0].courses := ' + JSON.stringify(selectedUserTechs[0].courses));
+  // console.log('selectedUserTechsCourses := ' + JSON.stringify(selectedUserTechsCourses));
 
   // Use this above courses id in array and display particular courss related to it.
 
