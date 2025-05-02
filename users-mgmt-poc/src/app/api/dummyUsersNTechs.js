@@ -6,7 +6,7 @@ export const dummyUsersNTechs = {
       }, 
       {
         id: 2,
-        courses: [10, 21],
+        courses: [11, 21],
       }, 
       {
         id: 3,
