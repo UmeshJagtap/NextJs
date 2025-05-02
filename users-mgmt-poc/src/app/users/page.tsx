@@ -1,8 +1,12 @@
 // Ref --https://dummyjson.com/users
 
 'use client';
+
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { dummyUsers } from '@/app/api/dummyUsers';
+import  dummyTechnologies  from '@/app/api/dummyTechnologies';
+import { dummyUsersNTechs } from '@/app/api/dummyUsersNTechs';
+
 import styles from './Users.module.css';
 // import Image from 'next/image';
 
@@ -10,12 +14,36 @@ export default function Users() {
   const [roleFilter, setRoleFilter] = useState('');
   const [searchUser, setSearchUser] = useState('');
   const [selectedUserId, setSelectedUserId] = useState(1);
+
   const allUsers = dummyUsers.users;
   const admins = allUsers.filter((user) => user.role === 'admin');
   const moderators = allUsers.filter((user) => user.role === 'moderator');
   const users = allUsers.filter((user) => user.role === 'user');
 
   const selectedUser = allUsers.filter((user) => user.id === selectedUserId)[0];
+
+
+  const selectedUserTechs =   dummyUsersNTechs.users.filter((userNtech) => userNtech.id === selectedUser.id );
+  // console.log('selectedUserTechs := ' + JSON.stringify(selectedUserTechs));
+  // selectedUserTechs := [{"id":5,"courses":[10,20]}]
+
+  // Use this above courses id in array and display particular courss related to it.
+
+
+
+
+
+
+
+  // users: [
+  //   {
+  //     id: 1,
+  //     courses: [10, 21],
+  //   }, 
+
+  
+
+
   // console.log('Admis :- ' + JSON.stringify(admins));
   // console.log('Moderators :- ' + JSON.stringify(moderators));
   // console.log('Users :- ' + JSON.stringify(users));
@@ -42,10 +70,7 @@ export default function Users() {
             <div className={styles.div2}>2</div>
         </div> */}
       <main className={styles.parent}>
-        <div
-          //   className='p-2 m-2'
-          className={styles.div1}
-        >
+        <div className={styles.div1}>
           {/* <p>Users Page</p> */}
 
           {/* Search Section */}
@@ -60,12 +85,12 @@ export default function Users() {
             />
           </section>
 
-          {/* Filter Section */}
+          {/* Filter Section  aka CheckBox*/}
           {/* <section className='p-2 flex gap-2 content-center'>
                 <label htmlFor="admin">Admin</label>
                 <input type="checkbox" id='admin' name='admin' 
-                    //    onChange={onChangeCheckBox} 
-                    //    checked={item.isChecked} 
+                      //  onChange={onChangeCheckBox} 
+                      //  checked={item.isChecked} 
                 />
 
                 <label htmlFor="moderator">Moderator</label>
@@ -73,8 +98,8 @@ export default function Users() {
 
                 <label htmlFor="user">User</label>
                 <input type="checkbox" id='user' name='admin'/>
-                </section> 
-            */}
+          </section>  */}
+           
 
           <section className="p-2 m-2 flex gap-2 content-center">
             <input type="radio" id="html" name="fav_language" value="HTML" />
@@ -179,9 +204,36 @@ export default function Users() {
               </div>
             </div>
           </section>
+        </div>
+
+        <div className={styles.div3}>
+          {/* <p>3</p> */}
+          {/* <h2 className="p-2 m-2">User Management POC</h2>
+          <p className="p-2 m-2">Developed by: </p>
+          <p className="p-2 m-2">Vishal Kumar</p> */}
           <section>
-            <div className="p-2 m-2">
+            <div className="p-2 m-2 border border-red-500 rounded-md bg-gray-200">
               <h2>Courses Enrolled: </h2>
+              {/* <ul>
+                {selectedUser.courses.map((course, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className="p-2 m-2 w-80 h-50 rounded-sm border border-red-300"
+                    >
+                      <p>{course.title}</p>
+                      <img
+                        src="/vercel.svg"
+                        alt="Couese Image"
+                        width={50}
+                        height={50}
+                      />
+                      <p>{course.description}</p>
+                    </li>
+                  );
+                })}
+              </ul> */}
+              <div className='p-2 m-2 h-100 bg-white border border-blue-300'>TEST</div>
             </div>
           </section>
         </div>
