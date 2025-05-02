@@ -8,7 +8,7 @@ import PostData from '../components/PostData';
 
 export default function Home() {
     return (
-        <div className='bg-gray-100 grid grid-cols-2'>
+        <div className='p-2 m-2 bg-gray-200 grid grid-cols-2'>
             <GetData />
             <PostData />
         </div>

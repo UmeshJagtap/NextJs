@@ -13,7 +13,7 @@ export default function Header() {
   const links = [
     // {href: '/', name: 'POC'},
     { href: '/users', name: 'Users' },
-    { href: '/zUserCard', name: 'zUser Card' },
+    // { href: '/zUserCard', name: 'zUser Card' },
     { href: '/techs', name: 'Techs' },
     { href: '/dashboard', name: 'Dashboard' },
   ];
