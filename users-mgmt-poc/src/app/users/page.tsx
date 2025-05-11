@@ -1,19 +1,19 @@
 // Ref --https://dummyjson.com/users
 
 'use client';
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { dummyUsers } from '@/app/api/dummyUsers';
 import styles from './Users.module.css';
-// import Image from 'next/image';
+import Image from 'next/image';
 
 export default function Users() {
-  const [roleFilter, setRoleFilter] = useState('');
+  const [roleFilter, setRoleFilter] = useState<string[]>([]);
   const [searchUser, setSearchUser] = useState('');
   const [selectedUserId, setSelectedUserId] = useState(1);
   const allUsers = dummyUsers.users;
-  const admins = allUsers.filter((user) => user.role === 'admin');
-  const moderators = allUsers.filter((user) => user.role === 'moderator');
-  const users = allUsers.filter((user) => user.role === 'user');
+  // const admins = allUsers.filter((user) => user.role === 'admin');
+  // const moderators = allUsers.filter((user) => user.role === 'moderator');
+  // const users = allUsers.filter((user) => user.role === 'user');
 
   const selectedUser = allUsers.filter((user) => user.id === selectedUserId)[0];
   // console.log('Admis :- ' + JSON.stringify(admins));
@@ -36,17 +36,9 @@ export default function Users() {
   return (
     <>
       {/* User Page Layout */}
-      {/* {JSON.stringify(styles)} */}
-      {/* <div className={styles.parent}>
-            <div className={styles.div1}>1</div>
-            <div className={styles.div2}>2</div>
-        </div> */}
       <main className={styles.parent}>
-        <div
-          //   className='p-2 m-2'
-          className={styles.div1}
-        >
-          {/* <p>Users Page</p> */}
+        <div className={styles.div1}>
+          {/* <p> --------- Users Page ---------- </p> */}
 
           {/* Search Section */}
           <section className="m-2 flex gap-2">
@@ -77,19 +69,56 @@ export default function Users() {
             */}
 
           <section className="p-2 m-2 flex gap-2 content-center">
-            <input type="radio" id="html" name="fav_language" value="HTML" />
-            <label htmlFor="html">HTML</label>
-            <br />
-            <input type="radio" id="css" name="fav_language" value="CSS" />
-            <label htmlFor="css">CSS</label>
-            <br />
             <input
-              type="radio"
-              id="javascript"
-              name="fav_language"
-              value="JavaScript"
+              type="checkbox"
+              id="admin"
+              name="roleFilter"
+              value="admin"
+              checked={roleFilter.includes('admin')}
+              onChange={(e) => {
+                const value = e.target.value;
+                setRoleFilter((prev) =>
+                  prev.includes(value)
+                    ? prev.filter((role) => role !== value)
+                    : [...prev, value]
+                );
+              }}
             />
-            <label htmlFor="javascript">JavaScript</label>
+            <label htmlFor="admin">Admin</label>
+
+            <input
+              type="checkbox"
+              id="moderator"
+              name="roleFilter"
+              value="moderator"
+              checked={roleFilter.includes('moderator')}
+              onChange={(e) => {
+                const value = e.target.value;
+                setRoleFilter((prev) =>
+                  prev.includes(value)
+                    ? prev.filter((role) => role !== value)
+                    : [...prev, value]
+                );
+              }}
+            />
+            <label htmlFor="moderator">Moderator</label>
+
+            <input
+              type="checkbox"
+              id="user"
+              name="roleFilter"
+              value="user"
+              checked={roleFilter.includes('user')}
+              onChange={(e) => {
+                const value = e.target.value;
+                setRoleFilter((prev) =>
+                  prev.includes(value)
+                    ? prev.filter((role) => role !== value)
+                    : [...prev, value]
+                );
+              }}
+            />
+            <label htmlFor="user">User</label>
           </section>
 
           {/* User Table Section */}
@@ -108,7 +137,7 @@ export default function Users() {
 
                       <td className="flex justify-center content-center">
                         <span className="w-20 flex justify-center content-center">
-                          <img
+                          <Image
                             src={user.image}
                             alt="user_image"
                             width={50}
@@ -141,7 +170,7 @@ export default function Users() {
             {/* {JSON.stringify(selectedUser)} */}
 
             <div className="p-2 m-2 flex gap-8 border border-red-500 rounded-md">
-              <img
+              <Image
                 src={selectedUser.image}
                 alt="user_image"
                 width={150}
