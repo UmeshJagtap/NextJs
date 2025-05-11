@@ -16,6 +16,7 @@ const technologies = [
         duration: '6 weeks',
       },
     ],
+    image: '',
   },
   {
     id: 2,
