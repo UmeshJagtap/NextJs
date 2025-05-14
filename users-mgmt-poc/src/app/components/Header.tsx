@@ -17,6 +17,7 @@ export default function Header() {
     { href: '/techs', name: 'Techs' },
     { href: '/dashboard', name: 'Dashboard' },
     { href: '/gsap', name: 'GSAP' },
+    { href: '/proto', name: 'PROTO' },
   ];
 
   return (
