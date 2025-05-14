@@ -15,6 +15,9 @@ export default function Users() {
   const [searchUser, setSearchUser] = useState('');
   const [selectedUserId, setSelectedUserId] = useState(1); // 20
 
+    const [debouncedSearch, setDebouncedSearch] = useState('');
+    const [filteredUsers, setFilteredUsers] = useState(dummyUsers.users);
+
   const allUsers = dummyUsers.users;
   // Filter functionality for users !!!
   // const admins = allUsers.filter((user) => user.role === 'admin');
@@ -33,11 +36,28 @@ export default function Users() {
 
 
 
+    useEffect(() => {
+      // Debounce logic: Update the filtered users when debouncedSearch changes
+      const filtered = dummyUsers.users.filter((user) =>
+        `${user.firstName} ${user.lastName}`.toLowerCase().includes(debouncedSearch.toLowerCase())
+      );
+      setFilteredUsers(filtered);
+    }, [debouncedSearch]);
 
 
 
+const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // console.log(e.target.value);
+    setSearchUser(value);
 
+    // Debounce the search input
+    const debounceTimeout = setTimeout(() => {
+      setDebouncedSearch(value);
+    }, 300); // 300ms delay
 
+    return () => clearTimeout(debounceTimeout); // Clear timeout on each input change
+  };
 
 
 
@@ -76,13 +96,6 @@ export default function Users() {
   // console.log('Admis :- ' + JSON.stringify(admins));
   // console.log('Moderators :- ' + JSON.stringify(moderators));
   // console.log('Users :- ' + JSON.stringify(users));
-
-  function handleSearch(e: ChangeEvent<HTMLInputElement>) {
-    // alert('Searched Something');
-    // alert(e.target.value);
-    console.log(e.target.value);
-    setSearchUser(e.target.value);
-  }
 
   const handleSelectedUser = (id: number) => {
     // alert(id + `row selected ` );
@@ -150,8 +163,8 @@ export default function Users() {
           <table className="m-2 border border-gray-500 rounded-md">
             <tbody>
               {/* {JSON.stringify(admins)} */}
-              {allUsers &&
-                allUsers.map((user) => {
+              {filteredUsers &&
+                filteredUsers .map((user) => {
                   return (
                     <tr
                       className="border border-gray-200 rounded-md cursor-pointer hover:bg-gray-100"
