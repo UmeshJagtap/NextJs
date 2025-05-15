@@ -45,19 +45,17 @@ export default function Techs() {
     console.log(techSelected[0].name);
   };
 
-  const handleEnroll = () => {
-    alert('Course Enrolled !! ');
-  };
+  const handleEnroll = () => { alert('Course Enrolled !! '); };
+
   return (
     <>
       {/* <p>Techs Page</p> */}
 
-      {/* Tech TopBar    
-            ---------- Make a Tech TopBar Component */}
+      {/* Tech TopBar    ---------- Make a Tech TopBar Component */}
 
       <div className="p-2 m-2 flex gap-4 bg-gray-100 rounded-md">
-        {JSON.stringify(techs, null, 2)}
-        {JSON.stringify(pathname)}
+        {/* {JSON.stringify(techs, null, 2)} */}
+        {/* {JSON.stringify(pathname)} */}
         {techs &&
           techs.map((tech) => {
             return (
@@ -77,12 +75,13 @@ export default function Techs() {
                 </button> */}
                 <Link
                   key={tech.name}
-                  href={`/tech/${tech.name.toLowerCase()}`} // Add strip func here
+                  href={`/${tech.name.trim().toLowerCase()}`} // Add strip func here
                   className={clsx(
                     'flex grow items-center justify-center gap-4 rounded-md p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3',
                     {
                       'bg-sky-100 text-blue-600':
-                        pathname === `/tech/${tech.name.toLowerCase()}`,
+                        // pathname === `/tech/${tech.name.toLowerCase().trim()}`,
+                        pathname === `/${tech.name.trim().toLowerCase()}`,
                     }
                   )}
                 >
@@ -96,7 +95,7 @@ export default function Techs() {
       </div>
       {/* {JSON.stringify(techs)} */}
 
-      {/* ----------  Diplay Related Courses  ---------- */}
+      {/* ----------  Courses  ---------- */}
 
       {/* {JSON.stringify(technology)} */}
       {technology &&

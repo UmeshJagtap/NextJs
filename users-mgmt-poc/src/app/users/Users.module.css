@@ -9,12 +9,18 @@
     grid-row: span 5 / span 5;
     border: 1px solid black;
     overflow: auto;
-    height: 50rem;
+    height: 70rem;
   }
   
   .div2 {
     grid-column: span 4 / span 4;
-    grid-row: span 5 / span 5;
+    grid-row: span 1 / span 5;
+    border: 1px solid black;
+  }
+
+  .div3 {
+    grid-column: span 4 / span 4;
+    grid-row: span 4 / span 5;
     border: 1px solid black;
   }
   .red {

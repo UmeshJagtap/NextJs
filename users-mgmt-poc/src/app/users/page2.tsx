@@ -1,89 +1,88 @@
 // Ref --https://dummyjson.com/users
 
 'use client';
+
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { dummyUsers } from '@/app/api/dummyUsers';
-import dummyTechnologies from '@/app/api/dummyTechnologies';
+import  dummyTechnologies  from '@/app/api/dummyTechnologies';
 import { dummyUsersNTechs } from '@/app/api/dummyUsersNTechs';
 
 import styles from './Users.module.css';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 export default function Users() {
-  const [roleFilter, setRoleFilter] = useState<string[]>([]);
+  const [roleFilter, setRoleFilter] = useState('');
   const [searchUser, setSearchUser] = useState('');
   const [selectedUserId, setSelectedUserId] = useState(1); // 20
 
-  const [debouncedSearch, setDebouncedSearch] = useState('');
-  const [filteredUsers, setFilteredUsers] = useState(dummyUsers.users);
-
   const allUsers = dummyUsers.users;
-  const admins = allUsers.filter((user) => user.role === 'admin');
-  const moderators = allUsers.filter((user) => user.role === 'moderator');
-  const users = allUsers.filter((user) => user.role === 'user');
+  // Filter functionality for users !!!
+  // const admins = allUsers.filter((user) => user.role === 'admin');
+  // const moderators = allUsers.filter((user) => user.role === 'moderator');
+  // const users = allUsers.filter((user) => user.role === 'user');
 
   const selectedUser = allUsers.filter((user) => user.id === selectedUserId)[0];
 
-  // Find Id in dummyUsersNTechs if it exists !!!
+  // Find Id in dummyUsersNTechs if it exists !!! 
   const idsInUsersNTechs: any = [];
   dummyUsersNTechs.users.map((id, courses) => {
     // console.log('user.id := ' + JSON.stringify(id.id));
     idsInUsersNTechs.push(id.id);
-  });
-  console.log(
-    'idsInUsersNTechs := ' + idsInUsersNTechs + ' ' + typeof idsInUsersNTechs
-  );
+  })
+  console.log("idsInUsersNTechs := " + idsInUsersNTechs + " " + typeof(idsInUsersNTechs));  
 
-  useEffect(() => {
-    // Debounce logic: Update the filtered users when debouncedSearch changes
-    const filtered = dummyUsers.users.filter((user) =>
-      `${user.firstName} ${user.lastName}`
-        .toLowerCase()
-        .includes(debouncedSearch.toLowerCase())
-    );
-    setFilteredUsers(filtered);
-  }, [debouncedSearch]);
 
-  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    // console.log(e.target.value);
-    setSearchUser(value);
 
-    // Debounce the search input
-    const debounceTimeout = setTimeout(() => {
-      setDebouncedSearch(value);
-    }, 300); // 300ms delay
 
-    return () => clearTimeout(debounceTimeout); // Clear timeout on each input change
-  };
 
-  const selectedUserTechs = dummyUsersNTechs?.users?.filter(
-    (userNtech) => userNtech?.id === selectedUser.id
-  );
+
+
+
+
+
+
+
+
+
+
+  const selectedUserTechs = dummyUsersNTechs?.users?.filter((userNtech) => userNtech?.id === selectedUser.id);
   // const selectedUserTechsCourses = selectedUserTechs[0].courses.map((courseId) => {
-  //   return dummyTechnologies.courses.filter((course) => course.id === courseId)[0];
+  //   return dummyTechnologies.courses.filter((course) => course.id === courseId)[0]; 
   // }
   // );
 
   // console.log('selectedUserTechs := ' + JSON.stringify(selectedUserTechs));
   // selectedUserTechs := [{"id":5,"courses":[10,20]}]
-  console.log(
-    'selectedUserTechs[0].courses := ' +
-      JSON.stringify(selectedUserTechs[0].courses)
-  );
+  console.log('selectedUserTechs[0].courses := ' + JSON.stringify(selectedUserTechs[0].courses));
   // console.log('selectedUserTechsCourses := ' + JSON.stringify(selectedUserTechsCourses));
 
   // Use this above courses id in array and display particular courss related to it.
+
+
+
+
+
+
 
   // users: [
   //   {
   //     id: 1,
   //     courses: [10, 21],
-  //   },
+  //   }, 
+
+  
+
 
   // console.log('Admis :- ' + JSON.stringify(admins));
   // console.log('Moderators :- ' + JSON.stringify(moderators));
   // console.log('Users :- ' + JSON.stringify(users));
+
+  function handleSearch(e: ChangeEvent<HTMLInputElement>) {
+    // alert('Searched Something');
+    // alert(e.target.value);
+    console.log(e.target.value);
+    setSearchUser(e.target.value);
+  }
 
   const handleSelectedUser = (id: number) => {
     // alert(id + `row selected ` );
@@ -94,11 +93,13 @@ export default function Users() {
   return (
     <>
       {/* User Page Layout */}
+      {/* {JSON.stringify(styles)} */}
+      {/* <div className={styles.parent}>
+            <div className={styles.div1}>1</div>
+            <div className={styles.div2}>2</div>
+        </div> */}
       <main className={styles.parent}>
-        <div
-          //   className='p-2 m-2'
-          className={styles.div1}
-        >
+        <div className={styles.div1}>
           {/* <p>Users Page</p> */}
 
           {/* Search Section */}
@@ -127,66 +128,30 @@ export default function Users() {
                 <label htmlFor="user">User</label>
                 <input type="checkbox" id='user' name='admin'/>
           </section>  */}
+           
 
           <section className="p-2 m-2 flex gap-2 content-center">
+            <input type="radio" id="html" name="fav_language" value="HTML" />
+            <label htmlFor="html">HTML</label>
+            <br />
+            <input type="radio" id="css" name="fav_language" value="CSS" />
+            <label htmlFor="css">CSS</label>
+            <br />
             <input
-              type="checkbox"
-              id="admin"
-              name="roleFilter"
-              value="admin"
-              checked={roleFilter.includes('admin')}
-              onChange={(e) => {
-                const value = e.target.value;
-                setRoleFilter((prev) =>
-                  prev.includes(value)
-                    ? prev.filter((role) => role !== value)
-                    : [...prev, value]
-                );
-              }}
+              type="radio"
+              id="javascript"
+              name="fav_language"
+              value="JavaScript"
             />
-            <label htmlFor="admin">Admin</label>
-
-            <input
-              type="checkbox"
-              id="moderator"
-              name="roleFilter"
-              value="moderator"
-              checked={roleFilter.includes('moderator')}
-              onChange={(e) => {
-                const value = e.target.value;
-                setRoleFilter((prev) =>
-                  prev.includes(value)
-                    ? prev.filter((role) => role !== value)
-                    : [...prev, value]
-                );
-              }}
-            />
-            <label htmlFor="moderator">Moderator</label>
-
-            <input
-              type="checkbox"
-              id="user"
-              name="roleFilter"
-              value="user"
-              checked={roleFilter.includes('user')}
-              onChange={(e) => {
-                const value = e.target.value;
-                setRoleFilter((prev) =>
-                  prev.includes(value)
-                    ? prev.filter((role) => role !== value)
-                    : [...prev, value]
-                );
-              }}
-            />
-            <label htmlFor="user">User</label>
+            <label htmlFor="javascript">JavaScript</label>
           </section>
 
           {/* User Table Section */}
           <table className="m-2 border border-gray-500 rounded-md">
             <tbody>
               {/* {JSON.stringify(admins)} */}
-              {filteredUsers &&
-                filteredUsers.map((user) => {
+              {allUsers &&
+                allUsers.map((user) => {
                   return (
                     <tr
                       className="border border-gray-200 rounded-md cursor-pointer hover:bg-gray-100"
@@ -197,7 +162,7 @@ export default function Users() {
 
                       <td className="flex justify-center content-center">
                         <span className="w-20 flex justify-center content-center">
-                          <Image
+                          <img
                             src={user.image}
                             alt="user_image"
                             width={50}
@@ -230,7 +195,7 @@ export default function Users() {
             {/* {JSON.stringify(selectedUser)} */}
 
             <div className="p-2 m-2 flex gap-8 border border-red-500 rounded-md">
-              <Image
+              <img
                 src={selectedUser.image}
                 alt="user_image"
                 width={150}
@@ -297,9 +262,7 @@ export default function Users() {
                   );
                 })}
               </ul> */}
-              <div className="p-2 m-2 h-100 bg-white border border-blue-300">
-                TEST
-              </div>
+              <div className='p-2 m-2 h-100 bg-white border border-blue-300'>TEST</div>
             </div>
           </section>
         </div>
