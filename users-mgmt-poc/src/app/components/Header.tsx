@@ -18,13 +18,14 @@ export default function Header() {
     { href: '/dashboard', name: 'Dashboard' },
     { href: '/gsap', name: 'GSAP' },
     { href: '/proto', name: 'PROTO' },
+    { href: '/proto2', name: 'PROTO2' },
   ];
 
   return (
     <>
-      <div className="flex bg-gray-200">
-        <Link href="/" className="p-3">
-          <h2 className="font-bold">POC</h2>
+      <div className="flex bg-gray-200 justify-start items-center">
+        <Link href="/" className="">
+          <h2 className="font-bold px-2">POC</h2>
         </Link>
 
         {/* <Link href='/users' className={clsx(
@@ -42,7 +43,7 @@ export default function Header() {
               key={link.name}
               href={link.href}
               className={clsx(
-                'flex grow items-center justify-center gap-4 rounded-md p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3',
+                'flex grow items-center justify-center gap-4 rounded-md text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3',
                 {
                   'bg-sky-100 text-blue-600': pathname === link.href,
                 }
