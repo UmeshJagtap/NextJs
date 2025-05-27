@@ -1,0 +1,17 @@
+.underline-animate {
+  position: relative;
+  cursor: pointer;
+}
+.underline-animate::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: #E2DFD2;
+  transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.underline-animate:hover::after {
+  width: 100%;
+}
