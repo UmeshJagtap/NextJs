@@ -102,14 +102,14 @@ export default function Users() {
           {/* <p>Users Page</p> */}
 
           {/* Search Section */}
-          <section className="m-2 flex gap-2">
+          <section className="m-1.5 flex gap-2 w-100 content-center">
             {/* <p className='px-1'>Q</p> */}
             <input
               type="text"
               value={searchUser}
               onChange={handleSearch}
-              className="p-2 w-70 border border-gray-200"
-              placeholder=" Q Search User"
+              className="p-1 border border-gray-200 rounded-md w-full h-6"
+              placeholder="Q. Search User"
             />
           </section>
 
@@ -128,7 +128,7 @@ export default function Users() {
                 <input type="checkbox" id='user' name='admin'/>
           </section>  */}
 
-          <section className="p-2 m-2 flex gap-2 content-center">
+          <section className="m-2 flex gap-2 content-center">
             <input
               type="checkbox"
               id="admin"
