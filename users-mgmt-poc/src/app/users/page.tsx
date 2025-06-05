@@ -33,6 +33,7 @@ export default function Users() {
   console.log(
     'idsInUsersNTechs := ' + idsInUsersNTechs + ' ' + typeof idsInUsersNTechs
   );
+  console.log("RoleFilter : " + roleFilter);
 
   useEffect(() => {
     // Debounce logic: Update the filtered users when debouncedSearch changes
@@ -108,7 +109,7 @@ export default function Users() {
               type="text"
               value={searchUser}
               onChange={handleSearch}
-              className="p-1 border border-gray-200 rounded-md w-full h-6"
+              className="p-2 border border-gray-200 rounded-full w-full h-8"
               placeholder="Q. Search User"
             />
           </section>
@@ -195,8 +196,8 @@ export default function Users() {
                     >
                       {/* <Image className='' src={user.image} alt='user_image' width={20} height={20} /> */}
 
-                      <td className="flex justify-center content-center">
-                        <span className="w-20 flex justify-center content-center">
+                      <td className="flex">
+                        <span className="px-2">
                           <Image
                             src={user.image}
                             alt="user_image"
@@ -205,10 +206,10 @@ export default function Users() {
                           />
                         </span>
                         <div>
-                          <span className="w-50 flex justify-center content-center text-left">
+                          <span className="w-50 flex text-left">
                             <p>Name : {user.firstName + ' ' + user.lastName}</p>
                           </span>
-                          <span className="w-50 flex justify-center content-center text-left">
+                          <span className="w-50 flex text-left">
                             <p>Role : {user.role.toUpperCase()}</p>
                           </span>
                         </div>
