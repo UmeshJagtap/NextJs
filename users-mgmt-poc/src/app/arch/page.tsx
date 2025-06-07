@@ -157,6 +157,11 @@ const ArchHeader = () => {
   );
 };
 
+function handleDeugger() {
+  debugger; // Execution will pause here
+  return <div>Welcome to the Debugger !!</div>;
+}
+
 const Arch = () => {
   return (
     <div className="px-8">
@@ -170,7 +175,12 @@ const Arch = () => {
           {/* PROJECT Lorum */}
           <div className="flex flex-col p-2 m-2">
             <h2 className="font-thin text-6xl text-gray-400">PROJECT</h2>
-            <p className="font-bold text-5xl">Lorum</p>
+            <p
+              className="font-bold text-5xl cursor-pointer"
+              onClick={() => handleDeugger}
+            >
+              Lorum
+            </p>
           </div>
           {/* [<-] [->] */}
           <div className="flex gap-4 p-2 m-2">
@@ -268,7 +278,15 @@ const Arch = () => {
             height={892}
             className="w-full h-auto"
           />
-          <div className="p-2 bg-white flex gap-2 absolute left-10 top-[5rem] cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out shadow-md">
+          <div
+            className="p-2 bg-white flex gap-2 absolute left-10 top-[5rem] cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out shadow-md"
+            onClick={() =>
+              window.open(
+                'https://ca.pinterest.com/terriartdesign/awesome-architecture/',
+                '_blank'
+              )
+            }
+          >
             <p className="px-2 font-thin text-[#333333]">VIEW PROJECT</p>
             <svg
               width="24"
