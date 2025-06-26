@@ -19,14 +19,27 @@ export default function Users() {
 
   // ------------------------------------------------------------------------------------------<<< Filter Logics +++
   const allUsers = dummyUsers.users;
-  // const admins = allUsers.filter((user) => user.role === 'admin');
-  // const moderators = allUsers.filter((user) => user.role === 'moderator');
-  // const users = allUsers.filter((user) => user.role === 'user');
+
+  const admins = allUsers.filter((user) => user.role === 'admin');
+  const moderators = allUsers.filter((user) => user.role === 'moderator');
+  const users = allUsers.filter((user) => user.role === 'user');
   // console.log('Admins : ' + JSON.stringify(admins));
   // console.log('Moderators : ' + JSON.stringify(moderators));
   // console.log('Users : ' + JSON.stringify(users));
 
-  const selectedUser = allUsers.filter((user) => user.id === selectedUserId)[0];
+  // RoleFilter : moderator,user,admin
+  // If role === admin , push in totalFilteredUsers
+  const filtAdmins = roleFilter.includes('admin') ? admins : [];
+  const filtModerators = roleFilter.includes('moderator') ? moderators : [];
+  const filtUsers = roleFilter.includes('user') ? users : [];
+
+  const totalFilteredUsers = [...filtAdmins, ...filtModerators, ...filtUsers];
+  console.log('totalFiltered Users : ' + JSON.stringify(totalFilteredUsers)); // Use this to display filtered users in main table in map function
+
+  // ------------------------------------------------------------------------------------------<<< Selected User Logics +++
+  const selectedUser = totalFilteredUsers.filter(
+    (user) => user.id === selectedUserId
+  )[0];
 
   // Find Id in dummyUsersNTechs if it exists !!!
   const idsInUsersNTechs: number[] = [];
@@ -38,30 +51,6 @@ export default function Users() {
     'idsInUsersNTechs := ' + idsInUsersNTechs + ' ' + typeof idsInUsersNTechs
   );
   console.log('RoleFilter : ' + roleFilter);
-
-  // ------------------------------------------------------------------------------------------<<< Search Logics +++
-  useEffect(() => {
-    // Debounce logic: Update the filtered users when debouncedSearch changes
-    const filtered = dummyUsers.users.filter((user) =>
-      `${user.firstName} ${user.lastName}`
-        .toLowerCase()
-        .includes(debouncedSearch.toLowerCase())
-    );
-    setFilteredUsers(filtered);
-  }, [debouncedSearch]);
-
-  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    // console.log(e.target.value);
-    setSearchUser(value);
-
-    // Debounce the search input
-    const debounceTimeout = setTimeout(() => {
-      setDebouncedSearch(value);
-    }, 300); // 300ms delay
-
-    return () => clearTimeout(debounceTimeout); // Clear timeout on each input change
-  };
 
   const selectedUserTechs = dummyUsersNTechs?.users?.filter(
     (userNtech) => userNtech?.id === selectedUser.id
@@ -87,9 +76,34 @@ export default function Users() {
   //     courses: [10, 21],
   //   },
 
+  // ------------------------------------------------------------------------------------------<<< handleSelectedUser Logic +++
   const handleSelectedUser = (id: number) => {
     console.log(id + ` clicked + row selected`);
     setSelectedUserId(id);
+  };
+
+  // ------------------------------------------------------------------------------------------<<< Search Logics +++
+  useEffect(() => {
+    // Debounce logic: Update the filtered users when debouncedSearch changes
+    const filtered = dummyUsers.users.filter((user) =>
+      `${user.firstName} ${user.lastName}`
+        .toLowerCase()
+        .includes(debouncedSearch.toLowerCase())
+    );
+    setFilteredUsers(filtered);
+  }, [debouncedSearch]);
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // console.log(e.target.value);
+    setSearchUser(value);
+
+    // Debounce the search input
+    const debounceTimeout = setTimeout(() => {
+      setDebouncedSearch(value);
+    }, 300); // 300ms delay
+
+    return () => clearTimeout(debounceTimeout); // Clear timeout on each input change
   };
 
   return (
