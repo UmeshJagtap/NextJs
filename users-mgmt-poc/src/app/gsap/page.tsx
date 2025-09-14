@@ -57,7 +57,7 @@ export default function GSAP() {
   const tl = useGSAP(() => {
     const splitText = new SplitText(textRef.current, { type: "lines" });
     const lines = splitText.lines;
-    gsap.set(lines, { opacity: 0, x: -100 }); // Set initial position off-screen to the left
+    gsap.set(lines, { opacity: 0, x: 1000 }); // Set initial position off-screen to the left
     return gsap.timeline({
       scrollTrigger: {
         trigger: messageRef.current,
