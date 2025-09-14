@@ -4,9 +4,6 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 
-// import clsx from '@/node_modules/clsx/clsx';
-// import { usePathname } from '@/node_modules/next/navigation';
-
 export default function Header() {
   const pathname = usePathname();
 
@@ -19,6 +16,7 @@ export default function Header() {
     { href: '/gsap', name: 'GSAP' },
     { href: '/proto', name: 'PROTO' },
     { href: '/proto2', name: 'PROTO2' },
+    { href: '/arch', name: 'ARCH' },
   ];
 
   return (

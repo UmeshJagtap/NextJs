@@ -3,7 +3,7 @@
 'use client';
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { dummyUsers } from '@/app/api/dummyUsers';
-import dummyTechnologies from '@/app/api/dummyTechnologies';
+// import dummyTechnologies from '@/app/api/dummyTechnologies';
 import { dummyUsersNTechs } from '@/app/api/dummyUsersNTechs';
 
 import styles from './Users.module.css';
@@ -12,20 +12,37 @@ import Image from 'next/image';
 export default function Users() {
   const [roleFilter, setRoleFilter] = useState<string[]>([]);
   const [searchUser, setSearchUser] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
+
+  const [filteredUsers, setFilteredUsers] = useState(dummyUsers.users);
   const [selectedUserId, setSelectedUserId] = useState(1); // 20
 
-  const [debouncedSearch, setDebouncedSearch] = useState('');
-  const [filteredUsers, setFilteredUsers] = useState(dummyUsers.users);
-
+  // ------------------------------------------------------------------------------------------<<< Filter Logics +++
   const allUsers = dummyUsers.users;
+
   const admins = allUsers.filter((user) => user.role === 'admin');
   const moderators = allUsers.filter((user) => user.role === 'moderator');
   const users = allUsers.filter((user) => user.role === 'user');
+  // console.log('Admins : ' + JSON.stringify(admins));
+  // console.log('Moderators : ' + JSON.stringify(moderators));
+  // console.log('Users : ' + JSON.stringify(users));
 
-  const selectedUser = allUsers.filter((user) => user.id === selectedUserId)[0];
+  // RoleFilter : moderator,user,admin
+  // If role === admin , push in totalFilteredUsers
+  const filtAdmins = roleFilter.includes('admin') ? admins : [];
+  const filtModerators = roleFilter.includes('moderator') ? moderators : [];
+  const filtUsers = roleFilter.includes('user') ? users : [];
+
+  const totalFilteredUsers = [...filtAdmins, ...filtModerators, ...filtUsers];
+  console.log('totalFiltered Users : ' + JSON.stringify(totalFilteredUsers)); // Use this to display filtered users in main table in map function
+
+  // ------------------------------------------------------------------------------------------<<< Selected User Logics +++
+  const selectedUser = totalFilteredUsers.filter(
+    (user) => user.id === selectedUserId
+  )[0];
 
   // Find Id in dummyUsersNTechs if it exists !!!
-  const idsInUsersNTechs: any = [];
+  const idsInUsersNTechs: number[] = [];
   dummyUsersNTechs.users.map((id, courses) => {
     // console.log('user.id := ' + JSON.stringify(id.id));
     idsInUsersNTechs.push(id.id);
@@ -33,30 +50,7 @@ export default function Users() {
   console.log(
     'idsInUsersNTechs := ' + idsInUsersNTechs + ' ' + typeof idsInUsersNTechs
   );
-  console.log("RoleFilter : " + roleFilter);
-
-  useEffect(() => {
-    // Debounce logic: Update the filtered users when debouncedSearch changes
-    const filtered = dummyUsers.users.filter((user) =>
-      `${user.firstName} ${user.lastName}`
-        .toLowerCase()
-        .includes(debouncedSearch.toLowerCase())
-    );
-    setFilteredUsers(filtered);
-  }, [debouncedSearch]);
-
-  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    // console.log(e.target.value);
-    setSearchUser(value);
-
-    // Debounce the search input
-    const debounceTimeout = setTimeout(() => {
-      setDebouncedSearch(value);
-    }, 300); // 300ms delay
-
-    return () => clearTimeout(debounceTimeout); // Clear timeout on each input change
-  };
+  console.log('RoleFilter : ' + roleFilter);
 
   const selectedUserTechs = dummyUsersNTechs?.users?.filter(
     (userNtech) => userNtech?.id === selectedUser.id
@@ -82,24 +76,41 @@ export default function Users() {
   //     courses: [10, 21],
   //   },
 
-  // console.log('Admis :- ' + JSON.stringify(admins));
-  // console.log('Moderators :- ' + JSON.stringify(moderators));
-  // console.log('Users :- ' + JSON.stringify(users));
-
+  // ------------------------------------------------------------------------------------------<<< handleSelectedUser Logic +++
   const handleSelectedUser = (id: number) => {
-    // alert(id + `row selected ` );
-    console.log(id + ` clicked`);
+    console.log(id + ` clicked + row selected`);
     setSelectedUserId(id);
+  };
+
+  // ------------------------------------------------------------------------------------------<<< Search Logics +++
+  useEffect(() => {
+    // Debounce logic: Update the filtered users when debouncedSearch changes
+    const filtered = dummyUsers.users.filter((user) =>
+      `${user.firstName} ${user.lastName}`
+        .toLowerCase()
+        .includes(debouncedSearch.toLowerCase())
+    );
+    setFilteredUsers(filtered);
+  }, [debouncedSearch]);
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // console.log(e.target.value);
+    setSearchUser(value);
+
+    // Debounce the search input
+    const debounceTimeout = setTimeout(() => {
+      setDebouncedSearch(value);
+    }, 300); // 300ms delay
+
+    return () => clearTimeout(debounceTimeout); // Clear timeout on each input change
   };
 
   return (
     <>
       {/* User Page Layout */}
       <main className={styles.parent}>
-        <div
-          //   className='p-2 m-2'
-          className={styles.div1}
-        >
+        <div className={styles.div1}>
           {/* <p>Users Page</p> */}
 
           {/* Search Section */}
@@ -129,6 +140,7 @@ export default function Users() {
                 <input type="checkbox" id='user' name='admin'/>
           </section>  */}
 
+          {/* CheckBox Section */}
           <section className="m-2 flex gap-2 content-center">
             <input
               type="checkbox"
@@ -181,6 +193,7 @@ export default function Users() {
             />
             <label htmlFor="user">User</label>
           </section>
+          {'Role Filter: ' + JSON.stringify(roleFilter)}
 
           {/* User Table Section */}
           <table className="m-2 border border-gray-500 rounded-md">
