@@ -37,7 +37,8 @@ export default function Users() {
   console.log('totalFiltered Users : ' + JSON.stringify(totalFilteredUsers)); // Use this to display filtered users in main table in map function
 
   // ------------------------------------------------------------------------------------------<<< Selected User Logics +++
-  const selectedUser = totalFilteredUsers.filter(
+  // const selectedUser = totalFilteredUsers.filter(   // Revisit this logic with null check handling !!!!!!
+  const selectedUser = allUsers.filter(
     (user) => user.id === selectedUserId
   )[0];
 
