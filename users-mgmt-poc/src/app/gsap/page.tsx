@@ -88,12 +88,12 @@ export default function GSAP() {
   }, []);
 
   return (
-    <div className="gsap-container bg-gray-500 text-red-500" ref={messageRef}>
+    <div className="gsap-container bg-gray-500 text-red-600" ref={messageRef}>
       <div className="p-4 m-2 h-[50rem] bg-gray-200 text-8xl">ASDFG</div>
       <div className="p-4 m-2 h-[50rem] bg-gray-100 flex items-center justify-center text-4xl">
         <p ref={xyzRef}>XYZ</p>
       </div>
-      <h1 ref={textRef} className="p-10 m-2 h-[50rem] flex items-center text-4xl">Hello GSAP!</h1>
+      <h1 ref={textRef} className="p-10 m-2 h-[50rem] flex items-center text-5xl">Hello GSAP!</h1>
       <div className="p-2 m-2 h-[50rem] bg-gray-200 text-4xl">GHJKL</div>
     </div>
   );
