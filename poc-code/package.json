@@ -10,6 +10,8 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.3.4",
     "next": "15.5.5",
     "react": "19.1.0",
@@ -22,6 +24,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "sass": "^1.93.2",
+    "sass-embedded": "^1.93.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

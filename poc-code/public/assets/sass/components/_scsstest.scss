@@ -1,0 +1,52 @@
+// $primary-color: #0070f3;
+// $font-stack: Arial, sans-serif;
+
+// body {
+//   font-family: $font-stack;
+//   color: $primary-color;
+// }
+
+// a {
+//   color: $primary-color;
+//   text-decoration: none;
+
+//   &:hover {
+//     text-decoration: underline;
+//   }
+// }
+
+.test-container {
+  width: 100%;
+  max-width: 100%;
+}
+.section-test2 {
+  color: #a1e118;
+}
+.section-test3 {
+  color: #ff5733;
+  font-style: italic;
+}
+.test-wrapper {
+  color: #a1e118;
+  border-bottom: 1px solid #ccc;
+}
+.test {
+  color: red;
+  border-radius: 5rem;
+  border: 2px solid blue;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+.test-unique {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+.test-special {
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.test-highlight {
+  color: #ff5733;
+  font-style: italic;
+}

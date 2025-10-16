@@ -3,6 +3,7 @@
 import React, { useState, useRef } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+// import './Accordion.scss';
 
 const items = [
   {
@@ -78,7 +79,8 @@ const Accordion = () => {
                 tabIndex={0}
               >
                 <span className="accordionIcon" aria-hidden="true">
-                  {/* {isOpen ? <RemoveIcon /> : <AddIcon />} */}
+                  {isOpen ? <RemoveIcon /> : <AddIcon />}
+
                   <div className="accordionTitle">{item.title}</div>
                 </span>
               </header>

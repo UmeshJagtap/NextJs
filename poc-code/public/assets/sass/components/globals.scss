@@ -1,0 +1,22 @@
+/* /globals.scss */
+
+// @use 'base';
+// @use 'test';
+@import './accordion';
+
+// $primary-color: #eeeeee;
+$font-stack: Arial, sans-serif;
+
+body {
+  font-family: $font-stack;
+  // color: $primary-color;
+}
+
+// a {
+//   color: $primary-color;
+//   text-decoration: none;
+
+//   &:hover {
+//     text-decoration: underline;
+//   }
+// }
