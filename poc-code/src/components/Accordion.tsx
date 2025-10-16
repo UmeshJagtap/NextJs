@@ -13,7 +13,7 @@ const items = [
   },
   {
     id: '2',
-    title: 'Why should I use Next.js for my web development projects?',
+    title: 'Why should I use Next.js for my web development projects ?',
     content:
       'Next.js offers a range of benefits including server-side rendering, static site generation, and a rich ecosystem that enhances performance and SEO for web applications.',
   },
