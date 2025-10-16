@@ -44,11 +44,9 @@ const Accordion = () => {
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggleAccordion = (index: number) => {
-    // if (activeIndex.includes(index)) {
-    //   setActiveIndex(activeIndex.filter((i) => i !== index));
-    // } else {
-    //   setActiveIndex([...activeIndex, index]);
-    // }
+    setActiveIndex((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
   };
 
   return (
@@ -58,7 +56,9 @@ const Accordion = () => {
         <div className="box-1"></div>
         <div className="box-2"></div>
         <div className="box-1"></div>
-        <div className="accordionHeading scale-up-center">Accordion</div>
+        <div className="accordionHeading scale-up-center dark:invert">
+          Accordion
+        </div>
         {/* <div className="rotate-vert-center">Awesome Web App</div> */}
         {items.map((item, index) => {
           const isOpen = activeIndex.includes(index);
@@ -91,34 +91,22 @@ const Accordion = () => {
 
               <section
                 className="accordionContent"
-                id={`accordiom-content-${item?.id}`}
+                id={`accordion-content-${item?.id}`}
                 role="region"
                 aria-labelledby={`accordion-header-${item?.id}`}
                 inert={!isOpen}
-                ref={(el) =>
-                  (contentRefs.current[index] = el as HTMLDivElement | null)
-                }
-                style={
-                  isOpen
-                    ? {
-                        maxHeight: isOpen
-                          ? `${
-                              (contentRefs.current[index]?.scrollHeight ?? 0) +
-                              2
-                            }px`
-                          : '0px',
-                      }
-                    : { maxHeight: '0px' }
-                }
+                ref={(el) => {
+                  contentRefs.current[index] = el as HTMLDivElement | null;
+                }}
+                style={{
+                  maxHeight: isOpen
+                    ? `${(contentRefs.current[index]?.scrollHeight ?? 0) + 2}px`
+                    : '0px',
+                }}
               >
                 <div className="accordionInner">{item.content}</div>
               </section>
             </div>
-
-            // <div key={index} className="accordion-item">
-            //   <button className="accordion-header">{item.title}</button>
-            //   <div className="accordion-content">{item.content}</div>
-            // </div>
           );
         })}
       </section>

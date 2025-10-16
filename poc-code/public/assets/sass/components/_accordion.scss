@@ -10,38 +10,104 @@
   max-width: 100%;
 }
 .accordionWrapper {
-  border-bottom: 1px solid #ccc;
+  color: #fff;
+  line-height: 120%;
+  letter-spacing: 0%;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease-in-out;
+  // border-bottom: 1px solid #ccc;
 }
-.accordionWrapper {
-  color: #a1e118;
-}
+.accordionHeader {
+  cursor: pointer;
+  border: none;
+  border-radius: 1rem;
+  // background-color: gray;
 
-.on {
-  animation: headerOn 0.3s forwards;
-  animation: headerOff 0.3s forwards;
-}
-
-@mixin settingAnimationHeader {
-  @keyframes headerOff {
-    from {
-      background-color: theme-colors('mainColors', 'primary');
-    }
-    to {
-      background-color: transparent;
-    }
+  &:focus-visible {
+    outline: 2px solid #024f54;
+    outline-offset: 5px;
   }
 
-  @keyframes headerOn {
-    from {
-      background-color: transparent;
-    }
-    to {
-      background-color: theme-colors('mainColors', 'primary');
-    }
+  &.closed {
+    background-color: #eaecec;
+    color: #012d2a;
+  }
+  &.closed:hover {
+    background-color: #859a99;
+  }
+  &.open {
+    background-color: #214846;
+    color: #fff;
+    border-radius: 1rem 1rem 0 0;
+  }
+  &.open:hover {
+    background-color: #647f7d;
   }
 }
 
-// Animations
+.accordionIcon {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+.accordionIcon svg {
+  height: 24px;
+  width: 24px;
+}
+
+.accordionTitle {
+  flex-grow: 1;
+}
+
+.accordionContent {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
+}
+
+.accordionWrapper.open .accordionContent {
+  max-height: 1000px;
+}
+
+.accordionInner {
+  padding: 1rem;
+  line-height: 24px;
+  color: #012d2a;
+  letter-spacing: 0%;
+  background-color: #fff;
+  border: 0.8px solid #c8d2d2;
+  border-top: none;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+// Animations -------------------------------------------- V -- V-------------------------------------
+
+// .on {
+//   animation: headerOn 0.3s forwards;
+//   animation: headerOff 0.3s forwards;
+// }
+
+// @mixin settingAnimationHeader {
+//   @keyframes headerOff {
+//     from {
+//       background-color: theme-colors('mainColors', 'primary');
+//     }
+//     to {
+//       background-color: transparent;
+//     }
+//   }
+
+//   @keyframes headerOn {
+//     from {
+//       background-color: transparent;
+//     }
+//     to {
+//       background-color: theme-colors('mainColors', 'primary');
+//     }
+//   }
+// }
 
 .scale-up-center {
   -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
