@@ -55,7 +55,11 @@ const Accordion = () => {
     <>
       <section className="accordionContainer">
         {/* <header>__ + __</header> */}
-        <div>Accordion</div>
+        <div className="box-1"></div>
+        <div className="box-2"></div>
+        <div className="box-1"></div>
+        <div className="accordionHeading scale-up-center">Accordion</div>
+        {/* <div className="rotate-vert-center">Awesome Web App</div> */}
         {items.map((item, index) => {
           const isOpen = activeIndex.includes(index);
           return (
