@@ -1,0 +1,678 @@
+TP926
+
+Next.js  15.2.1
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+App Routing
+Api Route
+ServerComponents 
+
+Some features of Next.js.   :-
++ Server-Side Rendering (SSR)   --for pages with frequently changing or dynamic content,
++ Static Site Generation (SSG)  --significantly improve performance by serving static files directly from a CDN
++ File System-Based Routing  --The routing system is based on the file structure of the "pages" directory, making it easy to organize code.
++ Automatic Code Splitting   --Next.js automatically splits code into smaller chunks, loading only what's necessary for each page. This enhances performance by reducing initial bundle sizes.
++ API Routes: --Easily create serverless functions by defining API routes alongside your pages, simplifying the development of server-side logic.
++ ServerComponents  --default 'use server' + SEO (web crawlers) + faster initial page load + executing code on the server.
+
+Built-in Image Optimization: The next/image component provides built-in support for image optimization
+Built-in CSS Support: The framework supports standard CSS and precompiled Scss and Sass, CSS-in-JS, and styled JSX.
+Hot Module Replacement (HMR) is a feature that enables real-time updates to modules in a running application without requiring a full page reload.
+Easy Deployment: Next.js simplifies the deployment process with various options, including static site hosting, serverless deployment, and more.
+
+------------------------------------:)
+SSR --
+Request from Client > Server-Side Processing > Sending Rendered HTML to Client > Client-Side Hydration
+getServerSideProps - Suitable for pages with frequently changing or dynamic content, 
+                     Fetches data on every request, allowing for real-time updates.
+
+SSG --
+where pages can be pre-built at build time, significantly improve performance by serving static files directly from a CDN, reducing the load on servers and improving the user experience.
+getStaticProps - Fetches data at build time, so the data is static until the next build, 
+                 Ideal for pages with relatively static content that can be determined at build time.
+getStaticPaths - create dynamic paths for pages that involve dynamic data, invoked during the build process.
+
+ISR --
+Incremental Static Regeneration with the use of the 'revalidate' prop within getStaticProps.
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+React Optimization Techniques  --https://www.freecodecamp.org/news/react-performance-optimization-techniques/
+Also --https://www.geeksforgeeks.org/event-delegation-in-javascript/
+
+List visualization  --npm i react-virtualized
+  List visualization, or windowing, involves rendering only the items currently visible on the screen.  
+
+Lazy Loading Images  --npm i react-lazyload
+  Allows us to delay the loading of images until they are needed or visible to the user
+
+Memoization  --React.memo(), useMemo(), and useCallback()   --+
+Technique used to optimize the performance of functional components by caching the results of expensive computations or function calls. 
+  -- React.memo(), the rendering result is cached based on props. If the props haven't changed since the last render, React reuses the previously rendered result
+  export default React.memo(Post);    // Post Component
+  -- useMemo(), hook optimizes performance by memoizing the result of a function call or an expensive computation. It caches the result and recalculates it only when the input values change
+  const memoizedValue = useMemo(() => expensiveComputation(count), [count]);
+  -- useCallback(), used to memoize a function instead of memoizing the function result, particularly useful when passing events as props to child components to prevent unnecessary re-renders.
+  const memoizedIncrement = useCallback(incrementCount, [count]);  --Parent component
+  const ChildComponent = React.memo(({ onIncrement }) => {} });
+
+Throttling and Debouncing Events  --+
+Throttling > 
+  Technique used to limit the number of times a function or an event handler is invoked.
+  Throttling allows you to control the rate at which the function is called by setting up a minimum time interval between each function invocation.
+Debouncing >  
+  on the other hand, is also used to limit the number of times a function or an event handler is invoked. 
+  It ensures that the function is called only after a certain period of inactivity.
+  Allows you to postpone the function call until the user has finished typing or a specific time has elapsed since the last event.
+   With debouncing, the search function will only be invoked after the user stops typing for 300ms.
+
+Code Splitting --+
+Technique used to split a large JavaScript bundle into smaller, manageable chunks. It helps improve performance by loading only the necessary code for a specific part.
+ Instead of downloading the entire bundle upfront, only the necessary code is fetched and executed when a user visits a particular page or triggers a specific action.
+
+  import React, { lazy, Suspense } from 'react';
+  const DynamicComponent = lazy(() => import('./DynamicComponent'));
+
+  const AsyncComponent = () => (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DynamicComponent />
+    </Suspense>
+  );
+
+  AsyncComponent is a component that uses lazy and Suspense to perform code splitting. The DynamicComponent is dynamically imported using the import() syntax.
+
+React Fragments 
+  --feature in React 16.2, <></>, group multiple elements together without adding an additional DOM node, <div>. 
+Web Workers
+  --Web Workers serve as a solution to alleviate the burden on the main thread. They allow the execution of scripts in the background on a separate thread, distinct from the main JavaScript thread.
+UseTransition Hook 
+  --allowing the marking of state updates as non-blocking transitions. This capability enables React to defer rendering for these updates, preventing UI blocking and enhancing overall responsiveness.
+  import React, { useState, useTransition } from 'react';
+  const [isPending, startTransition] = useTransition();
+  function handleClick() {
+    startTransition(() => {
+      setState(newState); // This state update is marked as a transition
+    });
+  }
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+React v19
+
+Changes coming to React v19 :-
+
+🤖 There will be a new React compiler that will be introduced in a future version of React.
+🙌🏽 We'll now have auto re-rendering, memoization, and optimisation of state and UI.
+🔮 There will be some new hooks like use() that will help simplify promises and async code.
+⚙️ There will now be server side component support in React.
+📝 We'll have better form handling using actions, useFormStatus(), useStatusForm(), and useOptimistic().
+🖼 React will optimise asset loading to enhance performance by using suspense under the hood.
+🔗 We'll have web component integration in React.
+
+Actions --support for using async functions in transitions to handle pending states, errors, forms, and optimistic updates automatically.
+const [isPending, startTransition] = useTransition()
+startTransition(async () => {
+
+useOptimistic --can show users instant feedback while the requests are submitting.
+
+useActionState --accepts a function (the “Action”), and returns a wrapped Action to call.
+const [error, submitAction, isPending] = useActionState(
+  async (previousState, newName) => {}
+
+useFormStatus --
+const {pending} = useFormStatus();
+useFormStatus reads the status of the parent <form> as if the form was a Context provider.
+
+New API ""use""  --use(). This hook will simplify how we use promises, async code, and context.
+
+React Server Components
+
+
+By End of 2024, you will ikely never need these API
+useMemo, useCallback, memo  -> React Compiler
+forwardRef  -> ref is a prop
+React.lazy  -> RSC, promise-as-child
+useContext  -> use(Context)
+throw promise  -> use(promise)
+<Context.Provider>  -> <Context> 
+
+
+1. 🤖 🤖 React Compiler 🤖 🤖
+Less re-renders --
+developers don't need to do this manually anymore. It also means no need to use useMemo(), useCallback(), and memo
+React Team has created the "React compiler". The React compiler will now manage these re-renders.
+
+2. 🔥🔥 Server components 🔥🔥
+The code is in React but will run on the server. You just need to add 'use server' as the first line of the component.
+SEO : enhance search engine optimisation by providing more accessible content to web crawlers.
+Performance Boost: Server components contribute to faster initial page loads and improved overall performance
+Server-Side Execution: Server components enable executing code on the server, making tasks like API calls seamless and efficient.
+
+3. 💪💪 Actions 💪💪
+Actions are going to be a game-changer for how we work with forms.
+In simpler terms, you'll be able to replace the "onSubmit" event with Actions. 
+These actions are HTML form attributes.
+Before <form onSubmit={search}>
+Actions <form action={submitData}>
+You can execute both synchronous and asynchronous operations with actions, streamlining data submission management and state updates.
+
+4. ⚙️⚙️ Web components ⚙️⚙️
+Web components allow you to create custom components using native HTML, CSS, and JavaScript, seamlessly incorporating them into your web applications 
+If you come across a really useful web component, such as a carousel, you can seamlessly incorporate it into your React projects without the need to convert it into React code.
+
+5. 🌇🌇 Document Metadata 🌇🌇
+Elements like "title," "meta tags," and "description" are crucial in optimising SEO and ensuring accessibility.
+
+Before : we have a component HeadDocument which is responsible for updating the title and meta tags based on the props. OR react-helmet.
+After: 
+<title>Freecodecamp</title>
+      <meta name="description" content="Freecode camp blogs" />
+
+6. 💼💼 Asset Loading 💼💼
+By allowing assets to load asynchronously in the background, React 19 minimizes waiting times and ensures that users can interact with the content without interruptions. This optimization not only enhances the performance of React applications but also contributes to a more enjoyable browsing experience for users.
+
+7. 🪝🪝 New React Hooks 🪝🪝
+
+🥁 useMemo():
+Before 
+ const isInputEmpty = useMemo(() => {
+    console.log('Checking if input is empty...');
+    return inputValue.trim() === '';
+  }, [inputValue]);
+
+After 
+  const isInputEmpty = () => {
+    console.log('Checking if input is empty...');
+    return inputValue.trim() === '';
+  });
+
+we don't need to memo the values – React19 will do it by itself under the hood.
+
+🥁 forwardRef()
+
+Before
+import React, { forwardRef } from 'react';
+
+const ExampleButton = forwardRef((props, ref) => (
+  <button ref={ref}>
+    {props.children}
+  </button>
+));
+
+After
+ref can be passed as a prop. No more forwardRef() is required.
+
+import React from 'react';
+
+const ExampleButton = ({ ref, children }) => (
+  <button ref={ref}>
+    {children}
+  </button>
+);
+
+🥁 The new use() hook
+use(). This hook will simplify how we use promises, async code, and context.
+
+import { use } from "react";
+
+const fetchUsers = async () => {
+    const res = await fetch('https://jsonplaceholder.typicode.com/users');
+    return res.json();
+  };
+
+  const UsersItems = () => {
+    const users = use(fetchUsers());
+
+    return (
+      <ul>
+        {users.map((user) => (
+          <div key={user.id} className='bg-blue-50 shadow-md p-4 my-6 rounded-lg'>
+            <h2 className='text-xl font-bold'>{user.name}</h2>
+            <p>{user.email}</p>
+          </div>
+        ))}
+      </ul>
+    );
+  }; 
+export default UsersItems;
+
+Another place we can use the new hook is with Context.
+Now, instead of useContext(), we will have use(context).
+
+import { createContext, useState, use } from 'react';
+
+const ThemeContext = createContext();
+
+const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+const Card = () => {
+  // use Hook()
+  const { theme, toggleTheme } = use(ThemeContext);
+
+  return (
+    <div
+      className={`p-4 rounded-md ${
+        theme === 'light' ? 'bg-white' : 'bg-gray-800'
+      }`}
+    >
+      <h1
+        className={`my-4 text-xl ${
+          theme === 'light' ? 'text-gray-800' : 'text-white'
+        }`}
+      >
+        Theme Card
+      </h1>
+      <p className={theme === 'light' ? 'text-gray-800' : 'text-white'}>
+       Hello!! use() hook
+      </p>
+      <button
+        onClick={toggleTheme}
+        className='bg-blue-500 hover:bg-blue-600 text-white rounded-md mt-4 p-4'
+      >
+        {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+      </button>
+    </div>
+  );
+};
+
+const Theme = () => {
+  return (
+    <ThemeProvider>
+      <Card />
+    </ThemeProvider>
+  );
+};
+
+export default Theme
+
+ThemeProvider is responsible for the context providing.
+card is the component where we will consume the context. For this we will be using new hook use to consume the context. 
+
+🥁 The useFormStatus() hook
+Syntax
+const { pending, data, method, action } = useFormStatus();
+OR
+const { status } = useFormStatus()
+
+pending: if the form is in a pending state, then it will be true, otherwise it will be false.
+data: an object implementing the FormData interface that contains the data the parent <form> is submitting.
+method: the HTTP method – GET, or POST. By default it will be GET.
+action: a function reference.
+
+Code example:
+import { useFormStatus } from "react-dom";
+
+function Submit() {
+  const status = useFormStatus();
+  return <button disabled={status.pending}>{status.pending ? 'Submitting...' : 'Submit'}</button>;
+}
+
+const formAction = async () => {
+  // Simulate a delay of 2 seconds
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+}
+
+const FormStatus = () => {
+  return (
+    <form action={formAction}>
+      <Submit />
+    </form>
+  );
+};
+
+export default FormStatus;
+
+Submit is a method – a form's action to submit the form. This method will check the status from useFormStatus which will let us know if the status.pending is true or false.
+Based on status.pending we can display the message in the UI.
+formAction is a faker method to delay the form submission.
+
+In the above code, on the form submission, from the useFormStatus hook we will get a pending status. While pending is true, the text "Submitting..." will display on the UI. Once pending is false, the Submitting text will be changed to "Submitted".
+
+This hook is powerful and will be helpful when you want to know the status of a form submission (pending or not) and accordingly display the data.
+
+🥁 The useFormState() hook
+Syntax :-
+const [state, formAction] = useFormState(fn, initialState, permalink?);
+useFormState allows you to update state based on the result of a form submission.
+
+fn: the function to be called when the form is submitted or button is pressed.
+initialState: the value you want the state to be initially. It can be any serializable value. This argument is ignored after the action is first invoked.
+
+permalink: this is optional. A URL or page link, if fn is going to be run on server then the page will redirect to permalink.
+
+This hook will return:
+
+state: the initial state will be the value we have passed to initialState.
+formAction: an action that will be passed to the form action. The return value of this will be available in the state.
+
+Example of how it works:
+import { useFormState} from 'react-dom';
+
+const FormState = () => {
+    const submitForm = (prevState, queryData) => {
+        const name =  queryData.get("username");
+        console.log(prevState); // previous form state
+        if(name === 'john'){
+            return {
+                success: true,
+                text: "Welcome"
+            }
+        }
+        else{
+            return {
+                success: false,
+                text: "Error"
+            }
+        }
+    }
+    const [ message, formAction ] = useFormState(submitForm, null)
+    return <form action={formAction}>
+        <label>Name</label>
+        <input type="text" name="username" />
+        <button>Submit</button>
+        {message && <h1>{message.text}</h1>}
+    </form>
+}
+
+export default FormState;
+
+Let's understand what is happening in the above code:
+
+submitForm is the method responsible for the form submission. This is the Action (remember Action new React19 feature).
+
+Inside submitForm, we are checking the value of the form. Then, depending on whether it's successful or shows an error, we return the specific value and message. In the above code example, if there is any value other than "John", then it will return an error.
+
+We can also check the prevState of the form. The initial state would be null, and after that it will return the prevState of the form.
+
+
+🥁 The useOptimistic() hook
+Syntax :-
+const [ optimisticMessage, addOptimisticMessage] = useOptimistic(state, updatefn)
+
+useOptimistic is a React Hook that lets you show a different state while an async action is underway, according to the React docs.
+
+This hook will help enhance the user experience and should result in faster responses. This will be useful for applications that need to interact with the server.
+
+-- while a response is on the way, we can show a "state" to give the user an immediate response. Once the actual response is returned from the server, the "optimistic" state will be replaced by it.
+
+The below code shows the optimistic state on click of the button submit <form input> (Sending...) until the response doesn't come.
+
+Example :-
+import { useOptimistic, useState } from "react";
+
+const Optimistic = () => {
+  const [messages, setMessages] = useState([
+    { text: "Hey, I am initial!", sending: false, key: 1 },
+  ]);
+  const [optimisticMessages, addOptimisticMessage] = useOptimistic(
+    messages,
+    (state, newMessage) => [
+      ...state,
+      {
+        text: newMessage,
+        sending: true,
+      },
+    ]
+  );
+
+  async function sendFormData(formData) {
+    const sentMessage = await fakeDelayAction(formData.get("message"));
+    setMessages((messages) => [...messages, { text: sentMessage }]);
+  }
+
+  async function fakeDelayAction(message) {
+    await new Promise((res) => setTimeout(res, 1000));
+    return message;
+  }
+
+  const submitData = async (userData) => {
+    addOptimisticMessage(userData.get("username"));
+
+    await sendFormData(userData);
+  };
+
+  return (
+    <>
+      {optimisticMessages.map((message, index) => (
+        <div key={index}>
+          {message.text}
+          {!!message.sending && <small> (Sending...)</small>}
+        </div>
+      ))}
+      <form action={submitData}>
+        <h1>OptimisticState Hook</h1>
+        <div>
+          <label>Username</label>
+          <input type="text" name="username" />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </>
+  );
+};
+
+export default Optimistic;
+
+
+1. fakeDelayAction is a fake method to delay the submit event. This is to show the optimistic state.
+2. submitData is the action. This method is responsible for the form submission. This could be async, too.
+3. sendFormData is responsible for sending the form to fakeDelayAction
+4. Setting the default state. messages will be used in the useOptimistic() as input and will return in optimisticMessages.
+
+const [messages, setMessages] = useState([{ text: "Hey, I am initial!", sending: false, key: 1 },]);
+
+Inside submitData, we are using addOptimisticMessage. This will add the form data so that it will be available in optimisticMessage.
+
+{optimisticMessages.map((message, index) => (
+        <div key={index}>
+          {message.text}
+          {!!message.sending && <small> (Sending...)</small>}
+        </div>
+      ))}
+
+
+Summary of the 3 form hooks we learned 
+
+Form                                       Form                            2
+                       1                    John (submitting...)   -->>   useOptimistic()
+Name      action={submit} -->>              Name 
+Email                                       Email                          3
+[Submit]                                    [Submitting..]         -->>   useFormStatus
+                                                              |
+                                                          4   |   useFormStatus
+                                                              |
+                      error        <---------                 V       ------>     success
+
+Form                                                                        Form
+ Error...(Red)                                                               Welcome...(Green)
+ Name                                                                        Name
+ Email                                                                       Email
+
+
+Changes coming to React v19 :-
+
+🤖 There will be a new React compiler that will be introduced in a future version of React.
+🙌🏽 We'll now have auto re-rendering, memoization, and optimisation of state and UI.
+🔮 There will be some new hooks like use() that will help simplify promises and async code.
+⚙️ There will now be server side component support in React.
+📝 We'll have better form handling using actions, useFormStatus(), useStatusForm(), and useOptimistic().
+🖼 React will optimise asset loading to enhance performance by using suspense under the hood.
+🔗 We'll have web component integration in React.
+
+Ref :- https://www.freecodecamp.org/news/new-react-19-features/
+Also Refer :- https://www.geeksforgeeks.org/react-19-new-features-and-updates/
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+React v18
+
+In previous versions of React, the reconciliation algorithm, also known as “diffing” or “tree diffing,” compared the previous and current virtual DOM trees to identify differences and update the affected components accordingly. 
+
+Ref :- https://medium.com/@souviksen093/understanding-react-reconciliation-in-react-18-a-deep-dive-16b083e5592a
+
+React v18
+  React 18 introduces an enhanced reconciliation algorithm that takes advantage of Concurrent Mode. 
+  Concurrent Mode allows React to work on multiple tasks concurrently, without blocking the main thread, leading to better responsiveness and smoother user experiences.
+
+  Algorithm Used : React Reconciliation in React 18 -- ( Concurrent React )
+
+  The new reconciliation algorithm in React 18, known as “Concurrent React,” divides the reconciliation work into smaller units called “fibers” and prioritizes them based on their importance.
+
+  This approach enables React to efficiently interrupt and resume the reconciliation process, prioritizing user interactions and other high-priority tasks.
+
+Key Concepts in React Reconciliation:
+  01 Fiber Reconciliation:
+    The reconciliation process in React 18 operates at the fiber level. A fiber represents a component and its corresponding work. By dividing the reconciliation work into smaller fibers, React can manage and prioritize them more efficiently.
+  02 Render Phase and Commit Phase:
+    The reconciliation process is divided into two main phases: the render phase and the commit phase. 
+    + In the render phase, React traverses the component tree, creating or updating the fibers. It determines what components need to be rendered and builds a priority list based on the urgency of their updates.
+    + In the commit phase, React applies the changes to the actual DOM. This phase is also divided into multiple priority levels, allowing React to prioritize critical updates and respond to user interactions without compromising performance.
+
+
+Benefits of React 18 Reconciliation:
+  01 Improved Performance: --reducing unnecessary updates and optimizing the rendering process.
+  02 Smoother User Experience: --Concurrent Mode allows React to handle tasks concurrently, ensuring that user interactions and important updates take priority. 
+  03 Reduced Jank: --Jank refers to the visual stuttering or jerkiness experienced during animations or transitions. 
+  React 18’s reconciliation enhancements minimize jank, providing a seamless and visually pleasing experience for users.
+
+Advanced Techniques in React 18 Reconciliation:
+01 Suspense:
+
+React 18 introduces an enhanced version of the Suspense component, which allows developers to define fallback UIs for components that are asynchronously loaded. This enables smoother transitions and better user experiences, especially when loading large chunks of data or resources.
+
+import { Suspense, lazy } from 'react';
+
+const LazyComponent = lazy(() => import('./LazyComponent'));
+
+function App() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading…</div>}>
+        <LazyComponent />
+      </Suspense>
+    </div>
+    );
+ }
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+React :-
+React Reconciliation is the process by which React determines the changes made to the virtual DOM and applies those changes efficiently to the actual DOM.
+In previous versions of React, the reconciliation algorithm, also known as “diffing” or “tree diffing,” compared the previous and current virtual DOM trees to identify differences and update the affected components accordingly.
+
+
+Hooks -
+cont count[data, setData] = useState([]);
+useEffect(() => { fetch('url').then((res) => res.json()).then((data) => setData(data));},[]);
+ return () => clearTimeout(timer)   to dismount !!!
+useContext -share state between deeply nested components more easily
+useCallback -returns a memoized callback function
+useMemo -returns a memoized value
+useRef -useRef is a React Hook that lets you reference a value that’s not needed for rendering.
+
+
+useReducer -reudced function contains custom state logic and initial state (object), 
+            returns current state and dispatch method.
+
+customHook -
+
+fetch("https://jsonplaceholder.typicode.com/todos")
+      .then((res) => res.json())
+      .then((data) => setData(data));
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Middlewares
+
+What are middlewares in React Redux ?      // https://www.geeksforgeeks.org/what-are-middlewares-in-react-redux/
+
+Redux uses something called "middlewares" to control how actions, that change the data, are handled.
+Middleware in Redux is like a gatekeeper that steps in between when an action is triggered and before it gets processed by the reducer. 
+
+Common Use Cases of Middlewares:
+Logging, AsynchronousOperations, Authentication & Authorization, Caching.
+
+With redux toolkit, redux-thunk shall be installed itself. We will be using thunk as middleware.
+
+Middlewares are also used in Next.js       // https://medium.com/@himanshu.sharma.for.work/setting-up-redux-in-next-js-with-typescript-65eda6decdbf#:~:text=Redux%20is%20a%20global%20state,js.
+
+https://www.geeksforgeeks.org/what-are-middlewares-in-react-redux/  --Simple Middleware example !!
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ES6 features
+
+let, const, arrowFunctions, templateliterals
+rest, spread, promises
+default parameters, object destructuring
+Map, Set, Symbol, Math Methods
+
+In Detail :-
+
+>> let, --creates a variale on which values can be reassigned after initialization.
+>> const (value cannot be changed)
+
+>> arrow functions  |  const x = (x, y) => x * y;
+
+>> template literal  |  `My Nmae is ${myName}`;  \` \$
+
+>> spread  "spread" operator spreads elements of iterable objects  | const year = [...q1, ...q2, ...q3, ...q4]   i.e. year = ['Jan', 'Feb', 'Mar', 'Aprl', ... ]
+   + Use Spread to Convert a String into Individual Array Items
+
+>> rest  rest parameter (...) allows a function to treat an indefinite number of arguments OR rest operator is used to collect multiple elements into an array  | function sum(...args) {}
+
+  rest to enclose some values into an array
+  function myBio(firstName, lastName, ...otherInfo) { }
+  we used the ...otherInfo rest parameter to put "CodeSweetly", "Web Developer", and "Male" into an array.
+
+>> promises  | JavaScript object that links "Producing Code" and "Consuming Code".
+const myPromise = new Promise(function(myResolve, myReject) {
+// "Producing Code" (May take some time)
+
+  myResolve(); // when successful
+  myReject();  // when error
+});
+
+// "Consuming Code" (Must wait for a fulfilled Promise).
+myPromise.then(
+  function(value) { /* code if successful */ },
+  function(error) { /* code if some error */ }
+);
+
+>> Default Parameter Values  | function myFunction(x, y = 10) {}
+
+>> Object Destructuring  | 
+// Create an Object
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50
+};
+
+// Destructuring
+let { firstName, age } = person;
+
+>> Classes | JavaScript Classes are templates for JavaScript Objects.
+
+>> Map objects (A Map holds key-value pairs where the keys can be any datatype.)
+>> Set objects (Set is a collection of unique values.)
+>> Symbol is a primitive data, It represents a unique "hidden" identifier that no other code can accidentally access.  | let id = Symbol('id');
+
+>> Math Methods
+Math.trunc()
+Math.sign()
+Math.cbrt()
+Math.log2()
+Math.log10()
+
