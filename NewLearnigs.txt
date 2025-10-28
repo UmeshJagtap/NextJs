@@ -1,0 +1,21 @@
+React19.2
+Hooks 
+
+useTransition :- 
+useTransition is a React Hook that lets you render a part of the UI in the background.
+const [isPending, startTransition] = useTransition()
+
+useId
+useId is a React Hook for generating unique IDs that can be passed to accessibility attributes.
+const id = useId()
+
+useLayoutEffect
+useLayoutEffect is a version of useEffect that fires before the browser repaints the screen.
+Pitfall
+useLayoutEffect can hurt performance. Prefer useEffect when possible.
+
+
+//------------------------------------------------ To explore
+
+Build a FullStack Job Portal App with MERN Stack (MongoDB, Express, React Js, Node Js)
+https://www.youtube.com/watch?v=F5EYXc91Cpo&list=PLXXI5Oe3aCLky2lAcxpwwqAOCFF-uRpnk
