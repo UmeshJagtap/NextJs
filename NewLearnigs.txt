@@ -1,3 +1,31 @@
+Basics :--
+
+Q. diferrence between let const var
+
+var: Has function scope or global scope. Variables declared with var are accessible throughout the entire function they are declared in, or globally if declared outside any function.
+let: Has block scope. Variables declared with let are only accessible within the block (code enclosed in curly braces {}) in which they are defined. 
+(Eg. if statements, else statements, for loops, while loops, switch statements, { let x = 10; })
+const: Also has block scope, similar to let.
+
+var: Allows both reassignment (changing the value) and redeclaration (declaring the variable again in the same scope).
+let: Allows reassignment but not redeclaration within the same block scope.
+const: Does not allow reassignment after its initial assignment. However, if a const variable holds an object or array, the properties of that object or array can still be modified (mutated). 
+       const also does not allow redeclaration within the same block scope.
+
+Q. what happens if you do not pass any depedency array to useEffect 
+>> The useEffect will be called every time any state of the component changes
+>> Empty array ([]): The effect runs only once after the initial render
+>> Array with dependencies ([dep1, dep2]): The effect runs after the initial render and whenever any of the specified dependencies change. 
+   This ensures the effect re-runs only when necessary, optimizing performance. 
+
+Q. Higher Order Functions 
+>> Higher order functions are functions that take one or more functions as arguments, or return a function as their result.
+   filter(), map(), reduce()
+   A Higher-Order Component (HOC) is a function that takes a component as an argument and returns a new, "enhanced" component.
+   This new component typically wraps the original component, adding props, state, or behavior without directly modifying the original component's code. 
+      Key Characteristics and Use Cases: Code Reusability, Cross-Cutting Concerns (Authentication, Data Fetching, Styling/Theming, Logging)
+      Eg: Imagine a withLoading HOC that adds a loading indicator while data is being fetched:
+
 React19.2
 Hooks 
 
@@ -17,5 +45,11 @@ useLayoutEffect can hurt performance. Prefer useEffect when possible.
 
 //------------------------------------------------ To explore
 
+MERN Stack Project: Video Calling Realtime Chat App & Social App
+https://www.youtube.com/watch?v=ZuwigEmwsTM
+
 Build a FullStack Job Portal App with MERN Stack (MongoDB, Express, React Js, Node Js)
 https://www.youtube.com/watch?v=F5EYXc91Cpo&list=PLXXI5Oe3aCLky2lAcxpwwqAOCFF-uRpnk
+
+Build Food Delivery Website with Realtime Map Live Tracking 🔥 | MERN Stack (Google Auth + Razorpay)
+https://www.youtube.com/watch?v=uS4j1ylx7TI
