@@ -24,7 +24,7 @@ Q. Higher Order Functions
    A Higher-Order Component (HOC) is a function that takes a component as an argument and returns a new, "enhanced" component.
    This new component typically wraps the original component, adding props, state, or behavior without directly modifying the original component's code. 
       Key Characteristics and Use Cases: Code Reusability, Cross-Cutting Concerns (Authentication, Data Fetching, Styling/Theming, Logging)
-      Eg: Imagine a withLoading HOC that adds a loading indicator while data is being fetched:
+      Eg: Imagine a withLoading HOC that adds a loading indicator while data is being fetched: Eg2. useSanitizedClasses()
 
 React19.2
 Hooks 
@@ -41,6 +41,12 @@ useLayoutEffect
 useLayoutEffect is a version of useEffect that fires before the browser repaints the screen.
 Pitfall
 useLayoutEffect can hurt performance. Prefer useEffect when possible.
+
+
+routing (next.js --> page oruter / app router)
+i18n  >>  C:\Users\ZUK\Documents\GitHub\Edu_NextJS_Train\my-next-i18n-app
+Jest
+MicroFrontend
 
 
 //------------------------------------------------ To explore

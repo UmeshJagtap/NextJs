@@ -48,7 +48,7 @@ Production Support Engineer
 TimeLine :-------------
 HNB 
 Sitecore-NextJS implementation
-TextLockup, Footer, Navigation
+TextLockup, Footer, Navigation, Accrodion
 Hero (Brandhero, TAMH, TAMV, InPageMedia)
 Brightcove video
 
@@ -59,8 +59,8 @@ This certificate can be verified at https://edureka.co/verify using Certificate 
 
 Honeywell 11/22
 JS Training !!
-SPS eComm
-THANK YOU | SPS eComm Team Appreciation 07/23
+SPS eComm, THANK YOU | SPS eComm Team Appreciation 07/23
+jQuery, inter-related dropdowns, emailTemplate
 Go live (PI+AST+Support+RAPID) --18th January 2024 
 
 AXA 12/2020
