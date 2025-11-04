@@ -1,5 +1,6 @@
 
 Resume Link :- https://www.canva.com/design/DAGhWjDycxo/RhwxeuK9rKfz9G9Wzi-P6A/edit
+https://www.resume-now.com/build-resume/section/expr-det/a7a9e44f-27bf-4c86-a233-84814d77d666/3923264e-c86c-45e2-8a6d-14a2d455e9d3
 
 UMESH JAGTAP
 SOFTWARE ENGINEER
@@ -20,8 +21,8 @@ MongoDB
 
 
 +91 - 7776933347
-umesh.aj@gmail.com
-Ghorpadi, Pune
+umeshaj.77@gmail.com
+Ghorpadi, Pune, 411001
 www.umeshaj.com
 
 Versetile Software developer with over 2 years experience in Web development with HTML5, CSS3,  JavaScript, TypeScript.
@@ -35,6 +36,7 @@ Next.js developer
 2022 - 2024
 Honeywell
 UI developer
+Next js Training_23 Sep 2024
 
 2021 - 2022
 AXA-UK
@@ -51,7 +53,6 @@ Sitecore-NextJS implementation
 TextLockup, Footer, Navigation, Accrodion
 Hero (Brandhero, TAMH, TAMV, InPageMedia)
 Brightcove video
-
 
 TCS - Next js Training_23 Sep 2024.
 Congratulations on successfully earning your certificate for Next JS Training .

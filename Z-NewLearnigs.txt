@@ -42,12 +42,20 @@ useLayoutEffect is a version of useEffect that fires before the browser repaints
 Pitfall
 useLayoutEffect can hurt performance. Prefer useEffect when possible.
 
-
 routing (next.js --> page oruter / app router)
-i18n  >>  C:\Users\ZUK\Documents\GitHub\Edu_NextJS_Train\my-next-i18n-app
+i18n  >>  C:\Users\ZUK\Documents\GitHub\Edu_NextJS_Train\my-next-i18n-app  
+      >>  React Internationalization (i18n) with i18next --https://www.youtube.com/watch?v=LFaFPORPmeo
+      >>  Next.js 15 Multiple Languages in 2025 | i18n + Zod Error Translation Guide --https://www.youtube.com/watch?v=8F_rGy_ys4s
 Jest
 MicroFrontend
 
+3/11
+input autofocus --
+React LifeCycle Methods :- 
+Mounting Phase (Component is being created and inserted into the DOM)
+Updating Phase (Component is being re-rendered due to changes in props or state)
+Unmounting Phase (Component is being removed from the DOM)
+useEffect can be used to mimic componentDidMount,
 
 //------------------------------------------------ To explore
 

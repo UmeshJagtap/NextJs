@@ -1,17 +1,30 @@
-HTML5
+HTML5  --------------------------(*)
+
+<!DOCTYPE html>
+audio, video
+canvas, svg
+header, article, section, footer
+nav, figure, <aside>
+
+HTML5 introduces new input types (e.g., email, date, number) attributes like placeholder and required
+HTML5 provides localStorage and sessionStorage
+The Application Cache (AppCache) allows web applications to function offline by storing resources locally,
+
+
+CSS  --------------------------(*)
 
 
 
-CSS
+
+JavaScript  --------------------------(*)
 
 
 
 
-JavaScript
+ES6   --------------------------(*)
 
-
-
-
-ES6
-
-
+let
+const
+srpead
+rest
+template literals
