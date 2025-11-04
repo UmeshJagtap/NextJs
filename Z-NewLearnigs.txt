@@ -57,6 +57,15 @@ Updating Phase (Component is being re-rendered due to changes in props or state)
 Unmounting Phase (Component is being removed from the DOM)
 useEffect can be used to mimic componentDidMount,
 
+
+4/11
+5/11
+Types of API 
+REST --connection made easy
+GraphQL --made fetching flexible
+gRPC --speed n performance in microservices world, fetches data in binay and compressed format
+WebSockets --made apps real-time and interactive, continuous connection.
+
 //------------------------------------------------ To explore
 
 MERN Stack Project: Video Calling Realtime Chat App & Social App
