@@ -66,6 +66,8 @@ GraphQL --made fetching flexible
 gRPC --speed n performance in microservices world, fetches data in binay and compressed format
 WebSockets --made apps real-time and interactive, continuous connection.
 
+https://www.canva.com/design/DAGhWjDycxo/RhwxeuK9rKfz9G9Wzi-P6A/edit
+
 //------------------------------------------------ To explore
 
 MERN Stack Project: Video Calling Realtime Chat App & Social App
