@@ -68,6 +68,11 @@ WebSockets --made apps real-time and interactive, continuous connection.
 
 https://www.canva.com/design/DAGhWjDycxo/RhwxeuK9rKfz9G9Wzi-P6A/edit
 
+let myArray = [2, 4, 6, 8, 10];
+let newElement = 1;
+myArray.unshift(newElement); // Adds to the beginning
+console.log(myArray);
+
 //------------------------------------------------ To explore
 
 MERN Stack Project: Video Calling Realtime Chat App & Social App
