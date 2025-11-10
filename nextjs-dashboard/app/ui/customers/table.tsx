@@ -10,6 +10,17 @@ export default async function CustomersTable({
   customers,
 }: {
   customers: FormattedCustomersTable[];
+
+  // Reference to create DataQuery
+  // export type FormattedCustomersTable = {
+  //   id: string;
+  //   name: string;
+  //   email: string;
+  //   image_url: string;
+  //   total_invoices: number;
+  //   total_pending: string;
+  //   total_paid: string;
+  // };
 }) {
   return (
     <div className="w-full">
@@ -17,6 +28,7 @@ export default async function CustomersTable({
         Customers
       </h1>
       <Search placeholder="Search customers..." />
+      {/* <CreateCustomer /> */}
       <div className="mt-6 flow-root">
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full align-middle">
