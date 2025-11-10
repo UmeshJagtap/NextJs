@@ -3,7 +3,8 @@
 // @use 'base';
 // @use 'test';
 @use 'mixin';
-@import './accordion';
+// @import './accordion';
+@use 'accordion';
 
 // $primary-color: #eeeeee;
 $font-stack: Arial, sans-serif;
