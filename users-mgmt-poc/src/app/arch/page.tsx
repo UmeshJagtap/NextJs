@@ -14,10 +14,10 @@ const ArchHeader = () => {
   const links = [
     // {href: '/', name: 'POC'},
     // { href: '/main', name: 'MAIN' },
-    { href: '/gallery', name: 'GALLERY' },
-    { href: '/projects', name: 'PROJECTS' },
-    { href: '/certifications', name: 'CERTIFICATIONS' },
-    { href: '/contacts', name: 'CONTACTS' },
+    { href: '/arch/gallery', name: 'GALLERY' },
+    { href: '/arch/projects', name: 'PROJECTS' },
+    { href: '/arch/certifications', name: 'CERTIFICATIONS' },
+    { href: '/arch/contacts', name: 'CONTACTS' },
     { href: '/arch', name: 'ARCH' },
   ];
 
