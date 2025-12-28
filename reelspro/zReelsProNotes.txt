@@ -8,6 +8,7 @@ A complete guide on NextAuth in NextJS | Full stack Project Playlist 05  >>  htt
 Ultimate file handling guide in Nextjs with Imagekit | Full stack Project Playlist 06  >>  https://www.youtube.com/watch?v=l-KjjfRX5Uw
 A complete frontend guide for full stack projects | Full stack Project Playlist 07  >>  https://www.youtube.com/watch?v=3DvxjJPKdzI
 
+Complete Zomato MERN Project | Reels-Style Video Feed Integration >> https://www.youtube.com/watch?v=CQ741Gw9Bz0&t=13881s
 
 ReelsPro :-   ** NOTES **
 

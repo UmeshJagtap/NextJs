@@ -18,7 +18,7 @@ user-mgmt-poc :-
 ------ next.js users and courses app
 
 poc-code :-
------- accordion, animation
+------ accordion, animation, TRYING CLERK (AUTH)
 
 NEXT INSPIRATION :-
 Scalable Chat App ,Socket.io ,Kafka ,Redis ,Postgres, Nextjs, Typescript -https://www.youtube.com/watch?v=gCwHi-UFSdg
