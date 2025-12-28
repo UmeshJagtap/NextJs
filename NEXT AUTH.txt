@@ -1,0 +1,398 @@
+Ref :- https://stackblitz.com/edit/react-gffa5ret?file=NextAuth%2FInstallation.txt
+
+////////////////////////////////////////////////////////////////////////////////
+//		----------------- NEXT AUTH -----------------		      //
+////////////////////////////////////////////////////////////////////////////////
+
+// Installation ----------------------------<<
+
+https://authjs.dev/getting-started/installation?framework=Next.js
+
+1. Installing Auth.js
+
+  npm install next-auth@beta
+
+
+2. Setup Environment
+
+  npx auth secret
+
+This will also add it to your .env file, respecting the framework conventions (eg.: Next.js’ .env.local).
+
+
+3. Configure
+// Next, create the Auth.js config file and object. This is where you can control the behaviour of the library and specify custom authentication logic, adapters, etc. We recommend all frameworks to create an auth.ts
+// In this file we’ll pass in all the options to the framework specific initialization function and then export the route handler(s), signin and signout methods, and more.
+
+3.1  Start by creating a new auth.ts file at the root of your app with the following content.
+./auth.ts
+import NextAuth from "next-auth"
+ 
+export const { handlers, signIn, signOut, auth } = NextAuth({
+  providers: [],
+})
+
+3.2 Add a Route Handler under /app/api/auth/[...nextauth]/route.ts.
+// This file must be an App Router Route Handler, however, the rest of your app can stay under page/ if you’d like.
+
+./app/api/auth/[...nextauth]/route.ts
+import { handlers } from "@/auth" // Referring to the auth.ts we just created
+export const { GET, POST } = handlers
+
+3.3 Add optional Middleware to keep the session alive, this will update the session expiry every time its called.
+
+./middleware.ts
+
+export { auth as middleware } from "@/auth"
+
+
+4. Setup Authentication Methods
+// With that, the basic setup is complete! Next we’ll setup the first authentication methods and fill out that providers array.
+
+OAuth
+// Auth.js comes with over 80 providers preconfigured. We constantly test ~20 of the most popular ones, by having them enabled and actively used in our example application.
+
+Email Provider ( MagicLinks )
+
+Credentials
+
+
+
+REFS :-
+https://next-auth.js.org/getting-started/client
+https://authjs.dev/getting-started/authentication/oauth
+
+
+//----------------------------------------------------- HANDS ON CODE 
+
+// github >> auth.js  ++++++++++++++++++++++++++++++
+
+// // Environment Variables
+// AUTH_GITHUB_ID
+// AUTH_GITHUB_SECRET
+
+// // Configuration
+// // Next.js  --------<<<<<
+// /auth.ts
+// import NextAuth from "next-auth"
+// import GitHub from "next-auth/providers/github"
+
+// export const { handlers, auth, signIn, signOut } = NextAuth({
+//   providers: [GitHub],
+// })
+
+// Express  ---------<<<<<
+// /src/app.ts
+import { ExpressAuth } from '@auth/express';
+import GitHub from '@auth/express/providers/github';
+
+app.use('/auth/*', ExpressAuth({ providers: [GitHub] }));
+
+
+// google >> auth.js  ++++++++++++++++++++++++++++++
+
+// Google's OAuth 2.0 APIs can be used for both authentication and authorization.
+// https://authjs.dev/getting-started/providers/google
+
+// // Environment Variables
+// AUTH_GOOGLE_ID
+// AUTH_GOOGLE_SECRET
+
+// import NextAuth from 'next-auth';
+// import Google from 'next-auth/providers/google';
+
+// export const { handlers, auth, signIn, signOut } = NextAuth({
+//   providers: [Google],
+// });
+
+// // With Refresh Token ----------<<<<<
+// // ./auth.ts
+// import Google from 'next-auth/providers/google';
+
+// export const { handlers, auth, signIn, signOut } = NextAuth({
+//   providers: [
+//     Google({
+//       authorization: {
+//         params: {
+//           prompt: 'consent',
+//           access_type: 'offline',
+//           response_type: 'code',
+//         },
+//       },
+//     }),
+//   ],
+// });
+
+// Express  ---------<<<<<
+// /src/app.ts
+import { ExpressAuth } from '@auth/express';
+import Google from '@auth/express/providers/google';
+
+app.use('/auth/*', ExpressAuth({ providers: [Google] }));
+
+////////////////////////////////////////////////////////////////////////////////
+		----------------- CLERK -----------------
+////////////////////////////////////////////////////////////////////////////////
+
+// https://clerk.com/docs/nextjs/getting-started/quickstart
+
+// 1. Create a new Next.js application
+npm create next-app@latest my-clerk-app -- --yes
+
+
+// 2. Install @clerk/nextjs
+npm install @clerk/nextjs
+
+
+// 3. Add clerkMiddleware() to your app
+// proxy.ts
+import { clerkMiddleware } from '@clerk/nextjs/server'
+
+export default clerkMiddleware()
+
+export const config = {
+  matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
+  ],
+}
+
+
+// 4. Add <ClerkProvider> and Clerk components to your app
+// app/layout.tsx
+import type { Metadata } from 'next'
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
+import { Geist, Geist_Mono } from 'next/font/google'
+import './globals.css'
+
+export const metadata: Metadata = {
+  title: 'Clerk Next.js Quickstart',
+  description: 'Generated by create next app',
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <header className="flex justify-end items-center p-4 gap-4 h-16">
+            <SignedOut>
+              <SignInButton />
+              <SignUpButton>
+                <button className="bg-[#6c47ff] text-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </header>
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
+  )
+}
+
+// 5. Create your first user
+npm run dev
+
+
+
+//--------------------------------------------------------------------------- SDK Reference
+// Get the current user ( useUser() )
+
+// app/page.tsx
+'use client'
+
+import { useUser } from '@clerk/nextjs'
+
+export default function Page() {
+  const { isSignedIn, user, isLoaded } = useUser()
+
+  // Handle loading state
+  if (!isLoaded) return <div>Loading...</div>
+
+  // Protect the page from unauthenticated users
+  if (!isSignedIn) return <div>Sign in to view this page</div>
+
+  return <div>Hello {user.firstName}!</div>
+}
+
+
+// Update user data
+
+// app/page.tsx
+'use client'
+
+import { useUser } from '@clerk/nextjs'
+
+export default function Page() {
+  const { isSignedIn, isLoaded, user } = useUser()
+
+  // Handle loading state
+  if (!isLoaded) return <div>Loading...</div>
+
+  // Protect the page from unauthenticated users
+  if (!isSignedIn) return <div>Sign in to view this page</div>
+
+  const updateUser = async () => {
+    await user.update({
+      firstName: 'John',
+      lastName: 'Doe',
+    })
+  }
+
+  return (
+    <>
+      <button onClick={updateUser}>Update your name</button>
+      <p>user.firstName: {user.firstName}</p>
+      <p>user.lastName: {user.lastName}</p>
+    </>
+  )
+}
+
+
+// Reload user data
+// app/page.tsx
+'use client'
+
+import { useUser } from '@clerk/nextjs'
+
+export default function Page() {
+  const { isSignedIn, isLoaded, user } = useUser()
+
+  // Handle loading state
+  if (!isLoaded) return <div>Loading...</div>
+
+  // Protect the page from unauthenticated users
+  if (!isSignedIn) return <div>Sign in to view this page</div>
+
+  const updateUser = async () => {
+    // Update data via an API endpoint
+    const updateMetadata = await fetch('/api/updateMetadata', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        role: 'admin',
+      }),
+    })
+
+    // Check if the update was successful
+    if ((await updateMetadata.json()).message !== 'success') {
+      throw new Error('Error updating')
+    }
+
+    // If the update was successful, reload the user data
+    await user.reload()
+  }
+
+  return (
+    <>
+      <button onClick={updateUser}>Update your metadata</button>
+      <p>user role: {user.publicMetadata.role}</p>
+    </>
+  )
+}
+
+//--------------------------------------------------------------------------- UI Components
+
+Authentication components
+<SignIn />
+<SignUp />
+<GoogleOneTap />
+<TaskChooseOrganization />
+<Waitlist />
+
+User components
+<UserAvatar />
+<UserButton />
+<UserProfile />
+
+Organization components
+<CreateOrganization />
+<OrganizationProfile />
+<OrganizationSwitcher />
+<OrganizationList />
+
+Billing components
+<PricingTable />
+<CheckoutButton />
+<PlanDetailsButton />
+<SubscriptionDetailsButton />
+
+Control components
+Control components manage authentication-related behaviors in your application. They handle tasks such as controlling content visibility based on user authentication status, managing loading states during authentication processes, and redirecting users to appropriate pages. Control components render at <Loading /> and <Loaded /> states for assertions on the 
+Clerk object
+. A common example is the 
+<SignedIn>
+ component, which allows you to conditionally render content only when a user is authenticated.
+
+<AuthenticateWithRedirectCallback />
+<ClerkLoaded />
+<ClerkLoading />
+<ClerkDegraded />
+<ClerkFailed />
+<Protect />
+<RedirectToSignIn />
+<RedirectToSignUp />
+<RedirectToTasks />
+<RedirectToUserProfile />
+<RedirectToOrganizationProfile />
+<RedirectToCreateOrganization />
+<SignedIn />
+<SignedOut />
+
+Unstyled components
+<SignInButton />
+<SignInWithMetamaskButton />
+<SignUpButton />
+<SignOutButton />
+
+Customization guides
+Customize components with the appearance prop
+Localize components with the localization prop (experimental)
+Add pages to the <UserProfile /> component
+Add pages to the <OrganizationProfile /> component
+
+Secured by Clerk branding
+
+Warning
+This feature requires a paid plan for production use, but all features are free to use in development mode so that you can try out what works for you. 
+
+See the pricing page for more information.
+
+By default, Clerk displays a Secured by Clerk badge on Clerk components. You can remove this branding by following these steps:
+
+In the Clerk Dashboard, navigate to your application's Settings.
+Under Branding, toggle on the Remove "Secured by Clerk" branding option.
+
+
+
+API Reference
+
+Copy as markdown
+Edit on GitHub
+Open in ChatGPT
+Open in Claude
+Open in Cursor
+
+While accessing Clerk functionality via SDK is the easiest path, Clerk offers two different HTTP APIs for you to interact with directly.
+
+The Clerk Frontend API is meant to be accessed from a browser or native clients. This is what the Clerk SDK's utilize. Use this API if you are building client-side functionality.
+
+The Clerk Backend API is meant to be accessed by backend servers. Use this API if you need to update data inside of Clerk's systems outside the concept of a session, like coordinating data sync operations with third-parties or fetching and updating configuration settings.
