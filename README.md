@@ -3,7 +3,10 @@
 Projects based on NextJs
 
 chai-shadcn :-
------- shadcn -chai and code .
+------ shadcn -chai and code.
+
+my-clerk-app :-
+------ clerk -auth.
 
 mystrymessage :-
 ------ allows clients to provide feedback.
