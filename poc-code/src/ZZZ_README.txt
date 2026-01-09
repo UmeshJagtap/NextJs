@@ -16,3 +16,9 @@ ReInstalling Node modules :--------------------
 rm -rf node_modules
 rm package-lock.json # or yarn.lock
 npm install
+
+
+// Configuring clerk from NEXT AUTH.txt
+npm install @clerk/nextjs --legacy-peer-deps
+
+UmeshAJ@997866
