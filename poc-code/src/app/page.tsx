@@ -1,11 +1,17 @@
+'use client';
+
+import { useUser } from '@clerk/nextjs';
+
 import Image from 'next/image';
 import '../../public/assets/sass/components/globals.scss';
 
-import Scsstest from '../components/Scsstest';
+// import Scsstest from '../components/Scsstest';
 import Bhero from '../components/Bhero';
 import Accordion from '../components/Accordion';
 
 export default function Home() {
+  // const { isSignedIn, user, isLoaded } = useUser();
+  // if (!isSignedIn) return <div>Sign in to view this page</div>;
   return (
     <>
       <div className="w-full gap-16 p-8 sm:pt-16 m-2b-8 border border-solid border-black/[.08] dark:border-white/[.145] rounded-lg flex flex-col items-center">
@@ -121,3 +127,19 @@ export default function Home() {
     </>
   );
 }
+
+// 'use client';
+
+// import { useUser } from '@clerk/nextjs';
+
+// export default function Page() {
+//   const { isSignedIn, user, isLoaded } = useUser();
+
+//   // Handle loading state
+//   if (!isLoaded) return <div>Loading...</div>;
+
+//   // Protect the page from unauthenticated users
+//   if (!isSignedIn) return <div>Sign in to view this page</div>;
+
+//   return <div>Hello {user.firstName}!</div>;
+// }
