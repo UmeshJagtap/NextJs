@@ -22,3 +22,17 @@ npm install
 npm install @clerk/nextjs --legacy-peer-deps
 
 UmeshAJ@997866
+
+//--------------------------------------------
+
+Runtime Error
+Server
+
+
+Clerk: auth() was called but Clerk can't detect usage of clerkMiddleware(). Please ensure the following:
+- Your Middleware exists at ./src/middleware.(ts|js)
+- clerkMiddleware() is used in your Next.js Middleware.
+- Your Middleware matcher is configured to match this route or page.
+- If you are using the src directory, make sure the Middleware file is inside of it.
+
+For more details, see https://clerk.com/err/auth-middleware

@@ -4,6 +4,10 @@ https://www.youtube.com/watch?v=fZdTYswuZjU
 Build a full stack project with NextJS and AI integration -Chai aur Code
 https://www.youtube.com/watch?v=zLJoVRleOuc
 
+CRUD App with Next.js 16 and tRPC
+https://www.youtube.com/watch?v=DcAj1e4Jeis 
+https://www.freecodecamp.org/news/what-is-trpc/
+
 https://nextjs.org/
 
 npx create-next-app@latest
@@ -59,6 +63,9 @@ https://www.youtube.com/watch?v=fqabW3WRUbw
 Next.js Authentication with Supabase Tutorial
 https://github.com/Kirsanow/nextjs15-auth-tutorial
 
+
+Build, Test, Deploy a Full Stack Nextjs E-Commerce Multi Vendor Sass From Scratch in 2024
+https://www.youtube.com/watch?v=IgnzfALHjdA
 
 Build & Deploy Multivendor Ecommerce Website Next.js 2025 #8: Prisma setup & user model
 https://www.youtube.com/watch?v=iXGTOGOphu0

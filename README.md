@@ -14,17 +14,17 @@ mystrymessage :-
 nextjs-dashboard :-
 ------ This is next.js based dashborad project.
 
+poc-code :-
+------ accordion, animation, TRYING CLERK (AUTH)
+
 reelspro :-
 ------ next.js reels and image app
 
 user-mgmt-poc :-
 ------ next.js users and courses app
 
-poc-code :-
------- accordion, animation, TRYING CLERK (AUTH)
-
 NEXT INSPIRATION :-
-Scalable Chat App ,Socket.io ,Kafka ,Redis ,Postgres, Nextjs, Typescript -https://www.youtube.com/watch?v=gCwHi-UFSdg
+Scalable Chat App, Socket.io, Kafka, Redis, Postgres, Nextjs, Typescript -https://www.youtube.com/watch?v=gCwHi-UFSdg
 
 Build and Deploy a Patient Management System with Next.js | Twilio, TypeScript, TailwindCSS -https://www.youtube.com/watch?v=lEflo_sc82g
 
