@@ -1,11 +1,13 @@
 // Ref : https://codepen.io/tonkec/pen/aRMaWR
-import React from "react";
-import "./Proto2.css";
+import React from 'react';
+import './Proto2.css';
 
 const Proto2 = () => {
   return (
     <div>
-      <main style={{ border: "1px solid red", margin: "1rem", padding: "120px" }}>
+      <main
+        style={{ border: '1px solid red', margin: '1rem', padding: '200px' }}
+      >
         <h1>
           Fullscreen menu
           <span> with cool links </span>

@@ -12,6 +12,7 @@ export default function Header() {
     { href: '/users', name: 'Users' },
     // { href: '/zUserCard', name: 'zUser Card' },
     { href: '/techs', name: 'Techs' },
+    { href: '/tasks', name: 'Tasks' },
     { href: '/dashboard', name: 'Dashboard' },
     { href: '/gsap', name: 'GSAP' },
     { href: '/proto', name: 'PROTO' },

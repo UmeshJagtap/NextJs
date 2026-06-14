@@ -69,7 +69,7 @@ main {
 }
 
 .aside-anchor::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   background-color: #ff5964;
@@ -81,7 +81,7 @@ main {
 
 .aside-anchor::before {
   border-radius: 3px;
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   background-color: #fff;
@@ -111,23 +111,23 @@ main {
   font-weight: 500;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   display: none;
 }
 
-input[type="checkbox"]:checked ~ aside .aside-left {
+input[type='checkbox']:checked ~ aside .aside-left {
   transform: translateY(0%);
 }
 
-input[type="checkbox"]:checked ~ aside .aside-right {
+input[type='checkbox']:checked ~ aside .aside-right {
   transform: translateX(0%);
 }
 
-input[type="checkbox"]:checked ~ label .bar {
+input[type='checkbox']:checked ~ label .bar {
   background-color: #fff;
 }
 
-input[type="checkbox"]:checked ~ label .top {
+input[type='checkbox']:checked ~ label .top {
   -webkit-transform: translateY(0px) rotateZ(45deg);
   -moz-transform: translateY(0px) rotateZ(45deg);
   -ms-transform: translateY(0px) rotateZ(45deg);
@@ -135,7 +135,7 @@ input[type="checkbox"]:checked ~ label .top {
   transform: translateY(0px) rotateZ(45deg);
 }
 
-input[type="checkbox"]:checked ~ label .bottom {
+input[type='checkbox']:checked ~ label .bottom {
   -webkit-transform: translateY(-15px) rotateZ(-45deg);
   -moz-transform: translateY(-15px) rotateZ(-45deg);
   -ms-transform: translateY(-15px) rotateZ(-45deg);
@@ -143,7 +143,7 @@ input[type="checkbox"]:checked ~ label .bottom {
   transform: translateY(-15px) rotateZ(-45deg);
 }
 
-input[type="checkbox"]:checked ~ label .middle {
+input[type='checkbox']:checked ~ label .middle {
   width: 0;
 }
 
@@ -152,7 +152,7 @@ input[type="checkbox"]:checked ~ label .middle {
 }
 
 label {
-  top: 10px;
+  top: 50px;
   display: inline-block;
   padding: 7px 10px;
   background-color: transparent;
