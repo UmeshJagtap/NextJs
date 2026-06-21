@@ -82,4 +82,8 @@ Build a FullStack Job Portal App with MERN Stack (MongoDB, Express, React Js, No
 https://www.youtube.com/watch?v=F5EYXc91Cpo&list=PLXXI5Oe3aCLky2lAcxpwwqAOCFF-uRpnk
 
 Build Food Delivery Website with Realtime Map Live Tracking 🔥 | MERN Stack (Google Auth + Razorpay)
-https://www.youtube.com/watch?v=uS4j1ylx7TI
+https://www.youtube.com/watch?v=
+
+
+Master GSAP Animations: Basics | Complete GSAP Course - Part 1
+https://www.youtube.com/watch?v=9C03V1dXxOU&list=PLbtI3_MArDOnIIJxB6xFtpnhM0wTwz0x6
