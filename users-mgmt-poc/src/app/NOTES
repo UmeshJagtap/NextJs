@@ -1,2 +1,10 @@
-use hook (R19) --> 
+use hook (R19) -->
 https://medium.com/@ademyalcin27/the-new-use-hook-in-react-19-a-game-changer-for-simpler-data-fetching-and-context-management-cc45cc5ebd28
+
+CGPT :
+
+1. create a json data of 5 employees, each employee contains id and email and password make sure to give them password 123, do one more thing create another json data of 1 admin with same properties.
+
+2. do one thing, give each employee a task array with 3 - 10 task with properties like active (true or false), new Task (true or false) and task title, task description, task date, category
+
+3. give firstname property to everyone, give them only indian names and do one more thing, give 1 property of task number and give each type of task's number like active:2 etc.

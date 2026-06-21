@@ -1,34 +1,101 @@
+// https://www.youtube.com/watch?v=TTx7Y3a7EmA  2.17.12
+
 'use client';
 import * as React from 'react';
-// import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 // import Link from 'next/link';
 // import Image from 'next/image';
 // import clsx from 'clsx';
-import { usePathname } from 'next/navigation';
+// import { usePathname } from 'next/navigation';
 
 // import TechTopBar from '../components/TechTopBar';
-// import Login from '../components/Auth/Login';
+import Login from '../components/Auth/Login';
+import { AuthContext } from '../context/AuthProvider';
+// import { setLocalStorage, getLocalStorage } from '../utils/localStorage';
 
-// import EmployeeDashboard from '../components/Dashboard/EmployeeDashboard';
+import EmployeeDashboard from '../components/Dashboard/EmployeeDashboard';
 import AdminDashboard from '../components/Dashboard/AdminDashboard';
 
-// interface;
+export default function Tasks() {
+  // const pathname = usePathname();
 
-export default function Techs() {
-  const pathname = usePathname();
+  const [user, setUser] = useState<string | null>(null);
+  const [loggedInUserData, setLoggedInUserData] = useState(null);
+
+  const authData = useContext(AuthContext);
+  // console.log('AuthProvider data:', authData);
+
+  // useEffect(() => {
+  //   if (authData) {
+  //     const loggedInUser = localStorage.getItem('loggedInUser');
+  //     if (loggedInUser) {
+  //       // const parsedUser = JSON.parse(loggedInUser);
+  //       // setUser(parsedUser.role);
+  //       setUser(JSON.parse(loggedInUser).role);
+  //     }
+  //   }
+  // }, [authData]);
+
+  const handleLogin = (email: string, password: string) => {
+    console.log(
+      `Login attempted with email: ${email} and password: ${password}`
+    );
+
+    if (email === 'admin@me.com' && password === '123456') {
+      setUser('admin');
+      localStorage.setItem('loggedInUser', JSON.stringify({ role: 'admin' }));
+      console.log('This is Admin');
+    } else if (authData) {
+      //  email === 'employee5@example.com' && password === '123') {
+      try {
+        const employee = authData.employees.find(
+          (e) => email === e.email && password === e.password
+        );
+
+        if (employee) {
+          setUser('employee');
+          setLoggedInUserData(employee);
+          localStorage.setItem(
+            'loggedInUser',
+            JSON.stringify({ role: 'employee' })
+          );
+          console.log('This is User');
+        }
+      } catch (error) {
+        console.error('Error finding employee:', error);
+      }
+    } else {
+      alert('Invalid credentials. Please try again.');
+    }
+    // setUser('sarthak');
+    // setLocalStorage('user', 'sarthak');
+  };
+
+  // handleLogin('user@me.com', '123');
+
+  // useEffect(() => {
+  //   // Check if the employees data is already in localStorage
+  //   // const employeesData = localStorage.getItem('employees');
+  //   // setLocalStorage();
+  //   getLocalStorage();
+  // }, []);
 
   return (
     <>
       <div className="">
+        {/* <p>Tasks Page {JSON.stringify(pathname)}</p> */}
         <section className="">
-          {/* <Login /> */}
-          {/* <EmployeeDashboard /> */}
-          <AdminDashboard />
+          {!user ? <Login handleLogin={handleLogin} /> : ''}
+          {/* {user === 'admin' && <AdminDashboard />}
+          {user === 'employee' && <EmployeeDashboard />} */}
+          {/*  */}
+          {user == 'admin' ? (
+            <AdminDashboard />
+          ) : user == 'employee' ? (
+            <EmployeeDashboard data={loggedInUserData} />
+          ) : null}
         </section>
-
-        <p>Tasks Page</p>
-        {JSON.stringify(pathname)}
       </div>
     </>
   );

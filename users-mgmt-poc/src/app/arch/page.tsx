@@ -408,7 +408,7 @@ const Arch = () => {
         </div>
       </section>
 
-      <section className="gap-4 px-2 py-8 m-2">
+      <section className="px-2 py-8 m-2 gap-4" id="main-focus">
         {/* Main Focus / Mission Statement */}
         <h2 className="px-8 m-2 font-thin text-6xl text-gray-400">
           Main Focus / Mission Statement
@@ -433,15 +433,76 @@ const Arch = () => {
         </div>
       </section>
 
-      <section className="gap-4 p-2 m-2">
+      <section className="px-2 py-8 m-2 gap-4" id="our-projects">
         {/* Our Projects */}
-        <h2 className="p-2 m-2 font-thin text-6xl text-gray-400">
+        <h2 className="px-8 m-2 mb-8 font-thin text-6xl text-gray-400">
           Our Projects
         </h2>
-        <div className="grid flex-wrap">
+        <div className="px-8 m-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 rounded-lg place-items-end">
+          {/* <p>Image</p>
           <p>Image</p>
+          <p>Image</p> */}
+          <Image
+            src="/images/white-building-rainbow.jpg"
+            alt="Architecture"
+            width={500}
+            height={800}
+            //   className="w-full h-auto"
+          />
+          <Image
+            src="/images/white-building-glass.jpg"
+            alt="Architecture"
+            width={500}
+            height={800}
+          />
+          <Image
+            src="/images/white-box-capsule.jpg"
+            alt="Architecture"
+            width={500}
+            height={800}
+          />
+          <Image
+            src="/images/caos-windows.jpg"
+            alt="Architecture"
+            width={500}
+            height={800}
+          />
+          <Image
+            src="/images/big-glass.jpg"
+            alt="Architecture"
+            width={500}
+            height={800}
+            //   className="w-full h-auto"
+          />
+          <Image
+            src="/images/modern-greywood.jpg"
+            alt="Architecture"
+            width={500}
+            height={800}
+          />
+          <Image
+            src="/images/bento-flats.jpg"
+            alt="Architecture"
+            width={500}
+            height={800}
+          />
+          <Image
+            src="/images/bento-green.jpg"
+            alt="Architecture"
+            width={500}
+            height={700}
+          />
+          <Image
+            src="/images/grey-glass-strips.jpg"
+            alt="Architecture"
+            width={500}
+            height={800}
+          />
         </div>
-        <div className="p-2 bg-gray-800 flex gap-2 absolute left-10 cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out shadow-md">
+        <div
+          id="all-projects"
+          className="p-2 mt-8 bg-gray-800 flex gap-2 absolute left-10 cursor-pointer hover:translate-x-2 transition-transform duration-300 ease-in-out shadow-md"
+        >
           <p className="px-2 font-thin text-white">ALL PROJECTS</p>
           <svg
             width="24"
@@ -465,8 +526,8 @@ const Arch = () => {
           </svg>
         </div>
       </section>
-      <section>{/* Contact Us */}</section>
-      <section>{/* Footer */}</section>
+      <section id="contact-us">{/* Contact Us */}</section>
+      <section id="footer">{/* Footer */}</section>
     </div>
   );
 };

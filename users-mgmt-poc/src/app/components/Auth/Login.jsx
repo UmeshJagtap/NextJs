@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
-// asdfg@jkl.com
-// 2364923jhkkbm
+// user@me.com
+// 12345
 
-const Login = () => {
+const Login = ({ handleLogin }) => {
+  // console.log('Login component rendered with props:', handleLogin);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -11,12 +13,13 @@ const Login = () => {
     e.preventDefault();
     // Handle login logic here
     console.log('Login form submitted', email, password);
+    handleLogin(email, password);
     setEmail('');
     setPassword('');
   };
   return (
-    <div className="flex items-center justify-center">
-      <div className="border-2 border-red-600 rounded-lg p-8 shadow-md">
+    <div className="flex items-center justify-center h-screen bg-[#1c1c1c]">
+      <div className="border-2 border-emerald-600 rounded-lg p-8 shadow-md">
         <form
           onSubmit={(e) => {
             submitHandler(e);
@@ -29,10 +32,10 @@ const Login = () => {
             placeholder="Enter your email"
             value={email}
             onChange={(e) => {
-              console.log('Email input changed', e.target.value);
+              // console.log('Email input changed', e.target.value);
               setEmail(e.target.value);
             }}
-            className="text-black border-2 border-emerald-600 bg-transparent outline-none px-5 py-3 rounded-full"
+            className="text-white bg-[#1c1c1c] border-2 border-emerald-600 bg-transparent outline-none px-5 py-3 rounded-full"
           />
           <input
             type="password"
@@ -40,10 +43,10 @@ const Login = () => {
             placeholder="Enter your password"
             value={password}
             onChange={(e) => {
-              console.log('Password input changed', e.target.value);
+              // console.log('Password input changed', e.target.value);
               setPassword(e.target.value);
             }}
-            className="mt-2 text-black border-2 border-emerald-600 bg-transparent outline-none px-5 py-3 rounded-full"
+            className="mt-2 text-white bg-[#1c1c1c] border-2 border-emerald-600 bg-transparent outline-none px-5 py-3 rounded-full"
           />
           <button className="mt-2 text-white bg-emerald-600 outline-none px-5 py-3 rounded-full">
             Log in
