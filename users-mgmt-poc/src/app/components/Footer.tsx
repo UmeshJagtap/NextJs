@@ -57,7 +57,7 @@ export default function Footer() {
       <hr />
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <p>User Management POC</p>
-        <p>Copyright @ ABC* 2025.</p>
+        <p>Copyright @ UAJ 2026.</p>
       </footer>
       <hr />
     </>

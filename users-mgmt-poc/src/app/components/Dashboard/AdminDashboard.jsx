@@ -6,11 +6,11 @@ import TaskList from '../other/TaskList';
 import CreateTask from '../other/CreateTask';
 import AllTask from '../other/AllTask';
 
-const AdminDashboard = () => {
+const AdminDashboard = ({ data }) => {
   return (
     <>
       <div className="p-10 bg-gray-950 w-full">
-        <Header />
+        <Header data={data} />
         <CreateTask />
         <AllTask />
 

@@ -1,8 +1,34 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+
+// export function setLocalStorage() {
+//   // const [storedValue, setStoredValue] = useState(null);
+//   useEffect(() => {
+//     try {
+//       // const employees = window.localStorage.getItem(key);
+//       // const admin = window.localStorage.getItem(key);
+
+//       localStorage.setItem('employeesNew', JSON.stringify(employees));
+//       localStorage.setItem('adminNew', JSON.stringify(admin));
+//     } catch (error) {
+//       console.error('Error writing localStorage key:', key, error);
+//     }
+//   }, []);
+// }
+
 const employees = [
   {
     id: 1,
+    firstName: 'Aarav',
     email: 'employee1@example.com',
     password: '123',
+    taskCount: {
+      active: 2,
+      newTask: 1,
+      completed: 1,
+      failed: 0,
+    },
     tasks: [
       {
         active: true,
@@ -36,14 +62,12 @@ const employees = [
     firstName: 'Diya',
     email: 'employee2@example.com',
     password: '123',
-
-    taskCounts: {
+    taskCount: {
       active: 2,
       newTask: 1,
       completed: 1,
       failed: 0,
     },
-
     tasks: [
       {
         active: true,
@@ -84,14 +108,12 @@ const employees = [
     firstName: 'Rohan',
     email: 'employee3@example.com',
     password: '123',
-
-    taskCounts: {
+    taskCount: {
       active: 1,
       newTask: 1,
       completed: 1,
       failed: 1,
     },
-
     tasks: [
       {
         active: true,
@@ -132,13 +154,12 @@ const employees = [
     email: 'employee4@example.com',
     password: '123',
 
-    taskCounts: {
+    taskCount: {
       active: 2,
       newTask: 0,
       completed: 2,
       failed: 0,
     },
-
     tasks: [
       {
         active: true,
@@ -188,14 +209,12 @@ const employees = [
     firstName: 'Kabir',
     email: 'employee5@example.com',
     password: '123',
-
-    taskCounts: {
+    taskCount: {
       active: 1,
       newTask: 1,
       completed: 1,
       failed: 1,
     },
-
     tasks: [
       {
         active: true,
@@ -237,15 +256,15 @@ const admin = {
   password: '123',
 };
 
-// console.log('Initial employees data:', employees);
-// console.log('Initial admin data:', admin);
+console.log('Initial employees data:', employees);
+console.log('Initial admin data:', admin);
 
 export const setLocalStorage = () => {
-  localStorage.setItem('employees', JSON.stringify(employees));
-  localStorage.setItem('admin', JSON.stringify(admin));
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('employees', JSON.stringify(employees));
+    localStorage.setItem('admin', JSON.stringify(admin));
+  }
 };
-
-setLocalStorage();
 
 export const getLocalStorage = () => {
   const employees = localStorage.getItem('employees')
@@ -259,6 +278,56 @@ export const getLocalStorage = () => {
   // console.log('Retrieved admin from localStorage:', admin);
   return { employees, admin };
 };
+
+// SAMPLE EMPLOYEE JSON DATA WITH TASKS
+// const employeeWithTasks = [
+//   {
+//     id: 1,
+//     firstName: 'Aarav',
+//     email: 'employee1@example.com',
+//     password: '123',
+
+//     taskNumbers: {
+//       active: 2,
+//       newTask: 1,
+//       completed: 1,
+//       failed: 0,
+//     },
+
+//     tasks: [
+//       {
+//         active: true,
+//         newTask: true,
+//         completed: false,
+//         failed: false,
+//         taskTitle: 'Design Homepage',
+//         taskDescription: 'Create the initial homepage design in Figma.',
+//         taskDate: '2026-06-18',
+//         category: 'Design',
+//       },
+//       {
+//         active: false,
+//         newTask: false,
+//         completed: true,
+//         failed: false,
+//         taskTitle: 'Update Logo',
+//         taskDescription: 'Revise company logo according to brand guidelines.',
+//         taskDate: '2026-06-15',
+//         category: 'Branding',
+//       },
+//       {
+//         active: true,
+//         newTask: false,
+//         completed: false,
+//         failed: false,
+//         taskTitle: 'Review UI Components',
+//         taskDescription: 'Check consistency across shared UI components.',
+//         taskDate: '2026-06-20',
+//         category: 'UI/UX',
+//       },
+//     ],
+//   },
+// ];
 
 // OLD SIMPLE JSON DATA WITHOUT TASKS
 // const employees = [
@@ -294,52 +363,3 @@ export const getLocalStorage = () => {
 //   email: 'admin@example.com',
 //   password: '123',
 // };
-
-const employeeWithTasks = [
-  {
-    id: 1,
-    firstName: 'Aarav',
-    email: 'employee1@example.com',
-    password: '123',
-
-    taskNumbers: {
-      active: 2,
-      newTask: 1,
-      completed: 1,
-      failed: 0,
-    },
-
-    tasks: [
-      {
-        active: true,
-        newTask: true,
-        completed: false,
-        failed: false,
-        taskTitle: 'Design Homepage',
-        taskDescription: 'Create the initial homepage design in Figma.',
-        taskDate: '2026-06-18',
-        category: 'Design',
-      },
-      {
-        active: false,
-        newTask: false,
-        completed: true,
-        failed: false,
-        taskTitle: 'Update Logo',
-        taskDescription: 'Revise company logo according to brand guidelines.',
-        taskDate: '2026-06-15',
-        category: 'Branding',
-      },
-      {
-        active: true,
-        newTask: false,
-        completed: false,
-        failed: false,
-        taskTitle: 'Review UI Components',
-        taskDescription: 'Check consistency across shared UI components.',
-        taskDate: '2026-06-20',
-        category: 'UI/UX',
-      },
-    ],
-  },
-];

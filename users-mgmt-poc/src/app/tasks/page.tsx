@@ -1,4 +1,4 @@
-// https://www.youtube.com/watch?v=TTx7Y3a7EmA  2.17.12
+// https://www.youtube.com/watch?v=TTx7Y3a7EmA  2.45.12
 
 'use client';
 import * as React from 'react';
@@ -9,7 +9,6 @@ import { useState, useEffect, useContext } from 'react';
 // import clsx from 'clsx';
 // import { usePathname } from 'next/navigation';
 
-// import TechTopBar from '../components/TechTopBar';
 import Login from '../components/Auth/Login';
 import { AuthContext } from '../context/AuthProvider';
 // import { setLocalStorage, getLocalStorage } from '../utils/localStorage';
@@ -20,11 +19,59 @@ import AdminDashboard from '../components/Dashboard/AdminDashboard';
 export default function Tasks() {
   // const pathname = usePathname();
 
-  const [user, setUser] = useState<string | null>(null);
-  const [loggedInUserData, setLoggedInUserData] = useState(null);
+  interface Employee {
+    id: number;
+    firstName: string;
+    email: string;
+    password: string;
+    taskCounts: {
+      active: number;
+      newTask: number;
+      completed: number;
+      failed: number;
+    };
+    tasks: Task[];
+  }
 
-  const authData = useContext(AuthContext);
-  // console.log('AuthProvider data:', authData);
+  interface Task {
+    active: boolean;
+    newTask: boolean;
+    completed: boolean;
+    failed: boolean;
+    taskTitle: string;
+    taskDescription: string;
+    taskDate: string;
+    category: string;
+  }
+
+  interface Admin {
+    id: number;
+    email: string;
+    password: string;
+  }
+
+  interface AuthData {
+    employees: Employee[];
+    admin: Admin;
+  }
+
+  const [user, setUser] = useState<string | null>(null);
+  const [loggedInUserData, setLoggedInUserData] = useState<string | null>(null);
+
+  const authData: AuthData = useContext(AuthContext);
+  console.log('AuthProvider data:', authData);
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    console.log('111111111111111', loggedInUser);
+    if (loggedInUser) {
+      const userData = JSON.parse(loggedInUser);
+      // console.log('UseEffect loggedInUser', userData, 'User Logged in haai !!');
+      console.log('22222222222222', JSON.stringify(userData));
+      setUser(userData.role);
+      setLoggedInUserData(userData.data);
+    }
+  }, []);
 
   // useEffect(() => {
   //   if (authData) {
@@ -50,7 +97,7 @@ export default function Tasks() {
       //  email === 'employee5@example.com' && password === '123') {
       try {
         const employee = authData.employees.find(
-          (e) => email === e.email && password === e.password
+          (e: Employee) => email === e.email && password === e.password
         );
 
         if (employee) {
@@ -58,7 +105,7 @@ export default function Tasks() {
           setLoggedInUserData(employee);
           localStorage.setItem(
             'loggedInUser',
-            JSON.stringify({ role: 'employee' })
+            JSON.stringify({ role: 'employee', data: employee })
           );
           console.log('This is User');
         }

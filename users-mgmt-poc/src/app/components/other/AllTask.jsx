@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AllTask = () => {
+const AllTask = ({ tasks }) => {
   return (
     <div className="p-5 mt-5 h-48 overflow-auto bg-[#1c1c1c] text-white rounded">
       <div className="py-2 px-4 mb-2 flex justify-between rounded bg-red-400">
