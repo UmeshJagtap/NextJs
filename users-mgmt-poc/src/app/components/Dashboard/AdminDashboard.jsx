@@ -7,6 +7,8 @@ import CreateTask from '../other/CreateTask';
 import AllTask from '../other/AllTask';
 
 const AdminDashboard = ({ data }) => {
+  console.log('Admin Data : ', data);
+
   return (
     <>
       <div className="p-10 bg-gray-950 w-full">

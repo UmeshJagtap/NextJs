@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
 // export function setLocalStorage() {
 //   // const [storedValue, setStoredValue] = useState(null);
@@ -254,10 +254,15 @@ const admin = {
   id: 100,
   email: 'admin@example.com',
   password: '123',
+  firstName: 'ADMIN',
 };
 
 console.log('Initial employees data:', employees);
 console.log('Initial admin data:', admin);
+
+// if (typeof window !== 'undefined') {
+//   console.log('From LocalStorage Type of Window : ', typeof window);
+// }
 
 export const setLocalStorage = () => {
   if (typeof window !== 'undefined') {
@@ -267,16 +272,19 @@ export const setLocalStorage = () => {
 };
 
 export const getLocalStorage = () => {
-  const employees = localStorage.getItem('employees')
-    ? JSON.parse(localStorage.getItem('employees'))
-    : [];
+  if (typeof window !== 'undefined') {
+    const employees = localStorage.getItem('employees')
+      ? JSON.parse(localStorage.getItem('employees'))
+      : [];
 
-  const admin = localStorage.getItem('admin')
-    ? JSON.parse(localStorage.getItem('admin'))
-    : [];
-  // console.log('Retrieved employees from localStorage:', employees);
-  // console.log('Retrieved admin from localStorage:', admin);
-  return { employees, admin };
+    const admin = localStorage.getItem('admin')
+      ? JSON.parse(localStorage.getItem('admin'))
+      : [];
+
+    // console.log('Retrieved employees from localStorage:', employees);
+    // console.log('Retrieved admin from localStorage:', admin);
+    return { employees, admin };
+  }
 };
 
 // SAMPLE EMPLOYEE JSON DATA WITH TASKS

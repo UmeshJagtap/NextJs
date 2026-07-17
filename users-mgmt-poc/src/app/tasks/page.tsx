@@ -1,4 +1,4 @@
-// https://www.youtube.com/watch?v=TTx7Y3a7EmA  2.45.12
+// https://www.youtube.com/watch?v=TTx7Y3a7EmA  3.25.50
 
 'use client';
 import * as React from 'react';
@@ -62,12 +62,12 @@ export default function Tasks() {
   console.log('AuthProvider data:', authData);
 
   useEffect(() => {
-    const loggedInUser = localStorage.getItem('loggedInUser');
-    console.log('111111111111111', loggedInUser);
+    const loggedInUser = localStorage.getItem('loggedInUser'); // {"role":"admin"}
+
     if (loggedInUser) {
-      const userData = JSON.parse(loggedInUser);
-      // console.log('UseEffect loggedInUser', userData, 'User Logged in haai !!');
-      console.log('22222222222222', JSON.stringify(userData));
+      const userData = JSON.parse(loggedInUser); // {"role":"admin"}
+      console.log('UseEffect loggedInUser', userData, 'User Logged in haai !!');
+
       setUser(userData.role);
       setLoggedInUserData(userData.data);
     }
@@ -138,7 +138,7 @@ export default function Tasks() {
           {user === 'employee' && <EmployeeDashboard />} */}
           {/*  */}
           {user == 'admin' ? (
-            <AdminDashboard />
+            <AdminDashboard data={user} />
           ) : user == 'employee' ? (
             <EmployeeDashboard data={loggedInUserData} />
           ) : null}
