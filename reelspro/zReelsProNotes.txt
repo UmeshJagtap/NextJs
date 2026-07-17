@@ -88,3 +88,6 @@ Final :-
 https://github.com/UmeshJagtap/NextJs/tree/main/reelspro
 https://github.com/hiteshchoudhary/reelspro-imagekit-nextjs/blob/main/app/components/VideoComponent.tsx
 
+
+Complete Zomato MERN Project | Reels-Style Video Feed Integration
+https://www.youtube.com/watch?v=CQ741Gw9Bz0
