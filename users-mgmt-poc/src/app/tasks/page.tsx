@@ -1,4 +1,4 @@
-// https://www.youtube.com/watch?v=TTx7Y3a7EmA  3.25.50
+// https://www.youtube.com/watch?v=TTx7Y3a7EmA  3.32.50
 
 'use client';
 import * as React from 'react';
@@ -130,20 +130,18 @@ export default function Tasks() {
 
   return (
     <>
-      <div className="">
-        {/* <p>Tasks Page {JSON.stringify(pathname)}</p> */}
-        <section className="">
-          {!user ? <Login handleLogin={handleLogin} /> : ''}
-          {/* {user === 'admin' && <AdminDashboard />}
+      {/* <p>Tasks Page {JSON.stringify(pathname)}</p> */}
+      <section className="">
+        {!user ? <Login handleLogin={handleLogin} /> : ''}
+        {/* {user === 'admin' && <AdminDashboard />}
           {user === 'employee' && <EmployeeDashboard />} */}
-          {/*  */}
-          {user == 'admin' ? (
-            <AdminDashboard data={user} />
-          ) : user == 'employee' ? (
-            <EmployeeDashboard data={loggedInUserData} />
-          ) : null}
-        </section>
-      </div>
+        {/*  */}
+        {user == 'admin' ? (
+          <AdminDashboard data={user} changeUser={setUser} />
+        ) : user == 'employee' ? (
+          <EmployeeDashboard data={loggedInUserData} changeUser={setUser} />
+        ) : null}
+      </section>
     </>
   );
 }

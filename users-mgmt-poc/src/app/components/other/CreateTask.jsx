@@ -23,6 +23,10 @@ const CreateTask = () => {
       failed: false,
     });
 
+    const data = JSON.parse(localStorage.getItem('employees'));
+
+    console.log('LS Data : ', data);
+
     // setTask((prevTasks) => [
     //   ...prevTasks,
     //   {

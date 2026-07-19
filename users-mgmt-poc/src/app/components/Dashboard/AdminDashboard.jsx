@@ -6,13 +6,13 @@ import TaskList from '../other/TaskList';
 import CreateTask from '../other/CreateTask';
 import AllTask from '../other/AllTask';
 
-const AdminDashboard = ({ data }) => {
-  console.log('Admin Data : ', data);
+const AdminDashboard = (props) => {
+  console.log('Admin Data : ', props?.data);
 
   return (
     <>
       <div className="p-10 bg-gray-950 w-full">
-        <Header data={data} />
+        <Header changeUser={props.changeUser} />
         <CreateTask />
         <AllTask />
 

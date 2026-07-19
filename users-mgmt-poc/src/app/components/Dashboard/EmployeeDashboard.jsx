@@ -4,14 +4,14 @@ import Header from '../other/Header';
 import TaskListNumber from '../other/TaskListNumber';
 import TaskList from '../other/TaskList';
 
-const EmployeeDashboard = ({ data }) => {
-  console.log('EmployeeDashboard props:', data);
+const EmployeeDashboard = (props) => {
+  console.log('EmployeeDashboard props:', props?.data);
   return (
     <>
       <div className="p-10 bg-[#1c1c1c]">
-        <Header data={data} />
-        <TaskListNumber data={data} />
-        <TaskList data={data} />
+        <Header changeUser={props?.changeUser} data={props?.data} />
+        <TaskListNumber data={props?.data} />
+        <TaskList data={props?.data} />
       </div>
     </>
   );
