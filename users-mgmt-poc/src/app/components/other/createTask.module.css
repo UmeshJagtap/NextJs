@@ -1,0 +1,12 @@
+input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* Change icon to a Custom Color (e.g., Blue/Teal) */
+.inputDateStyle {
+  input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(170deg)
+      brightness(94%) contrast(94%);
+  }
+}

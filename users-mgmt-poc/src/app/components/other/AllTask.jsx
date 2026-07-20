@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 
 const AllTask = () => {
-  const authData = useContext(AuthContext);
+  const [userData, setUserData] = useContext(AuthContext);
   // console.log('AllTask authData:', authData.employees);
 
   return (
@@ -16,8 +16,8 @@ const AllTask = () => {
         <h5 className="text-lg font-medium w-1/5">Failed</h5>
       </div>
       <div className="overflow-auto ">
-        {authData.employees && authData.employees.length > 0 ? (
-          authData?.employees?.map((employee, index) => (
+        {userData && userData.length > 0 ? (
+          userData?.map((employee, index) => (
             <div
               key={index}
               className="py-2 px-4 mb-2 flex justify-between text-center rounded bg-gray-700"

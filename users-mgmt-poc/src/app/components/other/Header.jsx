@@ -8,7 +8,7 @@ const Header = (props) => {
   //   setUsername(data.firstName);
   // }
 
-  console.log('Header data : ', props?.data);
+  // console.log('Header data : ', props?.data);
 
   const logoutUser = () => {
     localStorage.setItem('loggedInUser', '');
@@ -17,11 +17,13 @@ const Header = (props) => {
     // window.location.reload();
   };
 
+  const username = props?.data?.firstName || 'Umesh';
+
   return (
     <div className="p-4 flex justify-between items-start ">
       <div className="text-white">
         <p className="text-2xl font-medium">Hello</p>
-        <h1 className="text-3xl font-bold">Umesh 👋</h1>
+        <h1 className="text-3xl font-bold">{username} 👋</h1>
         {/* <h1 className="text-3xl font-bold">{username} 👋</h1> */}
         {/* <h1 className="text-3xl font-bold">{data.firstName} 👋</h1> */}
         <p className="text-sm text-gray-400">Welcome to your dashboard</p>

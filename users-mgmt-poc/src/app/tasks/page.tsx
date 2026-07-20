@@ -1,4 +1,4 @@
-// https://www.youtube.com/watch?v=TTx7Y3a7EmA  3.32.50
+// https://www.youtube.com/watch?v=TTx7Y3a7EmA  4.10.10
 
 'use client';
 import * as React from 'react';
@@ -44,22 +44,22 @@ export default function Tasks() {
     category: string;
   }
 
-  interface Admin {
-    id: number;
-    email: string;
-    password: string;
-  }
+  // interface Admin {
+  //   id: number;
+  //   email: string;
+  //   password: string;
+  // }
 
   interface AuthData {
     employees: Employee[];
-    admin: Admin;
+    // admin: Admin;
   }
 
   const [user, setUser] = useState<string | null>(null);
   const [loggedInUserData, setLoggedInUserData] = useState<string | null>(null);
 
-  const authData: AuthData = useContext(AuthContext);
-  console.log('AuthProvider data:', authData);
+  const [userData]: AuthData[] = useContext(AuthContext);
+  console.log('Getting AuthProvider data:', userData);
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem('loggedInUser'); // {"role":"admin"}
@@ -93,10 +93,10 @@ export default function Tasks() {
       setUser('admin');
       localStorage.setItem('loggedInUser', JSON.stringify({ role: 'admin' }));
       console.log('This is Admin');
-    } else if (authData) {
+    } else if (userData) {
       //  email === 'employee5@example.com' && password === '123') {
       try {
-        const employee = authData.employees.find(
+        const employee = userData.find(
           (e: Employee) => email === e.email && password === e.password
         );
 
