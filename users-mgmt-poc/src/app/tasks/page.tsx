@@ -59,14 +59,14 @@ export default function Tasks() {
   const [loggedInUserData, setLoggedInUserData] = useState<string | null>(null);
 
   const [userData]: AuthData[] = useContext(AuthContext);
-  console.log('Getting AuthProvider data:', userData);
+  // console.log('Getting AuthProvider data:', userData);
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem('loggedInUser'); // {"role":"admin"}
 
     if (loggedInUser) {
       const userData = JSON.parse(loggedInUser); // {"role":"admin"}
-      console.log('UseEffect loggedInUser', userData, 'User Logged in haai !!');
+      // console.log('UseEffect loggedInUser', userData, 'User Logged in haai !!');
 
       setUser(userData.role);
       setLoggedInUserData(userData.data);

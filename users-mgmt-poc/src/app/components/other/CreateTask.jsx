@@ -1,10 +1,23 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
+import AssignedToSelect from './AssignedToSelect';
 import styles from './createTask.module.css';
 // import { log } from 'console';
 
+const employees = [
+  { id: 1, name: 'Wade Cooper' },
+  { id: 2, name: 'Arlene Mccoy' },
+  { id: 3, name: 'Devon Webb' },
+  { id: 4, name: 'Tom Cook' },
+  { id: 5, name: 'Tanya Fox' },
+  { id: 6, name: 'Hellen Schmidt' },
+  { id: 7, name: 'Caroline Schultz' },
+];
+
 const CreateTask = () => {
   const [userData, setUserData] = useContext(AuthContext);
+
+  const [selectedEmployee, setSelectedEmployee] = useState(employees[3]);
 
   const [taskTitle, setTaskTitle] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
@@ -123,6 +136,14 @@ const CreateTask = () => {
                 value={taskDate}
                 onChange={(e) => setTaskDate(e.target.value)}
                 className={`${styles.inputDateStyle} create-task-date text-sm py-1 px-2 w-[90%] rounded outline=none bg-transparent border-[1px] border-gray-400 focus:border-gray-200 focus:outline-none focus:ring-0 mb-4`}
+              />
+            </div>
+
+            <div className="">
+              <AssignedToSelect
+                employees={employees}
+                value={selectedEmployee}
+                onChange={setSelectedEmployee}
               />
             </div>
 

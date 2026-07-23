@@ -5,7 +5,8 @@ const NewTask = ({ task }) => {
   return (
     <div
       //   key={index}
-      className="flex-shrink-0 h-[220px] w-[300px] p-5 bg-red-400 rounded-xl odd:bg-red-400 even:bg-red-500"
+      className="flex-shrink-0 h-[220px] w-[300px] p-5 bg-blue-400 rounded-xl"
+      // odd:bg-red-400 even:bg-red-500
     >
       <div className="flex justify-between items-center text-white">
         <h3 className="bg-red-600 text-sm px-3 py-1 rounded">
