@@ -72,6 +72,8 @@ const employees = [
       {
         active: true,
         newTask: true,
+        completed: false,
+        failed: false,
         taskTitle: 'Design Homepage',
         taskDescription: 'Create the initial homepage design in Figma.',
         taskDate: '2026-06-18',
@@ -80,6 +82,8 @@ const employees = [
       {
         active: false,
         newTask: false,
+        completed: false,
+        failed: false,
         taskTitle: 'Update Logo',
         taskDescription: 'Revise company logo according to brand guidelines.',
         taskDate: '2026-06-15',
@@ -88,6 +92,8 @@ const employees = [
       {
         active: true,
         newTask: false,
+        completed: false,
+        failed: false,
         taskTitle: 'Review UI Components',
         taskDescription: 'Check consistency across shared UI components.',
         taskDate: '2026-06-20',
@@ -296,12 +302,8 @@ const admin = {
   firstName: 'ADMIN',
 };
 
-console.log('Initial employees data:', employees);
-console.log('Initial admin data:', admin);
-
-// if (typeof window !== 'undefined') {
-//   console.log('From LocalStorage Type of Window : ', typeof window);
-// }
+// console.log('Initial employees data:', employees);
+// console.log('Initial admin data:', admin);
 
 export const setLocalStorage = () => {
   if (typeof window !== 'undefined') {
